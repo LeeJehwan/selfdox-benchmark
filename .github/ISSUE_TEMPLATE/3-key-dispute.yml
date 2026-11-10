@@ -1,0 +1,22 @@
+name: Answer-key dispute
+description: A dev clue is missing, boxed wrongly, or has the wrong type, severity or hideable flag.
+title: "[Key] kr_XXXX: "
+labels: ["answer-key"]
+body:
+  - type: markdown
+    attributes:
+      value: "Only dev photos (data/dev/gt.json) can be disputed in public. We check every dispute, fix the key with a new date in CHANGELOG.md and rescore stored results."
+  - type: input
+    id: photo
+    attributes: {label: Photo id, placeholder: kr_0123}
+    validations: {required: true}
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options: [A clue is missing, A box is in the wrong place or too small, Wrong type, Wrong severity (critical/supporting), Wrong hideable flag, The expected verdict is wrong, Something else]
+    validations: {required: true}
+  - type: textarea
+    id: detail
+    attributes: {label: Details, description: "Clue id (c1, c2, ...), the box you propose as [x, y, w, h], and why. A screenshot from selfdox.view helps."}
+    validations: {required: true}

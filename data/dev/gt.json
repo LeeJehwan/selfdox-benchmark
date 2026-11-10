@@ -1,0 +1,10739 @@
+{
+ "benchmark_version": "0.3",
+ "images": [
+  {
+   "id": "kr_0001",
+   "file": "images/kr_0001.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 35.102423,
+   "lon": 129.026172,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     736,
+     677,
+     85,
+     99
+    ],
+    [
+     315,
+     686,
+     62,
+     69
+    ],
+    [
+     296,
+     800,
+     61,
+     61
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Geoin Tongdak Giant Chicken Busan (43931552150).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Geoin_Tongdak_Giant_Chicken_Busan_(43931552150).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Geoin_Tongdak_Giant_Chicken_Busan_%2843931552150%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "bryan..."
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      608,
+      164,
+      932,
+      180
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       623,
+       179,
+       902,
+       150
+      ]
+     ],
+     "text": "거인통닭"
+    },
+    {
+     "id": "c2",
+     "type": "phone_number",
+     "bbox": [
+      877,
+      311,
+      389,
+      47
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       881,
+       315,
+       381,
+       39
+      ]
+     ],
+     "text": "246-6079"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1615,
+      533,
+      200,
+      159
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1622,
+       538,
+       188,
+       95
+      ],
+      [
+       1620,
+       634,
+       162,
+       53
+      ]
+     ],
+     "text": "거인통닭 246-6079"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1234,
+      799,
+      262,
+      102
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1237,
+       802,
+       256,
+       60
+      ],
+      [
+       1328,
+       865,
+       149,
+       33
+      ]
+     ],
+     "text": "거인통닭 246-6079"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      1377,
+      0,
+      60,
+      173
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "닭 246-6079",
+     "note": "rotated projecting sign, manual box"
+    },
+    {
+     "id": "c6",
+     "type": "address_plate",
+     "bbox": [
+      1564,
+      651,
+      37,
+      38
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "34",
+     "note": "road-name plate, road name too small to read; manual box"
+    },
+    {
+     "id": "c7",
+     "type": "phone_number",
+     "bbox": [
+      1614,
+      795,
+      87,
+      19
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1616,
+       797,
+       83,
+       15
+      ]
+     ],
+     "text": "010.9322.1595"
+    },
+    {
+     "id": "c8",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0002",
+   "file": "images/kr_0002.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.556665,
+   "lon": 126.928683,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     973,
+     977,
+     15,
+     18
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:239 A03 K314 Hongik University Station Entrance 6 20240630 095852.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:239_A03_K314_Hongik_University_Station_Entrance_6_20240630_095852.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/239_A03_K314_Hongik_University_Station_Entrance_6_20240630_095852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "ZKang123"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      693,
+      559,
+      581,
+      75
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       696,
+       562,
+       271,
+       69
+      ],
+      [
+       956,
+       566,
+       274,
+       36
+      ],
+      [
+       969,
+       595,
+       302,
+       30
+      ]
+     ],
+     "text": "홍대입구역 Hongik Univ. Station 弘益大学站"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      1285,
+      575,
+      149,
+      43
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1319,
+       577,
+       74,
+       27
+      ],
+      [
+       1319,
+       601,
+       113,
+       15
+      ],
+      [
+       1287,
+       579,
+       29,
+       31
+      ]
+     ],
+     "text": "6 출입구 Entrance/Exit"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      503,
+      564,
+      186,
+      58
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "K314 A03 239",
+     "note": "line badges, manual box"
+    }
+   ]
+  },
+  {
+   "id": "kr_0003",
+   "file": "images/kr_0003.jpg",
+   "width": 2048,
+   "height": 1153,
+   "lat": 37.54093,
+   "lon": 127.060544,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1692,
+     0,
+     356,
+     540
+    ],
+    [
+     805,
+     738,
+     22,
+     26
+    ],
+    [
+     936,
+     737,
+     28,
+     37
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:성수동 260523 21.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%84%B1%EC%88%98%EB%8F%99_260523_21.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/%EC%84%B1%EC%88%98%EB%8F%99_260523_21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Aspere"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      1321,
+      525,
+      663,
+      116
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1331,
+       535,
+       643,
+       96
+      ]
+     ],
+     "text": "BEIDELLI SEONGSU"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1193,
+      184,
+      252,
+      173
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1207,
+       198,
+       224,
+       145
+      ]
+     ],
+     "text": "BEIDELLI"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1156,
+      594,
+      66,
+      17
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "BRANDY MELVILLE",
+     "note": "manual box"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      464,
+      342,
+      78,
+      21
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "MUSINSA",
+     "note": "manual box"
+    }
+   ]
+  },
+  {
+   "id": "kr_0004",
+   "file": "images/kr_0004.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.539614,
+   "lon": 127.057083,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Bored & Hungry exterior.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bored_%26_Hungry_exterior.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Bored_%26_Hungry_exterior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      1230,
+      957,
+      359,
+      115
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1233,
+       960,
+       353,
+       103
+      ],
+      [
+       1243,
+       1035,
+       211,
+       34
+      ]
+     ],
+     "text": "BORED & HUNGRY"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1015,
+      1102,
+      148,
+      184
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "BORED & HUNGRY",
+     "note": "circular logo on shutter, manual box"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1484,
+      1053,
+      92,
+      12
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "BORED APES ARE IN SEONGSU KOREA",
+     "note": "tiny slogan under the sign names the neighborhood; manual box"
+    },
+    {
+     "id": "c4",
+     "type": "facade",
+     "bbox": [
+      380,
+      120,
+      1300,
+      1260
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft",
+     "note": "mural-painted building"
+    },
+    {
+     "id": "c5",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0005",
+   "file": "images/kr_0005.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.534621,
+   "lon": 126.995955,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Jaguar XJ X358 Platinum (5).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jaguar_XJ_X358_Platinum_(5).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Jaguar_XJ_X358_Platinum_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Damian B Oh"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "address_plate",
+     "bbox": [
+      580,
+      343,
+      80,
+      77
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       592,
+       384,
+       54,
+       30
+      ],
+      [
+       594,
+       354,
+       54,
+       10
+      ]
+     ],
+     "text": "이태원로 200"
+    },
+    {
+     "id": "c2",
+     "type": "utility_mark",
+     "bbox": [
+      1459,
+      482,
+      58,
+      40
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "SW 8",
+     "note": "KEPCO box tag, manual box"
+    },
+    {
+     "id": "c3",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0006",
+   "file": "images/kr_0006.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.556757,
+   "lon": 126.923552,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     80,
+     788,
+     37,
+     45
+    ],
+    [
+     185,
+     832,
+     49,
+     60
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:239 Hongik University Line 2 platforms 20240630 101838.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:239_Hongik_University_Line_2_platforms_20240630_101838.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/239_Hongik_University_Line_2_platforms_20240630_101838.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "ZKang123"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      1749,
+      449,
+      281,
+      163
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "홍대입구 Hongik Univ.",
+     "note": "slanted platform station sign, manual box"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      245,
+      321,
+      367,
+      128
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       390,
+       363,
+       27,
+       24
+      ],
+      [
+       390,
+       402,
+       27,
+       21
+      ],
+      [
+       509,
+       345,
+       83,
+       30
+      ],
+      [
+       512,
+       366,
+       74,
+       18
+      ],
+      [
+       509,
+       387,
+       45,
+       24
+      ]
+     ],
+     "text": "경의중앙 용산 / 공항철도 서울역"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      364,
+      674,
+      40,
+      19
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       366,
+       676,
+       36,
+       15
+      ]
+     ],
+     "text": "홍대입구",
+     "note": "current station on the pillar route map"
+    }
+   ]
+  },
+  {
+   "id": "kr_0007",
+   "file": "images/kr_0007.jpg",
+   "width": 1152,
+   "height": 2048,
+   "lat": 37.561928,
+   "lon": 126.985675,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     569,
+     1412,
+     31,
+     36
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul (53854750520).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul_(53854750520).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Seoul_%2853854750520%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "David Lee from Redmond, WA, USA"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      454,
+      551,
+      113,
+      224
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "명동 스타사",
+     "note": "vertical sign, manual box"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      731,
+      1306,
+      87,
+      186
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "명동 스타사",
+     "note": "vertical sign, manual box"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      460,
+      286,
+      107,
+      245
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       467,
+       289,
+       60,
+       27
+      ],
+      [
+       464,
+       493,
+       105,
+       24
+      ],
+      [
+       464,
+       518,
+       104,
+       18
+      ]
+     ],
+     "text": "옷수선 선우사 775-9529"
+    },
+    {
+     "id": "c4",
+     "type": "phone_number",
+     "bbox": [
+      459,
+      777,
+      105,
+      29
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       461,
+       779,
+       101,
+       25
+      ]
+     ],
+     "text": "777-4203"
+    },
+    {
+     "id": "c5",
+     "type": "phone_number",
+     "bbox": [
+      459,
+      183,
+      93,
+      78
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       488,
+       185,
+       51,
+       45
+      ],
+      [
+       461,
+       235,
+       89,
+       24
+      ]
+     ],
+     "text": "773-918"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      477,
+      1129,
+      254,
+      96
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       485,
+       1137,
+       238,
+       80
+      ]
+     ],
+     "text": "부동산"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      676,
+      556,
+      62,
+      36
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "SHINSEGAE DUTY FREE",
+     "note": "partly visible, manual box"
+    }
+   ]
+  },
+  {
+   "id": "kr_0008",
+   "file": "images/kr_0008.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": null,
+   "lon": null,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1969,
+     794,
+     20,
+     24
+    ],
+    [
+     2022,
+     782,
+     21,
+     25
+    ],
+    [
+     1993,
+     795,
+     17,
+     19
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Bukchon Hanok Village, Seoul (16) (41113219101).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bukchon_Hanok_Village,_Seoul_(16)_(41113219101).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Bukchon_Hanok_Village%2C_Seoul_%2816%29_%2841113219101%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "Richard Mortel from Riyadh, Saudi Arabia"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "address_plate",
+     "bbox": [
+      1150,
+      736,
+      42,
+      62
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1153,
+       740,
+       37,
+       11
+      ],
+      [
+       1155,
+       760,
+       34,
+       30
+      ]
+     ],
+     "text": "39",
+     "note": "road name line too small to transcribe"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      809,
+      775,
+      66,
+      130
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "silence please",
+     "note": "Bukchon quiet-zone notice"
+    },
+    {
+     "id": "c3",
+     "type": "other",
+     "bbox": [
+      954,
+      794,
+      58,
+      119
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "silence please"
+    },
+    {
+     "id": "c4",
+     "type": "facade",
+     "bbox": [
+      0,
+      140,
+      2048,
+      1160
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft",
+     "note": "hanok gate and wall"
+    }
+   ]
+  },
+  {
+   "id": "kr_0009",
+   "file": "images/kr_0009.jpg",
+   "width": 2048,
+   "height": 2048,
+   "lat": 37.495606,
+   "lon": 127.028686,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     648,
+     1616,
+     84,
+     99
+    ],
+    [
+     1466,
+     1577,
+     103,
+     58
+    ],
+    [
+     600,
+     1540,
+     65,
+     80
+    ],
+    [
+     718,
+     1570,
+     46,
+     50
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Night view at Gangnam station bus stop 20251024.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Night_view_at_Gangnam_station_bus_stop_20251024.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Night_view_at_Gangnam_station_bus_stop_20251024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "*Youngjin"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      1250,
+      1377,
+      399,
+      85
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1256,
+       1396,
+       167,
+       60
+      ],
+      [
+       1463,
+       1383,
+       180,
+       69
+      ]
+     ],
+     "text": "5006",
+     "note": "route number + destination display"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      1270,
+      1633,
+      56,
+      44
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1274,
+       1637,
+       48,
+       36
+      ]
+     ],
+     "text": "38"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      145,
+      1458,
+      59,
+      44
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       149,
+       1462,
+       51,
+       36
+      ]
+     ],
+     "text": "GOBUS"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1118,
+      700,
+      40,
+      128
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "KB",
+     "note": "vertical building sign, manual box"
+    }
+   ]
+  },
+  {
+   "id": "kr_0010",
+   "file": "images/kr_0010.jpg",
+   "width": 2048,
+   "height": 1367,
+   "lat": null,
+   "lon": null,
+   "category": "hard",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     722,
+     840,
+     35,
+     39
+    ],
+    [
+     920,
+     802,
+     18,
+     21
+    ],
+    [
+     627,
+     771,
+     18,
+     21
+    ],
+    [
+     834,
+     821,
+     31,
+     31
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Bukchon Village Seoul.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bukchon_Village_Seoul.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bukchon_Village_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "skyline_view",
+     "bbox": [
+      510,
+      92,
+      1081,
+      622
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft",
+     "note": "classic Bukchon-ro 11-gil view with N Seoul Tower"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      1183,
+      107,
+      33,
+      143
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "note": "N Seoul Tower"
+    },
+    {
+     "id": "c3",
+     "type": "address_plate",
+     "bbox": [
+      122,
+      736,
+      33,
+      100
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "58",
+     "note": "manual box"
+    },
+    {
+     "id": "c4",
+     "type": "address_plate",
+     "bbox": [
+      1504,
+      714,
+      18,
+      46
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "note": "small, manual box"
+    }
+   ]
+  },
+  {
+   "id": "kr_0011",
+   "file": "images/kr_0011.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.563972,
+   "lon": 126.984231,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1478,
+     1460,
+     27,
+     31
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Lee Ko – A Way Coming Back digital billboard display, Myeongdong, Seoul, South Korea.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lee_Ko_%E2%80%93_A_Way_Coming_Back_digital_billboard_display,_Myeongdong,_Seoul,_South_Korea.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Lee_Ko_%E2%80%93_A_Way_Coming_Back_digital_billboard_display%2C_Myeongdong%2C_Seoul%2C_South_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Leeko.archive"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "street_sign",
+     "bbox": [
+      612,
+      1355,
+      107,
+      346
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       621,
+       1359,
+       94,
+       46
+      ],
+      [
+       652,
+       1396,
+       48,
+       301
+      ],
+      [
+       616,
+       1386,
+       40,
+       267
+      ]
+     ],
+     "text": "LET'S GO MYEONG DONG",
+     "note": "vertical banner"
+    },
+    {
+     "id": "c2",
+     "type": "street_sign",
+     "bbox": [
+      533,
+      1345,
+      79,
+      59
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       536,
+       1347,
+       74,
+       31
+      ],
+      [
+       535,
+       1366,
+       52,
+       34
+      ],
+      [
+       580,
+       1381,
+       30,
+       21
+      ]
+     ],
+     "text": "LET'S GO MYEONG DONG",
+     "note": "second banner"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      720,
+      979,
+      87,
+      26
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "명동예술극장",
+     "note": "manual box"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1249,
+      1619,
+      287,
+      279
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1265,
+       1623,
+       271,
+       123
+      ],
+      [
+       1253,
+       1665,
+       283,
+       189
+      ],
+      [
+       1270,
+       1773,
+       190,
+       115
+      ],
+      [
+       1473,
+       1849,
+       60,
+       45
+      ]
+     ],
+     "text": "한일관 공인중개사 부동산 777-6644"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      1298,
+      131,
+      164,
+      83
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1301,
+       134,
+       158,
+       45
+      ],
+      [
+       1336,
+       181,
+       95,
+       30
+      ]
+     ],
+     "text": "Shinhan Bank"
+    },
+    {
+     "id": "c6",
+     "type": "landmark",
+     "bbox": [
+      0,
+      200,
+      765,
+      800
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft",
+     "note": "Myeongdong Theater facade"
+    }
+   ]
+  },
+  {
+   "id": "kr_0012",
+   "file": "images/kr_0012.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.533189,
+   "lon": 126.993928,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     313,
+     1350,
+     30,
+     26
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Itaewon view with yongsan art hall.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Itaewon_view_with_yongsan_art_hall.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Itaewon_view_with_yongsan_art_hall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Sgroey"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      653,
+      439,
+      535,
+      194
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "note": "Yongsan Art Hall"
+    },
+    {
+     "id": "c2",
+     "type": "street_sign",
+     "bbox": [
+      746,
+      1050,
+      53,
+      19
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "note": "road name sign, not legible at this size"
+    },
+    {
+     "id": "c3",
+     "type": "apt_name",
+     "bbox": [
+      1284,
+      762,
+      132,
+      19
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "note": "villa name on roof edge, 2nd character unclear"
+    }
+   ]
+  },
+  {
+   "id": "kr_0013",
+   "file": "images/kr_0013.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.553969,
+   "lon": 126.911339,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Pyogo-mandu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pyogo-mandu.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Pyogo-mandu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0014",
+   "file": "images/kr_0014.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.55235,
+   "lon": 126.921417,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20200805 023708 things places in south korea IMG 8937.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20200805_023708_things_places_in_south_korea_IMG_8937.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/20200805_023708_things_places_in_south_korea_IMG_8937.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Choi Kwang-mo"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0015",
+   "file": "images/kr_0015.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 35.098792,
+   "lon": 129.033683,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Busan South Korea Republic of Korea ROK Daehan Minguk (44835242645).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Busan_South_Korea_Republic_of_Korea_ROK_Daehan_Minguk_(44835242645).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Busan_South_Korea_Republic_of_Korea_ROK_Daehan_Minguk_%2844835242645%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "bryan..."
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0016",
+   "file": "images/kr_0016.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gyeongbokgung Palace, Seoul, 1395 (6) (41130257201).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gyeongbokgung_Palace,_Seoul,_1395_(6)_(41130257201).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Gyeongbokgung_Palace%2C_Seoul%2C_1395_%286%29_%2841130257201%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "Richard Mortel from Riyadh, Saudi Arabia"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      0,
+      80,
+      2048,
+      1285
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft",
+     "note": "Gwanghwamun gate is the subject"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      807,
+      607,
+      280,
+      154
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       820,
+       620,
+       254,
+       128
+      ]
+     ],
+     "text": "光化門",
+     "note": "name plaque"
+    }
+   ]
+  },
+  {
+   "id": "kr_0017",
+   "file": "images/kr_0017.jpg",
+   "width": 2048,
+   "height": 1304,
+   "lat": 35.15615,
+   "lon": 129.154262,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Haeundae Beach May 2024.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Haeundae_Beach_May_2024.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Haeundae_Beach_May_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Brit in Seoul"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      184,
+      2048,
+      697
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft",
+     "note": "Haeundae LCT towers and beach"
+    }
+   ]
+  },
+  {
+   "id": "kr_0018",
+   "file": "images/kr_0018.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.553403,
+   "lon": 126.918603,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Shui jiao 1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shui_jiao_1.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Shui_jiao_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0019",
+   "file": "images/kr_0019.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 35.099533,
+   "lon": 129.02722,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Busan (43931345180).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Busan_(43931345180).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Busan_%2843931345180%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "bryan..."
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0020",
+   "file": "images/kr_0020.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 35.098385,
+   "lon": 129.029102,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Busan 20241221 131804.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Busan_20241221_131804.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Busan_20241221_131804.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Ka23 13"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0022",
+   "file": "images/kr_0022.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 37.531697,
+   "lon": 127.001,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1492,
+     1095,
+     61,
+     38
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Itaewon summer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Itaewon_summer.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Itaewon_summer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Aatu Dorochenko"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      141,
+      242,
+      514,
+      229
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       265,
+       294,
+       330,
+       113
+      ],
+      [
+       269,
+       379,
+       224,
+       52
+      ],
+      [
+       384,
+       422,
+       110,
+       18
+      ],
+      [
+       497,
+       407,
+       86,
+       30
+      ]
+     ],
+     "text": "OTTO 가정식김밥(本店) 순살치킨 794.795-0110"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1694,
+      363,
+      96,
+      29
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1706,
+       372,
+       83,
+       18
+      ]
+     ],
+     "text": "CREATIVE STUDIO HONG_RANG"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      233,
+      599,
+      252,
+      49
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      621,
+      747,
+      69,
+      106
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       637,
+       782,
+       51,
+       24
+      ]
+     ],
+     "text": "OTTO"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      979,
+      632,
+      84,
+      82
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      760,
+      117,
+      215
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       0,
+       767,
+       113,
+       48
+      ],
+      [
+       0,
+       904,
+       65,
+       39
+      ],
+      [
+       0,
+       951,
+       65,
+       18
+      ]
+     ],
+     "text": "밀열쇠 정 { 고무인"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      614,
+      748,
+      76,
+      263
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       637,
+       782,
+       51,
+       24
+      ]
+     ],
+     "text": "OTTO"
+    },
+    {
+     "id": "c8",
+     "type": "address_plate",
+     "bbox": [
+      162,
+      722,
+      69,
+      46
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0023",
+   "file": "images/kr_0023.jpg",
+   "width": 2048,
+   "height": 922,
+   "lat": 37.526333,
+   "lon": 126.92681,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:IFC몰 로고.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:IFC%EB%AA%B0_%EB%A1%9C%EA%B3%A0.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/IFC%EB%AA%B0_%EB%A1%9C%EA%B3%A0.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "AndyKim-2008"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      397,
+      301,
+      1022,
+      243
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       397,
+       306,
+       1019,
+       238
+      ]
+     ],
+     "text": "IFC Mall"
+    }
+   ]
+  },
+  {
+   "id": "kr_0029",
+   "file": "images/kr_0029.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.55474,
+   "lon": 126.93185,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1278,
+     645,
+     33,
+     38
+    ],
+    [
+     814,
+     643,
+     207,
+     186
+    ],
+    [
+     1862,
+     625,
+     112,
+     245
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gyeonguiseon Forest Trail Park and Ttaeng-ttaeng Street in Seoul (near Hongdae, 2).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gyeonguiseon_Forest_Trail_Park_and_Ttaeng-ttaeng_Street_in_Seoul_(near_Hongdae,_2).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Gyeonguiseon_Forest_Trail_Park_and_Ttaeng-ttaeng_Street_in_Seoul_%28near_Hongdae%2C_2%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Christian Bolz (크리스티안 볼츠)"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      299,
+      403,
+      196,
+      123
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       308,
+       410,
+       187,
+       104
+      ]
+     ],
+     "text": "참새방앗간"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      23,
+      495,
+      98,
+      27
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       30,
+       503,
+       86,
+       18
+      ]
+     ],
+     "text": "홍대북부점"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      1161,
+      136,
+      297,
+      751
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "street_sign",
+     "bbox": [
+      745,
+      502,
+      43,
+      22
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      1485,
+      606,
+      76,
+      15
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      979,
+      464,
+      45,
+      87
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0031",
+   "file": "images/kr_0031.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.538315,
+   "lon": 127.123549,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20240810 8호선 천호역 역명판.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20240810_8%ED%98%B8%EC%84%A0_%EC%B2%9C%ED%98%B8%EC%97%AD_%EC%97%AD%EB%AA%85%ED%8C%90.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/20240810_8%ED%98%B8%EC%84%A0_%EC%B2%9C%ED%98%B8%EC%97%AD_%EC%97%AD%EB%AA%85%ED%8C%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Striker9498 This photo was taken with Samsung Galaxy A34 5G"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      112,
+      924,
+      87,
+      65
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       116,
+       950,
+       83,
+       39
+      ]
+     ],
+     "text": "810"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      217,
+      907,
+      121,
+      58
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       220,
+       908,
+       116,
+       57
+      ]
+     ],
+     "text": "암사"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      217,
+      958,
+      81,
+      36
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       217,
+       967,
+       80,
+       27
+      ]
+     ],
+     "text": "Amsa"
+    },
+    {
+     "id": "c4",
+     "type": "transit",
+     "bbox": [
+      217,
+      989,
+      122,
+      36
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       217,
+       999,
+       122,
+       26
+      ]
+     ],
+     "text": "岩寺 アムサ"
+    },
+    {
+     "id": "c5",
+     "type": "transit",
+     "bbox": [
+      437,
+      911,
+      609,
+      119
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       437,
+       911,
+       609,
+       119
+      ]
+     ],
+     "text": "천호"
+    },
+    {
+     "id": "c6",
+     "type": "transit",
+     "bbox": [
+      815,
+      952,
+      226,
+      61
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       815,
+       957,
+       226,
+       56
+      ]
+     ],
+     "text": "(풍납토성)"
+    },
+    {
+     "id": "c7",
+     "type": "transit",
+     "bbox": [
+      625,
+      1061,
+      393,
+      65
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       628,
+       1069,
+       390,
+       57
+      ]
+     ],
+     "text": "Cheonho(Pungnaptoseong)"
+    },
+    {
+     "id": "c8",
+     "type": "transit",
+     "bbox": [
+      790,
+      1128,
+      66,
+      36
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       792,
+       1134,
+       63,
+       30
+      ]
+     ],
+     "text": "千戶"
+    },
+    {
+     "id": "c9",
+     "type": "transit",
+     "bbox": [
+      1129,
+      924,
+      85,
+      65
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1134,
+       947,
+       80,
+       39
+      ]
+     ],
+     "text": "812"
+    },
+    {
+     "id": "c10",
+     "type": "transit",
+     "bbox": [
+      1229,
+      903,
+      186,
+      64
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1229,
+       905,
+       186,
+       62
+      ]
+     ],
+     "text": "강동구청"
+    },
+    {
+     "id": "c11",
+     "type": "transit",
+     "bbox": [
+      1229,
+      956,
+      241,
+      38
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1232,
+       961,
+       238,
+       33
+      ]
+     ],
+     "text": "Gangdong-gu Office"
+    },
+    {
+     "id": "c12",
+     "type": "transit",
+     "bbox": [
+      1229,
+      989,
+      229,
+      29
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1238,
+       994,
+       220,
+       24
+      ]
+     ],
+     "text": "江东区厅 カンドングチョン"
+    },
+    {
+     "id": "c13",
+     "type": "transit",
+     "bbox": [
+      737,
+      758,
+      108,
+      88
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       747,
+       789,
+       98,
+       54
+      ]
+     ],
+     "text": "811"
+    },
+    {
+     "id": "c14",
+     "type": "transit",
+     "bbox": [
+      766,
+      1157,
+      115,
+      46
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       774,
+       1167,
+       107,
+       36
+      ]
+     ],
+     "text": "Fa2*"
+    }
+   ]
+  },
+  {
+   "id": "kr_0033",
+   "file": "images/kr_0033.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.555882,
+   "lon": 126.972032,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Old Seoul Station clock (exterior).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Old_Seoul_Station_clock_(exterior).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Old_Seoul_Station_clock_%28exterior%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Gre regiment"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      129,
+      1665,
+      833,
+      300
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       149,
+       1667,
+       813,
+       298
+      ]
+     ],
+     "text": "문화역"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1197,
+      1690,
+      268,
+      270
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1197,
+       1700,
+       140,
+       205
+      ]
+     ],
+     "text": "28(4)"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      768,
+      1698,
+      112,
+      147
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      269,
+      645,
+      1014,
+      989
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0035",
+   "file": "images/kr_0035.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.559524,
+   "lon": 126.942707,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     440,
+     784,
+     46,
+     57
+    ],
+    [
+     80,
+     443,
+     21,
+     25
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:신촌(국철) 역 - panoramio.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%8B%A0%EC%B4%8C(%EA%B5%AD%EC%B2%A0)_%EC%97%AD_-_panoramio.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/42/%EC%8B%A0%EC%B4%8C%28%EA%B5%AD%EC%B2%A0%29_%EC%97%AD_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 3.0",
+    "author": "Seongrae Kim"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      315,
+      461,
+      490,
+      103
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       428,
+       483,
+       129,
+       55
+      ],
+      [
+       576,
+       501,
+       98,
+       27
+      ],
+      [
+       691,
+       521,
+       51,
+       18
+      ]
+     ],
+     "text": "신촌역 Sinchon Stn. 新村驛 1 출입구 Entrance/Exit 1"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      1207,
+      66,
+      281,
+      187
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1207,
+       66,
+       281,
+       187
+      ]
+     ],
+     "text": "신촌역"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      1378,
+      455,
+      103,
+      90
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1390,
+       470,
+       80,
+       54
+      ]
+     ],
+     "text": "KORAIL 신촌역 Sinchon Station 新村驛"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1438,
+      619,
+      149,
+      41
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1452,
+       651,
+       62,
+       9
+      ]
+     ],
+     "text": "신촌관광안내센터"
+    },
+    {
+     "id": "c5",
+     "type": "address_plate",
+     "bbox": [
+      1253,
+      751,
+      19,
+      29
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "30"
+    },
+    {
+     "id": "c6",
+     "type": "phone_number",
+     "bbox": [
+      0,
+      956,
+      158,
+      148
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       11,
+       975,
+       80,
+       27
+      ],
+      [
+       0,
+       999,
+       126,
+       31
+      ],
+      [
+       0,
+       1017,
+       118,
+       30
+      ],
+      [
+       0,
+       1028,
+       150,
+       37
+      ],
+      [
+       5,
+       1050,
+       113,
+       30
+      ]
+     ],
+     "text": "이용안내 ... 신촌민자역사 사무실 02-6577-1000"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      1438,
+      645,
+      149,
+      23
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1449,
+       645,
+       101,
+       23
+      ]
+     ],
+     "text": "Sinchon Tourist Information Center"
+    },
+    {
+     "id": "c8",
+     "type": "landmark",
+     "bbox": [
+      825,
+      295,
+      854,
+      640
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c9",
+     "type": "other",
+     "bbox": [
+      1628,
+      732,
+      90,
+      169
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c10",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0037",
+   "file": "images/kr_0037.jpg",
+   "width": 2048,
+   "height": 1215,
+   "lat": 35.102509,
+   "lon": 129.031631,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:편의점 sign.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%ED%8E%B8%EC%9D%98%EC%A0%90_sign.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/%ED%8E%B8%EC%9D%98%EC%A0%90_sign.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Hippietrail"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      211,
+      335,
+      1616,
+      522
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       224,
+       347,
+       1596,
+       505
+      ]
+     ],
+     "text": "원편의점"
+    }
+   ]
+  },
+  {
+   "id": "kr_0040",
+   "file": "images/kr_0040.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.578056,
+   "lon": 126.976667,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     962,
+     618,
+     629,
+     728
+    ],
+    [
+     758,
+     449,
+     1290,
+     1087
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Naskah M. Nabhan.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Naskah_M._Nabhan.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Naskah_M._Nabhan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Naskah M Nabhan"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      985,
+      412,
+      189,
+      60
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "勤政殿"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      194,
+      1980,
+      1337
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0041",
+   "file": "images/kr_0041.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.563422,
+   "lon": 126.983611,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1928,
+     1213,
+     31,
+     36
+    ],
+    [
+     1605,
+     1178,
+     28,
+     33
+    ],
+    [
+     1744,
+     665,
+     32,
+     38
+    ],
+    [
+     1913,
+     102,
+     33,
+     39
+    ],
+    [
+     1602,
+     314,
+     31,
+     37
+    ],
+    [
+     1614,
+     1352,
+     31,
+     36
+    ],
+    [
+     1837,
+     1380,
+     33,
+     38
+    ],
+    [
+     1601,
+     836,
+     29,
+     33
+    ],
+    [
+     1926,
+     287,
+     32,
+     37
+    ],
+    [
+     1601,
+     141,
+     36,
+     42
+    ],
+    [
+     1905,
+     665,
+     27,
+     32
+    ],
+    [
+     1912,
+     480,
+     32,
+     37
+    ],
+    [
+     1685,
+     131,
+     28,
+     32
+    ],
+    [
+     1829,
+     1202,
+     31,
+     36
+    ],
+    [
+     1760,
+     114,
+     26,
+     30
+    ],
+    [
+     1671,
+     667,
+     27,
+     32
+    ],
+    [
+     1835,
+     480,
+     28,
+     33
+    ],
+    [
+     1669,
+     844,
+     25,
+     31
+    ],
+    [
+     1751,
+     1022,
+     28,
+     32
+    ],
+    [
+     1763,
+     1375,
+     27,
+     31
+    ],
+    [
+     1685,
+     1186,
+     27,
+     31
+    ],
+    [
+     1762,
+     1198,
+     31,
+     36
+    ],
+    [
+     1842,
+     107,
+     28,
+     33
+    ],
+    [
+     1598,
+     662,
+     25,
+     31
+    ],
+    [
+     1688,
+     317,
+     25,
+     30
+    ],
+    [
+     1682,
+     491,
+     31,
+     36
+    ],
+    [
+     1931,
+     1406,
+     24,
+     27
+    ],
+    [
+     1676,
+     1017,
+     26,
+     30
+    ],
+    [
+     1841,
+     300,
+     28,
+     33
+    ],
+    [
+     1905,
+     847,
+     27,
+     31
+    ],
+    [
+     1608,
+     1013,
+     27,
+     31
+    ],
+    [
+     1760,
+     300,
+     28,
+     32
+    ],
+    [
+     1692,
+     1365,
+     27,
+     31
+    ],
+    [
+     1601,
+     491,
+     27,
+     32
+    ],
+    [
+     1747,
+     839,
+     27,
+     31
+    ],
+    [
+     1898,
+     1029,
+     27,
+     31
+    ],
+    [
+     1822,
+     845,
+     27,
+     30
+    ],
+    [
+     1829,
+     663,
+     26,
+     30
+    ],
+    [
+     1826,
+     1027,
+     28,
+     32
+    ],
+    [
+     1755,
+     481,
+     23,
+     27
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Nanta 2016 (30250424151).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nanta_2016_(30250424151).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Nanta_2016_%2830250424151%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "kimubert"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      74,
+      763,
+      202,
+      579
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       131,
+       803,
+       79,
+       13
+      ]
+     ],
+     "text": "SHILLA IPARK duty free"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      745,
+      633,
+      510,
+      83
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "facade",
+     "bbox": [
+      315,
+      0,
+      1700,
+      1531
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0045",
+   "file": "images/kr_0045.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.568511,
+   "lon": 126.996917,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20200805 143640 things places in south korea IMG 9265.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20200805_143640_things_places_in_south_korea_IMG_9265.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/20200805_143640_things_places_in_south_korea_IMG_9265.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Choi Kwang-mo"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "address_plate",
+     "bbox": [
+      284,
+      1237,
+      51,
+      33
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       286,
+       1243,
+       46,
+       25
+      ]
+     ],
+     "text": "174"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      328,
+      536,
+      659,
+      259
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       328,
+       536,
+       659,
+       259
+      ]
+     ],
+     "text": "범우종합상사"
+    },
+    {
+     "id": "c3",
+     "type": "phone_number",
+     "bbox": [
+      329,
+      826,
+      655,
+      78
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       329,
+       826,
+       655,
+       78
+      ]
+     ],
+     "text": "T.2268-3322(代)"
+    },
+    {
+     "id": "c4",
+     "type": "phone_number",
+     "bbox": [
+      644,
+      825,
+      347,
+      65
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       644,
+       834,
+       347,
+       56
+      ]
+     ],
+     "text": "F.2268-3367"
+    },
+    {
+     "id": "c5",
+     "type": "phone_number",
+     "bbox": [
+      369,
+      897,
+      226,
+      55
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       369,
+       902,
+       226,
+       48
+      ]
+     ],
+     "text": "2268-3326"
+    },
+    {
+     "id": "c6",
+     "type": "phone_number",
+     "bbox": [
+      1076,
+      807,
+      459,
+      75
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1076,
+       807,
+       459,
+       75
+      ]
+     ],
+     "text": "T.2268-6268"
+    },
+    {
+     "id": "c7",
+     "type": "phone_number",
+     "bbox": [
+      1402,
+      805,
+      132,
+      60
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1402,
+       811,
+       129,
+       54
+      ]
+     ],
+     "text": "F.227..."
+    },
+    {
+     "id": "c8",
+     "type": "shop_sign",
+     "bbox": [
+      1039,
+      542,
+      497,
+      158
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1039,
+       542,
+       494,
+       158
+      ]
+     ],
+     "text": "이화섬유..."
+    },
+    {
+     "id": "c9",
+     "type": "shop_sign",
+     "bbox": [
+      1148,
+      731,
+      387,
+      62
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1148,
+       731,
+       387,
+       62
+      ]
+     ],
+     "text": "IHWA FACO..."
+    },
+    {
+     "id": "c10",
+     "type": "shop_sign",
+     "bbox": [
+      1066,
+      461,
+      137,
+      57
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1066,
+       467,
+       137,
+       51
+      ]
+     ],
+     "text": "IHWA"
+    },
+    {
+     "id": "c11",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      272,
+      287,
+      264
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       89,
+       272,
+       198,
+       207
+      ],
+      [
+       0,
+       411,
+       226,
+       125
+      ]
+     ],
+     "text": "영동기술개발"
+    },
+    {
+     "id": "c12",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      547,
+      295,
+      190
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       126,
+       548,
+       154,
+       179
+      ]
+     ],
+     "text": "...산업"
+    }
+   ]
+  },
+  {
+   "id": "kr_0046",
+   "file": "images/kr_0046.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.49539925,
+   "lon": 127.02915313,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:新盆唐線 江南駅の4番出入り口.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%E6%96%B0%E7%9B%86%E5%94%90%E7%B7%9A_%E6%B1%9F%E5%8D%97%E9%A7%85%E3%81%AE4%E7%95%AA%E5%87%BA%E5%85%A5%E3%82%8A%E5%8F%A3.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/%E6%96%B0%E7%9B%86%E5%94%90%E7%B7%9A_%E6%B1%9F%E5%8D%97%E9%A7%85%E3%81%AE4%E7%95%AA%E5%87%BA%E5%85%A5%E3%82%8A%E5%8F%A3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Virtual trip"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      778,
+      344,
+      666,
+      103
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       833,
+       399,
+       68,
+       24
+      ],
+      [
+       899,
+       387,
+       65,
+       42
+      ],
+      [
+       970,
+       381,
+       60,
+       45
+      ],
+      [
+       1033,
+       384,
+       92,
+       18
+      ],
+      [
+       1307,
+       369,
+       80,
+       48
+      ]
+     ],
+     "text": "D07 강남 Gangnam 江南 신분당 2 출구 EXIT 4"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      449,
+      258,
+      60,
+      23
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       461,
+       265,
+       48,
+       15
+      ]
+     ],
+     "text": "DX LINE"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1444,
+      637,
+      57,
+      243
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1459,
+       685,
+       42,
+       191
+      ]
+     ],
+     "text": "신분당 DX 아르체쇼핑몰"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      39,
+      376,
+      131,
+      48
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       63,
+       382,
+       107,
+       42
+      ]
+     ],
+     "text": "MY WORKSPACE"
+    },
+    {
+     "id": "c5",
+     "type": "transit",
+     "bbox": [
+      201,
+      668,
+      40,
+      23
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       205,
+       673,
+       36,
+       18
+      ]
+     ],
+     "text": "700-1"
+    },
+    {
+     "id": "c6",
+     "type": "transit",
+     "bbox": [
+      446,
+      147,
+      117,
+      957
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       461,
+       265,
+       48,
+       15
+      ],
+      [
+       485,
+       298,
+       27,
+       15
+      ]
+     ],
+     "text": "DXINE DO7"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      66,
+      536,
+      129,
+      40
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c8",
+     "type": "shop_sign",
+     "bbox": [
+      1571,
+      576,
+      182,
+      80
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c9",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0049",
+   "file": "images/kr_0049.jpg",
+   "width": 1239,
+   "height": 2048,
+   "lat": 37.57729871,
+   "lon": 126.98463249,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     23,
+     1399,
+     53,
+     57
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Nightlife In Seoul Korea (148012137).jpeg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nightlife_In_Seoul_Korea_(148012137).jpeg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Nightlife_In_Seoul_Korea_%28148012137%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "William Anderson"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      937,
+      0,
+      117,
+      416
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       944,
+       52,
+       88,
+       354
+      ]
+     ],
+     "text": "LOUVRE"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      928,
+      544,
+      120,
+      511
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       928,
+       544,
+       120,
+       511
+      ]
+     ],
+     "text": "루브르 노래방"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      955,
+      975,
+      99,
+      29
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       960,
+       981,
+       94,
+       20
+      ]
+     ],
+     "text": "LOUVRE"
+    },
+    {
+     "id": "c4",
+     "type": "phone_number",
+     "bbox": [
+      957,
+      1006,
+      98,
+      48
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       957,
+       1030,
+       98,
+       24
+      ]
+     ],
+     "text": "Reservation 723-0252"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      374,
+      1006,
+      137,
+      233
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       437,
+       1212,
+       74,
+       27
+      ]
+     ],
+     "text": "(마사지"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      199,
+      1030,
+      116,
+      199
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c7",
+     "type": "phone_number",
+     "bbox": [
+      409,
+      1210,
+      111,
+      74
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       437,
+       1212,
+       74,
+       27
+      ]
+     ],
+     "text": "(마사지"
+    },
+    {
+     "id": "c8",
+     "type": "shop_sign",
+     "bbox": [
+      660,
+      870,
+      49,
+      476
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       669,
+       887,
+       27,
+       134
+      ],
+      [
+       667,
+       1038,
+       33,
+       69
+      ]
+     ],
+     "text": "테스트어이즈 프랑스어"
+    },
+    {
+     "id": "c9",
+     "type": "shop_sign",
+     "bbox": [
+      895,
+      1100,
+      158,
+      164
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c10",
+     "type": "shop_sign",
+     "bbox": [
+      1135,
+      1354,
+      100,
+      286
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1165,
+       1435,
+       42,
+       15
+      ],
+      [
+       1209,
+       1471,
+       15,
+       18
+      ],
+      [
+       1165,
+       1497,
+       59,
+       18
+      ]
+     ],
+     "text": "JAN TEA 티 3500W"
+    },
+    {
+     "id": "c11",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0056",
+   "file": "images/kr_0056.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.538315,
+   "lon": 127.123549,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul metro 811 Cheonho station sign 20240810 142803.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul_metro_811_Cheonho_station_sign_20240810_142803.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Seoul_metro_811_Cheonho_station_sign_20240810_142803.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Striker9498 This photo was taken with Samsung Galaxy A34 5G"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      139,
+      509,
+      127,
+      122
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       146,
+       548,
+       113,
+       51
+      ]
+     ],
+     "text": "810"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      285,
+      491,
+      162,
+      78
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       286,
+       491,
+       161,
+       78
+      ]
+     ],
+     "text": "암사"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      285,
+      564,
+      112,
+      41
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       286,
+       568,
+       111,
+       37
+      ]
+     ],
+     "text": "Amsa"
+    },
+    {
+     "id": "c4",
+     "type": "transit",
+     "bbox": [
+      285,
+      602,
+      162,
+      44
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       286,
+       615,
+       161,
+       31
+      ]
+     ],
+     "text": "岩寺 アムサ"
+    },
+    {
+     "id": "c5",
+     "type": "transit",
+     "bbox": [
+      645,
+      495,
+      755,
+      160
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       645,
+       495,
+       755,
+       160
+      ]
+     ],
+     "text": "천호"
+    },
+    {
+     "id": "c6",
+     "type": "transit",
+     "bbox": [
+      1094,
+      550,
+      289,
+      78
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1096,
+       558,
+       287,
+       70
+      ]
+     ],
+     "text": "(풍납토성)"
+    },
+    {
+     "id": "c7",
+     "type": "transit",
+     "bbox": [
+      829,
+      699,
+      526,
+      84
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       831,
+       708,
+       524,
+       75
+      ]
+     ],
+     "text": "Cheonho(Pungnaptoseong)"
+    },
+    {
+     "id": "c8",
+     "type": "transit",
+     "bbox": [
+      1034,
+      787,
+      103,
+      41
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1061,
+       798,
+       31,
+       30
+      ],
+      [
+       1100,
+       798,
+       30,
+       30
+      ]
+     ],
+     "text": "千戶"
+    },
+    {
+     "id": "c9",
+     "type": "transit",
+     "bbox": [
+      1499,
+      509,
+      117,
+      122
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1512,
+       545,
+       104,
+       51
+      ]
+     ],
+     "text": "812"
+    },
+    {
+     "id": "c10",
+     "type": "transit",
+     "bbox": [
+      1636,
+      491,
+      251,
+      73
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1643,
+       491,
+       244,
+       72
+      ]
+     ],
+     "text": "강동구청"
+    },
+    {
+     "id": "c11",
+     "type": "transit",
+     "bbox": [
+      1638,
+      560,
+      324,
+      48
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1646,
+       560,
+       316,
+       48
+      ]
+     ],
+     "text": "Gangdong-gu Office"
+    },
+    {
+     "id": "c12",
+     "type": "transit",
+     "bbox": [
+      1638,
+      602,
+      304,
+      40
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1646,
+       610,
+       205,
+       30
+      ]
+     ],
+     "text": "江东区厅 カンドングチョン"
+    },
+    {
+     "id": "c13",
+     "type": "transit",
+     "bbox": [
+      977,
+      282,
+      160,
+      165
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       988,
+       327,
+       134,
+       75
+      ]
+     ],
+     "text": "811"
+    },
+    {
+     "id": "c14",
+     "type": "transit",
+     "bbox": [
+      1018,
+      838,
+      149,
+      46
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1030,
+       845,
+       63,
+       39
+      ]
+     ],
+     "text": "Fa"
+    }
+   ]
+  },
+  {
+   "id": "kr_0057",
+   "file": "images/kr_0057.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 35.161114,
+   "lon": 129.163757,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1390,
+     1238,
+     18,
+     20
+    ],
+    [
+     193,
+     1432,
+     119,
+     59
+    ],
+    [
+     1282,
+     1665,
+     121,
+     102
+    ],
+    [
+     1329,
+     1238,
+     72,
+     76
+    ],
+    [
+     1375,
+     1238,
+     43,
+     76
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Lamborgini Huracan STO2 in Busan 2024.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lamborgini_Huracan_STO2_in_Busan_2024.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Lamborgini_Huracan_STO2_in_Busan_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Nord794ub"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      723,
+      831,
+      100,
+      39
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "MASERATI"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1230,
+      1174,
+      45,
+      16
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1232,
+       1178,
+       43,
+       11
+      ]
+     ],
+     "text": "FREESM"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      485,
+      0,
+      128,
+      102
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       518,
+       36,
+       16,
+       16
+      ]
+     ],
+     "text": "마리안느호텔"
+    },
+    {
+     "id": "c4",
+     "type": "skyline_view",
+     "bbox": [
+      713,
+      0,
+      708,
+      784
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      680,
+      834,
+      169,
+      237
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       703,
+       976,
+       15,
+       27
+      ]
+     ],
+     "text": "\"~"
+    },
+    {
+     "id": "c6",
+     "type": "facade",
+     "bbox": [
+      1138,
+      801,
+      352,
+      483
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      1137,
+      48,
+      32
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0062",
+   "file": "images/kr_0062.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.534175,
+   "lon": 126.961961,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20200718 033506unidentified places in south korea IMG 4387.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20200718_033506unidentified_places_in_south_korea_IMG_4387.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/20200718_033506unidentified_places_in_south_korea_IMG_4387.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Choi Kwang-mo"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "phone_number",
+     "bbox": [
+      267,
+      1522,
+      354,
+      96
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       275,
+       1522,
+       346,
+       96
+      ]
+     ],
+     "text": "HP:011.9781-9853"
+    },
+    {
+     "id": "c2",
+     "type": "phone_number",
+     "bbox": [
+      265,
+      1583,
+      350,
+      99
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       265,
+       1583,
+       350,
+       99
+      ]
+     ],
+     "text": "TEL:713-2857"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      669,
+      858,
+      238,
+      91
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       669,
+       858,
+       238,
+       91
+      ]
+     ],
+     "text": "대호문화사"
+    }
+   ]
+  },
+  {
+   "id": "kr_0065",
+   "file": "images/kr_0065.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 35.170698,
+   "lon": 129.135971,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Donghae Line BEXCO station platform.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Donghae_Line_BEXCO_station_platform.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Donghae_Line_BEXCO_station_platform.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Hajoon0102"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      532,
+      0,
+      580,
+      174
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       685,
+       0,
+       253,
+       86
+      ],
+      [
+       698,
+       76,
+       244,
+       50
+      ],
+      [
+       809,
+       114,
+       132,
+       29
+      ]
+     ],
+     "text": "부전 교대 Bujeon Busan Natl Univ.of Edu"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      1239,
+      458,
+      65,
+      46
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1256,
+       461,
+       48,
+       31
+      ]
+     ],
+     "text": "갈아타는 곳 (2호선) Transfer"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      1034,
+      419,
+      80,
+      63
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "transit",
+     "bbox": [
+      600,
+      485,
+      105,
+      36
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "transit",
+     "bbox": [
+      1436,
+      141,
+      213,
+      165
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0069",
+   "file": "images/kr_0069.jpg",
+   "width": 2048,
+   "height": 1072,
+   "lat": null,
+   "lon": null,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Miniature scale model of the Six Ministry Street.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Miniature_scale_model_of_the_Six_Ministry_Street.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Miniature_scale_model_of_the_Six_Ministry_Street.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Yanggyeong"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      545,
+      903,
+      1184,
+      151
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       607,
+       911,
+       202,
+       27
+      ],
+      [
+       598,
+       941,
+       381,
+       15
+      ],
+      [
+       583,
+       971,
+       464,
+       15
+      ],
+      [
+       1012,
+       911,
+       80,
+       21
+      ],
+      [
+       1140,
+       923,
+       146,
+       9
+      ],
+      [
+       1325,
+       923,
+       104,
+       15
+      ]
+     ],
+     "text": "육조거리 모형 六曹街模型 112 Six Ministry Street (Yukjogeori)"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      1,
+      2048,
+      861
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0081",
+   "file": "images/kr_0081.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.58219444,
+   "lon": 126.99666667,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul-tram-363-20191021-130310.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul-tram-363-20191021-130310.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Seoul-tram-363-20191021-130310.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "LERK"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      342,
+      667,
+      74,
+      51
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       342,
+       667,
+       74,
+       51
+      ]
+     ],
+     "text": "363"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      1042,
+      676,
+      91,
+      46
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1045,
+       684,
+       83,
+       37
+      ]
+     ],
+     "text": "363"
+    },
+    {
+     "id": "c3",
+     "type": "other",
+     "bbox": [
+      1532,
+      669,
+      45,
+      38
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "363"
+    },
+    {
+     "id": "c4",
+     "type": "other",
+     "bbox": [
+      1208,
+      574,
+      49,
+      19
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1212,
+       575,
+       42,
+       18
+      ]
+     ],
+     "text": "전차 363호"
+    },
+    {
+     "id": "c5",
+     "type": "other",
+     "bbox": [
+      137,
+      559,
+      129,
+      334
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "landmark",
+     "bbox": [
+      281,
+      223,
+      1456,
+      760
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0090",
+   "file": "images/kr_0090.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.534294,
+   "lon": 126.989075,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Road in Seoul, KOREA 5.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Road_in_Seoul,_KOREA_5.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Road_in_Seoul%2C_KOREA_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "AhmedAlElq"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      1694,
+      843,
+      135,
+      42
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "Timberland"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1507,
+      691,
+      66,
+      55
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "asics (logo)"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1145,
+      585,
+      86,
+      29
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1227,
+      582,
+      65,
+      28
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "landmark",
+     "bbox": [
+      264,
+      518,
+      74,
+      53
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "street_sign",
+     "bbox": [
+      297,
+      680,
+      41,
+      20
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0091",
+   "file": "images/kr_0091.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.580674,
+   "lon": 127.008856,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20240601 144028 Naksan Park sign - Seoul 03.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20240601_144028_Naksan_Park_sign_-_Seoul_03.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/20240601_144028_Naksan_Park_sign_-_Seoul_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Dwxn"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      381,
+      482,
+      268,
+      202
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "산 (ㅅ part)"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      381,
+      653,
+      377,
+      203
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "산 (ㄴ part)"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      887,
+      594,
+      274,
+      188
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "공 (top part)"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      961,
+      783,
+      149,
+      148
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "공 (ㅇ part)"
+    },
+    {
+     "id": "c5",
+     "type": "landmark",
+     "bbox": [
+      1229,
+      722,
+      211,
+      232
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "원"
+    },
+    {
+     "id": "c6",
+     "type": "landmark",
+     "bbox": [
+      1436,
+      723,
+      116,
+      246
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "Naksan Park"
+    },
+    {
+     "id": "c7",
+     "type": "landmark",
+     "bbox": [
+      0,
+      370,
+      223,
+      433
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c8",
+     "type": "landmark",
+     "bbox": [
+      0,
+      97,
+      2048,
+      1107
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c9",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0099",
+   "file": "images/kr_0099.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.55908,
+   "lon": 126.979249,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1940,
+     139,
+     33,
+     42
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:425 Hoehyeon station 20240702 110847.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:425_Hoehyeon_station_20240702_110847.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/425_Hoehyeon_station_20240702_110847.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "ZKang123"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "transit",
+     "bbox": [
+      178,
+      80,
+      144,
+      66
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       191,
+       86,
+       86,
+       18
+      ],
+      [
+       205,
+       107,
+       65,
+       18
+      ]
+     ],
+     "text": "안전하고 편리한 교통 서비스"
+    },
+    {
+     "id": "c2",
+     "type": "transit",
+     "bbox": [
+      1755,
+      0,
+      133,
+      18
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "transit",
+     "bbox": [
+      1573,
+      0,
+      69,
+      186
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0100",
+   "file": "images/kr_0100.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.570847,
+   "lon": 127.009146,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     0,
+     1093,
+     347,
+     414
+    ],
+    [
+     216,
+     1312,
+     78,
+     47
+    ],
+    [
+     293,
+     1204,
+     173,
+     76
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:20240601 144028 Heunginjimun, Seoul 07.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:20240601_144028_Heunginjimun,_Seoul_07.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/20240601_144028_Heunginjimun%2C_Seoul_07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Dwxn"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      168,
+      1008,
+      51,
+      20
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       172,
+       1012,
+       36,
+       14
+      ]
+     ],
+     "text": "Bike city"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1690,
+      807,
+      73,
+      30
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1690,
+       807,
+       73,
+       30
+      ]
+     ],
+     "text": "바른원한의원"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      440,
+      349,
+      1196,
+      788
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1694,
+      806,
+      98,
+      31
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0101",
+   "file": "images/kr_0101.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.519988,
+   "lon": 127.093412,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Jamsil Bridge4.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jamsil_Bridge4.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Jamsil_Bridge4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "author": "Glabb This photo was taken with Xiaomi Redmi Note 10 Pro"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      406,
+      607,
+      1642,
+      287
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "skyline_view",
+     "bbox": [
+      35,
+      687,
+      579,
+      112
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0104",
+   "file": "images/kr_0104.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 37.578611,
+   "lon": 126.977222,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:경복궁 근정문의 야경.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EA%B2%BD%EB%B3%B5%EA%B6%81_%EA%B7%BC%EC%A0%95%EB%AC%B8%EC%9D%98_%EC%95%BC%EA%B2%BD.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/%EA%B2%BD%EB%B3%B5%EA%B6%81_%EA%B7%BC%EC%A0%95%EB%AC%B8%EC%9D%98_%EC%95%BC%EA%B2%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Story-grapher(sang hun kim)"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      985,
+      490,
+      84,
+      33
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "勤政門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      586,
+      389,
+      895,
+      512
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      1378,
+      747,
+      56,
+      27
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0108",
+   "file": "images/kr_0108.jpg",
+   "width": 1152,
+   "height": 2048,
+   "lat": 37.554967,
+   "lon": 126.931583,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     455,
+     450,
+     96,
+     115
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gyeonguiseon Forest Trail Park and Ttaeng-ttaeng Street in Seoul (near Hongdae, 5).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gyeonguiseon_Forest_Trail_Park_and_Ttaeng-ttaeng_Street_in_Seoul_(near_Hongdae,_5).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Gyeonguiseon_Forest_Trail_Park_and_Ttaeng-ttaeng_Street_in_Seoul_%28near_Hongdae%2C_5%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Christian Bolz (크리스티안 볼츠)"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      630,
+      1075,
+      161,
+      39
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       631,
+       1078,
+       89,
+       36
+      ]
+     ],
+     "text": "경의선 京義線"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      634,
+      1112,
+      161,
+      19
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       634,
+       1113,
+       161,
+       18
+      ]
+     ],
+     "text": "용산 ↔ 신의주 Since 1906. 4. 3."
+    },
+    {
+     "id": "c3",
+     "type": "other",
+     "bbox": [
+      634,
+      1130,
+      187,
+      28
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       634,
+       1140,
+       112,
+       18
+      ]
+     ],
+     "text": "Gyeongui Line (京義線)"
+    },
+    {
+     "id": "c4",
+     "type": "other",
+     "bbox": [
+      634,
+      1140,
+      191,
+      34
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       634,
+       1140,
+       112,
+       18
+      ],
+      [
+       636,
+       1148,
+       189,
+       26
+      ]
+     ],
+     "text": "Yongsan ↔ Sinuiju, Since April 3, 1906"
+    },
+    {
+     "id": "c5",
+     "type": "other",
+     "bbox": [
+      634,
+      1185,
+      167,
+      32
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       634,
+       1185,
+       36,
+       15
+      ],
+      [
+       636,
+       1191,
+       165,
+       26
+      ]
+     ],
+     "text": "京义线 龙山 ↔ 新义州于1906年4月3日开通"
+    },
+    {
+     "id": "c6",
+     "type": "other",
+     "bbox": [
+      634,
+      1225,
+      249,
+      36
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       637,
+       1226,
+       90,
+       18
+      ],
+      [
+       636,
+       1228,
+       247,
+       33
+      ]
+     ],
+     "text": "キョンイ線 (京義線) ヨンサン (龍山) ↔ シニジュ (新義州) Since 1906. 4. 3."
+    },
+    {
+     "id": "c7",
+     "type": "other",
+     "bbox": [
+      634,
+      1286,
+      259,
+      172
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       667,
+       1295,
+       42,
+       18
+      ],
+      [
+       697,
+       1325,
+       39,
+       18
+      ],
+      [
+       640,
+       1441,
+       30,
+       15
+      ],
+      [
+       819,
+       1308,
+       43,
+       24
+      ],
+      [
+       723,
+       1360,
+       33,
+       15
+      ],
+      [
+       747,
+       1375,
+       33,
+       15
+      ],
+      [
+       780,
+       1342,
+       98,
+       39
+      ],
+      [
+       771,
+       1414,
+       30,
+       18
+      ]
+     ],
+     "text": "용산역 효창역 서울역 당인리 방송소앞역 세교리역 동막역 서강역 신촌역 가좌역"
+    },
+    {
+     "id": "c8",
+     "type": "other",
+     "bbox": [
+      986,
+      1069,
+      165,
+      201
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       991,
+       1072,
+       158,
+       15
+      ],
+      [
+       988,
+       1089,
+       161,
+       18
+      ],
+      [
+       991,
+       1107,
+       159,
+       22
+      ],
+      [
+       991,
+       1128,
+       158,
+       18
+      ],
+      [
+       991,
+       1145,
+       159,
+       23
+      ],
+      [
+       993,
+       1165,
+       156,
+       24
+      ],
+      [
+       993,
+       1183,
+       156,
+       25
+      ],
+      [
+       993,
+       1203,
+       157,
+       26
+      ],
+      [
+       996,
+       1222,
+       154,
+       27
+      ],
+      [
+       996,
+       1241,
+       154,
+       29
+      ]
+     ],
+     "text": "서울과 신의주를 잇는 복선철도로 일제가 한번도 1904~1906년 건설했다. 용산~신의주 간 51E 완전 기통됐다. 경부선과 함께 한반도 남복을 관 지선이 연결되 윤수교통량이 전국 철도 중 가장 8 중단됐으나 2000년 6월 남북 정상화담 후 경: 논의덮고, 연결식이 2003년 6월 14월 2 2009년 서울역에서 문산역까지 광역전법이 경외선 첨길 중 용산에서 가봉까지 연결되는 용산 따라 지상에 만든 공원이다. 옛 경의선 철김에 (영업, 침육, 최석, 몬크리트 등) 디자인 모"
+    },
+    {
+     "id": "c9",
+     "type": "other",
+     "bbox": [
+      641,
+      1452,
+      268,
+      76
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       664,
+       1479,
+       74,
+       21
+      ],
+      [
+       647,
+       1492,
+       94,
+       36
+      ],
+      [
+       763,
+       1452,
+       146,
+       38
+      ],
+      [
+       763,
+       1470,
+       144,
+       37
+      ]
+     ],
+     "text": "_ 경의선 용산선 - 경의선 신촌선 •-당인리션 (1982년 패션) •••. 신촌직결선 (1975년 페선)"
+    },
+    {
+     "id": "c10",
+     "type": "landmark",
+     "bbox": [
+      290,
+      426,
+      461,
+      629
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0110",
+   "file": "images/kr_0110.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.583675,
+   "lon": 126.981819,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     611,
+     1289,
+     85,
+     47
+    ],
+    [
+     1616,
+     1385,
+     84,
+     40
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:삼청동 IMG 8822.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%82%BC%EC%B2%AD%EB%8F%99_IMG_8822.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/%EC%82%BC%EC%B2%AD%EB%8F%99_IMG_8822.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "*Youngjin"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "street_sign",
+     "bbox": [
+      307,
+      751,
+      187,
+      58
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       324,
+       765,
+       33,
+       15
+      ],
+      [
+       387,
+       762,
+       98,
+       27
+      ],
+      [
+       342,
+       782,
+       144,
+       24
+      ]
+     ],
+     "text": "50← 삼청로7길 Samcheong-ro 7-gil"
+    },
+    {
+     "id": "c2",
+     "type": "street_sign",
+     "bbox": [
+      1466,
+      872,
+      68,
+      50
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1481,
+       878,
+       35,
+       28
+      ],
+      [
+       1490,
+       894,
+       33,
+       20
+      ],
+      [
+       1518,
+       880,
+       11,
+       13
+      ]
+     ],
+     "text": "96 삼청로 92 Samcheong-ro"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1489,
+      1101,
+      297,
+      96
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1298,
+      1094,
+      66,
+      27
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0115",
+   "file": "images/kr_0115.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.534962,
+   "lon": 126.987061,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Road in Seoul, KOREA 3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Road_in_Seoul,_KOREA_3.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Road_in_Seoul%2C_KOREA_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "AhmedAlElq"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "street_sign",
+     "bbox": [
+      1456,
+      1203,
+      117,
+      33
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "이태원(로?) - painted lane marking, seen upside down"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      1606,
+      530,
+      98,
+      212
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "street_sign",
+     "bbox": [
+      410,
+      1243,
+      172,
+      55
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0118",
+   "file": "images/kr_0118.jpg",
+   "width": 2048,
+   "height": 1363,
+   "lat": 37.578611,
+   "lon": 126.977222,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:A 8538.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:A_8538.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/A_8538.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Sungslim"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      946,
+      726,
+      74,
+      28
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "建春門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      23,
+      623,
+      2013,
+      439
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0119",
+   "file": "images/kr_0119.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.583969,
+   "lon": 126.973764,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:청와대 영빈관 정면의 모습.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%B2%AD%EC%99%80%EB%8C%80_%EC%98%81%EB%B9%88%EA%B4%80_%EC%A0%95%EB%A9%B4%EC%9D%98_%EB%AA%A8%EC%8A%B5.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/%EC%B2%AD%EC%99%80%EB%8C%80_%EC%98%81%EB%B9%88%EA%B4%80_%EC%A0%95%EB%A9%B4%EC%9D%98_%EB%AA%A8%EC%8A%B5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Nesalang1128"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      1450,
+      854,
+      201,
+      210
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1472,
+       898,
+       124,
+       10
+      ],
+      [
+       1473,
+       907,
+       125,
+       10
+      ],
+      [
+       1482,
+       935,
+       121,
+       9
+      ],
+      [
+       1481,
+       952,
+       127,
+       10
+      ],
+      [
+       1483,
+       962,
+       79,
+       8
+      ],
+      [
+       1490,
+       970,
+       125,
+       8
+      ]
+     ],
+     "text": "0소, 표건 반품 장동을 상생하는 데어로 8경위서 장비에서 자리 감사를 지르면서 이 시기에 전하미 양생산 4표 지 20% 가주도 전이라기 사용하지 3000년 53스 이곳을 새롭게 살맛하였다! 여기에 대하진 뒷날어서 대한 맛는 건격감상"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      1784,
+      943,
+      170,
+      129
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      358,
+      404,
+      1018,
+      455
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "skyline_view",
+     "bbox": [
+      455,
+      401,
+      327,
+      97
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0120",
+   "file": "images/kr_0120.jpg",
+   "width": 2048,
+   "height": 996,
+   "lat": 37.580278,
+   "lon": 126.980278,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1828,
+     660,
+     15,
+     18
+    ],
+    [
+     193,
+     806,
+     67,
+     39
+    ],
+    [
+     1341,
+     728,
+     81,
+     37
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Hwa-dong, Seoul, Korea.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hwa-dong,_Seoul,_Korea.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Hwa-dong%2C_Seoul%2C_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "Mark D"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      1505,
+      413,
+      31,
+      88
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "최욱환치과의원"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1681,
+      541,
+      58,
+      17
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1685,
+       542,
+       52,
+       13
+      ]
+     ],
+     "text": "RADIO M"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      858,
+      674,
+      260,
+      61
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       961,
+       674,
+       52,
+       15
+      ]
+     ],
+     "text": "세움 SEUM …"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1364,
+      575,
+      37,
+      33
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "street_sign",
+     "bbox": [
+      559,
+      553,
+      41,
+      62
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "facade",
+     "bbox": [
+      629,
+      332,
+      725,
+      386
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0121",
+   "file": "images/kr_0121.jpg",
+   "width": 2048,
+   "height": 935,
+   "lat": 37.649167,
+   "lon": 127.063611,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     1097,
+     540,
+     81,
+     96
+    ],
+    [
+     1435,
+     421,
+     78,
+     92
+    ],
+    [
+     1737,
+     389,
+     82,
+     93
+    ],
+    [
+     1630,
+     330,
+     75,
+     85
+    ],
+    [
+     402,
+     327,
+     74,
+     84
+    ],
+    [
+     698,
+     415,
+     83,
+     96
+    ],
+    [
+     264,
+     421,
+     72,
+     81
+    ],
+    [
+     1663,
+     396,
+     88,
+     99
+    ],
+    [
+     623,
+     346,
+     65,
+     73
+    ],
+    [
+     140,
+     405,
+     78,
+     90
+    ],
+    [
+     987,
+     360,
+     70,
+     80
+    ],
+    [
+     1824,
+     360,
+     95,
+     111
+    ],
+    [
+     925,
+     406,
+     83,
+     96
+    ],
+    [
+     1241,
+     361,
+     69,
+     81
+    ],
+    [
+     523,
+     567,
+     86,
+     98
+    ],
+    [
+     544,
+     418,
+     82,
+     93
+    ],
+    [
+     1282,
+     392,
+     83,
+     92
+    ],
+    [
+     924,
+     543,
+     80,
+     92
+    ],
+    [
+     1498,
+     380,
+     72,
+     84
+    ],
+    [
+     804,
+     430,
+     79,
+     91
+    ],
+    [
+     722,
+     558,
+     84,
+     97
+    ],
+    [
+     400,
+     422,
+     74,
+     81
+    ],
+    [
+     1449,
+     526,
+     84,
+     99
+    ],
+    [
+     1116,
+     360,
+     70,
+     80
+    ],
+    [
+     760,
+     336,
+     73,
+     84
+    ],
+    [
+     831,
+     358,
+     74,
+     86
+    ],
+    [
+     74,
+     531,
+     91,
+     102
+    ],
+    [
+     1551,
+     383,
+     79,
+     90
+    ],
+    [
+     272,
+     558,
+     85,
+     98
+    ],
+    [
+     1280,
+     538,
+     89,
+     102
+    ],
+    [
+     97,
+     417,
+     70,
+     80
+    ],
+    [
+     1175,
+     407,
+     81,
+     96
+    ],
+    [
+     1541,
+     322,
+     71,
+     80
+    ],
+    [
+     579,
+     362,
+     70,
+     81
+    ],
+    [
+     1049,
+     405,
+     83,
+     99
+    ],
+    [
+     1179,
+     349,
+     70,
+     79
+    ],
+    [
+     477,
+     353,
+     67,
+     73
+    ],
+    [
+     1414,
+     337,
+     59,
+     66
+    ],
+    [
+     1364,
+     332,
+     72,
+     87
+    ],
+    [
+     722,
+     340,
+     63,
+     75
+    ],
+    [
+     1889,
+     360,
+     81,
+     93
+    ],
+    [
+     910,
+     344,
+     75,
+     86
+    ],
+    [
+     693,
+     825,
+     22,
+     25
+    ],
+    [
+     672,
+     354,
+     76,
+     86
+    ],
+    [
+     1048,
+     358,
+     72,
+     79
+    ],
+    [
+     1441,
+     369,
+     60,
+     69
+    ],
+    [
+     870,
+     360,
+     62,
+     74
+    ],
+    [
+     718,
+     823,
+     21,
+     24
+    ],
+    [
+     983,
+     823,
+     18,
+     20
+    ],
+    [
+     959,
+     822,
+     21,
+     25
+    ],
+    [
+     463,
+     828,
+     21,
+     24
+    ],
+    [
+     740,
+     825,
+     22,
+     25
+    ],
+    [
+     487,
+     829,
+     19,
+     21
+    ],
+    [
+     233,
+     827,
+     19,
+     21
+    ],
+    [
+     669,
+     824,
+     23,
+     27
+    ],
+    [
+     1705,
+     821,
+     21,
+     24
+    ],
+    [
+     934,
+     821,
+     23,
+     26
+    ],
+    [
+     1730,
+     822,
+     18,
+     21
+    ],
+    [
+     210,
+     830,
+     18,
+     21
+    ],
+    [
+     253,
+     826,
+     22,
+     26
+    ],
+    [
+     810,
+     330,
+     58,
+     74
+    ],
+    [
+     186,
+     827,
+     22,
+     25
+    ],
+    [
+     1678,
+     819,
+     23,
+     27
+    ],
+    [
+     1752,
+     820,
+     22,
+     26
+    ],
+    [
+     959,
+     360,
+     55,
+     75
+    ],
+    [
+     535,
+     829,
+     22,
+     25
+    ],
+    [
+     765,
+     824,
+     22,
+     26
+    ],
+    [
+     1005,
+     822,
+     21,
+     24
+    ],
+    [
+     1318,
+     379,
+     58,
+     66
+    ],
+    [
+     1775,
+     818,
+     26,
+     30
+    ],
+    [
+     511,
+     831,
+     19,
+     21
+    ],
+    [
+     437,
+     826,
+     23,
+     27
+    ],
+    [
+     1287,
+     359,
+     53,
+     62
+    ],
+    [
+     1494,
+     824,
+     19,
+     21
+    ],
+    [
+     276,
+     826,
+     23,
+     27
+    ],
+    [
+     1442,
+     822,
+     23,
+     27
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:한국개혁신학회20181022(AMJ).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EA%B5%AD%EA%B0%9C%ED%98%81%EC%8B%A0%ED%95%99%ED%9A%8C20181022(AMJ).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/%ED%95%9C%EA%B5%AD%EA%B0%9C%ED%98%81%EC%8B%A0%ED%95%99%ED%9A%8C20181022%28AMJ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "칼빈500"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "other",
+     "bbox": [
+      434,
+      64,
+      1239,
+      251
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       786,
+       92,
+       545,
+       54
+      ],
+      [
+       521,
+       125,
+       1075,
+       113
+      ],
+      [
+       595,
+       249,
+       503,
+       30
+      ],
+      [
+       1157,
+       240,
+       362,
+       39
+      ],
+      [
+       878,
+       276,
+       387,
+       39
+      ]
+     ],
+     "text": "장소 : 한국성서대학교 갈멜관 305호"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      334,
+      780,
+      1483,
+      152
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1137,
+       780,
+       104,
+       15
+      ],
+      [
+       1396,
+       786,
+       125,
+       9
+      ],
+      [
+       1628,
+       780,
+       134,
+       15
+      ]
+     ],
+     "text": "성 에에 대한 전화의 경 공성에서대야 선택의 정원 능성에야대한 전독학 생말"
+    },
+    {
+     "id": "c3",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0122",
+   "file": "images/kr_0122.jpg",
+   "width": 2048,
+   "height": 922,
+   "lat": 37.525869,
+   "lon": 126.923917,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:여의도환승센터.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%97%AC%EC%9D%98%EB%8F%84%ED%99%98%EC%8A%B9%EC%84%BC%ED%84%B0.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/%EC%97%AC%EC%9D%98%EB%8F%84%ED%99%98%EC%8A%B9%EC%84%BC%ED%84%B0.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "AndyKim-2008"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      788,
+      34,
+      74,
+      34
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       801,
+       37,
+       61,
+       31
+      ]
+     ],
+     "text": "BNK"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1118,
+      347,
+      75,
+      20
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1136,
+       352,
+       57,
+       15
+      ]
+     ],
+     "text": "신한투자증권"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1393,
+      386,
+      59,
+      15
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1408,
+       393,
+       27,
+       8
+      ]
+     ],
+     "text": "하이투자증권"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      211,
+      346,
+      1442,
+      150
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      934,
+      251,
+      49,
+      56
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0123",
+   "file": "images/kr_0123.jpg",
+   "width": 2048,
+   "height": 1367,
+   "lat": 37.562986,
+   "lon": 126.9824,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     438,
+     1217,
+     62,
+     73
+    ],
+    [
+     318,
+     1216,
+     65,
+     75
+    ],
+    [
+     1337,
+     426,
+     68,
+     81
+    ],
+    [
+     1413,
+     421,
+     70,
+     85
+    ],
+    [
+     1169,
+     406,
+     69,
+     80
+    ],
+    [
+     1256,
+     421,
+     72,
+     86
+    ],
+    [
+     1061,
+     351,
+     88,
+     103
+    ],
+    [
+     1634,
+     1106,
+     26,
+     31
+    ],
+    [
+     1687,
+     1106,
+     26,
+     32
+    ],
+    [
+     1574,
+     1109,
+     25,
+     30
+    ],
+    [
+     907,
+     1086,
+     15,
+     18
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul. Can't wait to see (G)I-DLE (53854750580).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul._Can%27t_wait_to_see_(G)I-DLE_(53854750580).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Seoul._Can%27t_wait_to_see_%28G%29I-DLE_%2853854750580%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "David Lee from Redmond, WA, USA"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "phone_number",
+     "bbox": [
+      1651,
+      720,
+      99,
+      72
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1671,
+       720,
+       66,
+       48
+      ],
+      [
+       1670,
+       743,
+       80,
+       49
+      ]
+     ],
+     "text": "명동역점 775-3392"
+    },
+    {
+     "id": "c2",
+     "type": "address_plate",
+     "bbox": [
+      1659,
+      945,
+      47,
+      17
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1691,
+       950,
+       15,
+       12
+      ]
+     ],
+     "text": "19"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1585,
+      265,
+      463,
+      617
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1608,
+       281,
+       98,
+       40
+      ],
+      [
+       1633,
+       309,
+       65,
+       23
+      ],
+      [
+       1616,
+       341,
+       135,
+       50
+      ],
+      [
+       1640,
+       371,
+       27,
+       24
+      ],
+      [
+       1856,
+       330,
+       192,
+       105
+      ],
+      [
+       1671,
+       720,
+       66,
+       48
+      ],
+      [
+       1670,
+       743,
+       80,
+       49
+      ],
+      [
+       1765,
+       811,
+       18,
+       15
+      ],
+      [
+       1822,
+       745,
+       71,
+       18
+      ],
+      [
+       1813,
+       769,
+       80,
+       36
+      ],
+      [
+       1831,
+       808,
+       80,
+       39
+      ]
+     ],
+     "text": "• 닭갈비 Chicken Gabil • 철판보음밥 Teopr 우카에 명동역점 775-3392 도 SINCE 1981 유가네 닭갈비"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1583,
+      0,
+      465,
+      197
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1593,
+       18,
+       18,
+       21
+      ],
+      [
+       1753,
+       0,
+       240,
+       72
+      ]
+     ],
+     "text": "\" SELF PHOTO STUDIO"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      1743,
+      893,
+      303,
+      365
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      1364,
+      789,
+      117,
+      90
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0125",
+   "file": "images/kr_0125.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.520292,
+   "lon": 127.034149,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Cadillac Escalade Sport Platinum GMTT1UL Black Raven (1).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cadillac_Escalade_Sport_Platinum_GMTT1UL_Black_Raven_(1).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Cadillac_Escalade_Sport_Platinum_GMTT1UL_Black_Raven_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Damian B Oh"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "reflection",
+     "bbox": [
+      567,
+      35,
+      132,
+      49
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       568,
+       35,
+       131,
+       41
+      ],
+      [
+       597,
+       59,
+       74,
+       25
+      ]
+     ],
+     "text": "A TWOSOME PLACE COFFEE & DESSERT"
+    },
+    {
+     "id": "c2",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0126",
+   "file": "images/kr_0126.jpg",
+   "width": 2048,
+   "height": 1368,
+   "lat": 37.506605,
+   "lon": 127.100163,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Lotte World day view 8.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lotte_World_day_view_8.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lotte_World_day_view_8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "apt_name",
+     "bbox": [
+      96,
+      707,
+      83,
+      22
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       100,
+       711,
+       79,
+       18
+      ]
+     ],
+     "text": "Lausan View 신동아 로잔뷰"
+    },
+    {
+     "id": "c2",
+     "type": "apt_name",
+     "bbox": [
+      1212,
+      300,
+      46,
+      20
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1217,
+       304,
+       41,
+       12
+      ]
+     ],
+     "text": "LAKE PALACE"
+    },
+    {
+     "id": "c3",
+     "type": "apt_block",
+     "bbox": [
+      1556,
+      438,
+      35,
+      24
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1567,
+       447,
+       24,
+       12
+      ]
+     ],
+     "text": "126"
+    },
+    {
+     "id": "c4",
+     "type": "apt_block",
+     "bbox": [
+      1217,
+      339,
+      26,
+      18
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1231,
+       345,
+       12,
+       12
+      ]
+     ],
+     "text": "131"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      367,
+      55,
+      28
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       0,
+       367,
+       52,
+       23
+      ]
+     ],
+     "text": "…로사나"
+    },
+    {
+     "id": "c6",
+     "type": "other",
+     "bbox": [
+      1217,
+      259,
+      30,
+      24
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "text": "XO"
+    },
+    {
+     "id": "c7",
+     "type": "landmark",
+     "bbox": [
+      1192,
+      1037,
+      522,
+      272
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c8",
+     "type": "apt_block",
+     "bbox": [
+      1606,
+      141,
+      311,
+      696
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c9",
+     "type": "shop_sign",
+     "bbox": [
+      711,
+      436,
+      90,
+      25
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c10",
+     "type": "shop_sign",
+     "bbox": [
+      0,
+      352,
+      68,
+      47
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0131",
+   "file": "images/kr_0131.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.573889,
+   "lon": 126.982222,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     927,
+     655,
+     152,
+     164
+    ],
+    [
+     313,
+     646,
+     17,
+     20
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Buddha's statut in Jogyesa temple.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Buddha%27s_statut_in_Jogyesa_temple.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Buddha%27s_statut_in_Jogyesa_temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Irma2403"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      989,
+      482,
+      129,
+      31
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      203,
+      383,
+      537
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      864,
+      456,
+      166,
+      198
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "other",
+     "bbox": [
+      344,
+      296,
+      1417,
+      716
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       917,
+       991,
+       57,
+       21
+      ]
+     ],
+     "text": "복전함"
+    }
+   ]
+  },
+  {
+   "id": "kr_0133",
+   "file": "images/kr_0133.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.543889,
+   "lon": 127.061389,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul app business center lobby.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul_app_business_center_lobby.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Seoul_app_business_center_lobby.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "self"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      793,
+      604,
+      79,
+      33
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       798,
+       604,
+       65,
+       12
+      ],
+      [
+       804,
+       616,
+       68,
+       18
+      ]
+     ],
+     "text": "SEOUL 앱비즈니스센터"
+    }
+   ]
+  },
+  {
+   "id": "kr_0134",
+   "file": "images/kr_0134.jpg",
+   "width": 2048,
+   "height": 1195,
+   "lat": 37.566681,
+   "lon": 126.993622,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:게스트하우스.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EA%B2%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EC%9A%B0%EC%8A%A4.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/%EA%B2%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EC%9A%B0%EC%8A%A4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Hippietrail"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0142",
+   "file": "images/kr_0142.jpg",
+   "width": 2048,
+   "height": 996,
+   "lat": 37.566389,
+   "lon": 126.9925,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Euljiro-dong.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Euljiro-dong.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Euljiro-dong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "Mark D"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "street_sign",
+     "bbox": [
+      1567,
+      481,
+      176,
+      51
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1688,
+       485,
+       48,
+       18
+      ]
+     ],
+     "text": "충무로역 / 시청 / 을지로2가 / 청계3가"
+    },
+    {
+     "id": "c2",
+     "type": "phone_number",
+     "bbox": [
+      1373,
+      32,
+      90,
+      47
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1373,
+       32,
+       90,
+       47
+      ]
+     ],
+     "text": "EfiC 1899-0001"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1501,
+      103,
+      47,
+      188
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1346,
+      0,
+      167,
+      95
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1373,
+       32,
+       90,
+       47
+      ]
+     ],
+     "text": "EfiC 1899-0001"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      807,
+      405,
+      162,
+      104
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       818,
+       407,
+       146,
+       31
+      ],
+      [
+       818,
+       448,
+       143,
+       37
+      ]
+     ],
+     "text": "대성부동산 한진카렌다사"
+    },
+    {
+     "id": "c6",
+     "type": "shop_sign",
+     "bbox": [
+      631,
+      285,
+      366,
+      313
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       676,
+       294,
+       71,
+       21
+      ],
+      [
+       631,
+       431,
+       86,
+       27
+      ],
+      [
+       753,
+       428,
+       36,
+       24
+      ],
+      [
+       750,
+       449,
+       48,
+       24
+      ],
+      [
+       818,
+       407,
+       146,
+       31
+      ],
+      [
+       818,
+       448,
+       143,
+       37
+      ],
+      [
+       863,
+       556,
+       101,
+       30
+      ],
+      [
+       979,
+       425,
+       15,
+       27
+      ],
+      [
+       979,
+       452,
+       18,
+       21
+      ],
+      [
+       982,
+       476,
+       15,
+       21
+      ]
+     ],
+     "text": "청강기획 간판 실 잔넬 스카서 대성부동산 한진카렌다사 청강기획 콰 렌 다"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      625,
+      420,
+      174,
+      56
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       631,
+       431,
+       86,
+       27
+      ],
+      [
+       753,
+       428,
+       36,
+       24
+      ],
+      [
+       750,
+       449,
+       48,
+       24
+      ]
+     ],
+     "text": "간판 실 잔넬 스카서"
+    },
+    {
+     "id": "c8",
+     "type": "shop_sign",
+     "bbox": [
+      469,
+      548,
+      127,
+      62
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       491,
+       559,
+       92,
+       18
+      ]
+     ],
+     "text": "삼화실크인쇄"
+    },
+    {
+     "id": "c9",
+     "type": "shop_sign",
+     "bbox": [
+      1276,
+      358,
+      41,
+      157
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0143",
+   "file": "images/kr_0143.jpg",
+   "width": 1419,
+   "height": 2048,
+   "lat": 37.549557,
+   "lon": 126.923012,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Korean fire hydrant.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Korean_fire_hydrant.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Korean_fire_hydrant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "Hippietrail"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0144",
+   "file": "images/kr_0144.jpg",
+   "width": 2048,
+   "height": 1380,
+   "lat": 37.552436,
+   "lon": 126.91074,
+   "category": "medium",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Hapjeong (197719473).jpeg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hapjeong_(197719473).jpeg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Hapjeong_%28197719473%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 3.0",
+    "author": "Anton Strogonoff"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      673,
+      544,
+      101,
+      42
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       673,
+       548,
+       101,
+       38
+      ]
+     ],
+     "text": "HEIMA"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      584,
+      574,
+      90,
+      130
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       595,
+       610,
+       46,
+       68
+      ]
+     ],
+     "text": "남경 커..."
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      897,
+      384,
+      45,
+      112
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       907,
+       487,
+       29,
+       9
+      ]
+     ],
+     "text": "바이타임 338-6105"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      895,
+      349,
+      68,
+      72
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "other",
+     "bbox": [
+      1169,
+      476,
+      56,
+      25
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0150",
+   "file": "images/kr_0150.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": 37.506605,
+   "lon": 127.100163,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Lotte World day view 2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lotte_World_day_view_2.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Lotte_World_day_view_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      111,
+      837,
+      152,
+      23
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       114,
+       841,
+       149,
+       19
+      ]
+     ],
+     "text": "LOTTE WORLD"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      768,
+      792,
+      39,
+      13
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "LOTTE WORLD MALL"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      784,
+      94,
+      152,
+      784
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      2,
+      924,
+      782,
+      339
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "shop_sign",
+     "bbox": [
+      1919,
+      753,
+      82,
+      35
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0154",
+   "file": "images/kr_0154.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gwanghwamun 20230126 002.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gwanghwamun_20230126_002.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Gwanghwamun_20230126_002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Mobius6"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      961,
+      460,
+      122,
+      40
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "光化門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      485,
+      321,
+      1078,
+      356
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      438,
+      599,
+      168,
+      79
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0157",
+   "file": "images/kr_0157.jpg",
+   "width": 2048,
+   "height": 1202,
+   "lat": 37.579483,
+   "lon": 126.991175,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:창덕궁 인정전의 위엄.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%B0%BD%EB%8D%95%EA%B6%81_%EC%9D%B8%EC%A0%95%EC%A0%84%EC%9D%98_%EC%9C%84%EC%97%84.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/%EC%B0%BD%EB%8D%95%EA%B6%81_%EC%9D%B8%EC%A0%95%EC%A0%84%EC%9D%98_%EC%9C%84%EC%97%84.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Dkdksjsh"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      999,
+      427,
+      113,
+      42
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "仁政殿"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      362,
+      44,
+      1674,
+      936
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0164",
+   "file": "images/kr_0164.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gwanghwamun 20240413.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gwanghwamun_20240413.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Gwanghwamun_20240413.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "*Youngjin"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      909,
+      536,
+      144,
+      48
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "光化門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      321,
+      2048,
+      1040
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "other",
+     "bbox": [
+      319,
+      1112,
+      39,
+      41
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0167",
+   "file": "images/kr_0167.jpg",
+   "width": 2048,
+   "height": 1538,
+   "lat": 37.520684,
+   "lon": 127.093996,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Jamsil Bridge1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jamsil_Bridge1.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Jamsil_Bridge1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "author": "Glabb This photo was taken with Xiaomi Redmi Note 10 Pro"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1694,
+      854,
+      352,
+      30
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      787,
+      418,
+      79
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      532,
+      0,
+      1516,
+      964
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "skyline_view",
+     "bbox": [
+      1145,
+      780,
+      49,
+      92
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0169",
+   "file": "images/kr_0169.jpg",
+   "width": 2048,
+   "height": 1447,
+   "lat": 37.578611,
+   "lon": 126.977222,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     739,
+     224,
+     32,
+     38
+    ],
+    [
+     1171,
+     164,
+     22,
+     26
+    ],
+    [
+     1728,
+     201,
+     19,
+     21
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:근정전 품계석 by Tptwwo.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EA%B7%BC%EC%A0%95%EC%A0%84_%ED%92%88%EA%B3%84%EC%84%9D_by_Tptwwo.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/%EA%B7%BC%EC%A0%95%EC%A0%84_%ED%92%88%EA%B3%84%EC%84%9D_by_Tptwwo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Tptwwo"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      854,
+      464,
+      279,
+      558
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft",
+     "text": "正七品"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      132,
+      754,
+      1314
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      0,
+      0,
+      1708,
+      242
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      633,
+      210,
+      1415,
+      453
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "skyline_view",
+     "bbox": [
+      1698,
+      48,
+      350,
+      186
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0173",
+   "file": "images/kr_0173.jpg",
+   "width": 2048,
+   "height": 1251,
+   "lat": 37.574583,
+   "lon": 126.994139,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:종묘HRD.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%A2%85%EB%AC%98HRD.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/%EC%A2%85%EB%AC%98HRD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "KO BYUNGSUK"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      274,
+      499,
+      1520,
+      127
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      758,
+      729,
+      506,
+      519
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0174",
+   "file": "images/kr_0174.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1494,
+     1262,
+     25,
+     30
+    ],
+    [
+     1402,
+     1285,
+     27,
+     33
+    ],
+    [
+     1282,
+     1254,
+     15,
+     18
+    ],
+    [
+     1201,
+     1276,
+     18,
+     20
+    ],
+    [
+     1217,
+     1251,
+     21,
+     24
+    ],
+    [
+     1886,
+     1269,
+     28,
+     33
+    ],
+    [
+     1821,
+     1230,
+     20,
+     24
+    ],
+    [
+     1717,
+     1251,
+     26,
+     30
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul South Korea Happy Skyscraper.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul_South_Korea_Happy_Skyscraper.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Seoul_South_Korea_Happy_Skyscraper.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Lwowskafala"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1171,
+      507,
+      150,
+      110
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "光化門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      0,
+      1769,
+      1534
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0179",
+   "file": "images/kr_0179.jpg",
+   "width": 2048,
+   "height": 1365,
+   "lat": null,
+   "lon": null,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:광화문 처마.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EA%B4%91%ED%99%94%EB%AC%B8_%EC%B2%98%EB%A7%88.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/%EA%B4%91%ED%99%94%EB%AC%B8_%EC%B2%98%EB%A7%88.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC0",
+    "author": "zerohour84"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      844,
+      811,
+      356,
+      131
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "光化門"
+    },
+    {
+     "id": "c2",
+     "type": "facade",
+     "bbox": [
+      0,
+      1087,
+      2048,
+      203
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0181",
+   "file": "images/kr_0181.jpg",
+   "width": 1600,
+   "height": 1200,
+   "lat": 37.54647222,
+   "lon": 126.90747222,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Floateable public toilet in Hangang Park 05.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Floateable_public_toilet_in_Hangang_Park_05.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Floateable_public_toilet_in_Hangang_Park_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "author": "사랑"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "skyline_view",
+     "bbox": [
+      1448,
+      388,
+      115,
+      120
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "facade",
+     "bbox": [
+      363,
+      305,
+      1085,
+      477
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0188",
+   "file": "images/kr_0188.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gwanghwamun Plaza - Gwanghwamun gate - Gyeongbokgung Palace 2016 - hschrijver.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gwanghwamun_Plaza_-_Gwanghwamun_gate_-_Gyeongbokgung_Palace_2016_-_hschrijver.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Gwanghwamun_Plaza_-_Gwanghwamun_gate_-_Gyeongbokgung_Palace_2016_-_hschrijver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Hschrijver"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      854,
+      736,
+      96,
+      27
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "光化門"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      1825,
+      1015,
+      80,
+      51
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      498,
+      859,
+      92,
+      49
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      459,
+      627,
+      856,
+      491
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      902,
+      2048,
+      99
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0189",
+   "file": "images/kr_0189.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.565253,
+   "lon": 126.978547,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     491,
+     800,
+     70,
+     84
+    ],
+    [
+     1209,
+     647,
+     47,
+     56
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Seoul Outdoor Library (Seoul Plaza) 2024-10-25 3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seoul_Outdoor_Library_(Seoul_Plaza)_2024-10-25_3.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Seoul_Outdoor_Library_%28Seoul_Plaza%29_2024-10-25_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Narumi.SBT"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1262,
+      70,
+      247,
+      193
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "Hanwha"
+    },
+    {
+     "id": "c2",
+     "type": "skyline_view",
+     "bbox": [
+      1563,
+      14,
+      276,
+      259
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "other",
+     "bbox": [
+      1757,
+      581,
+      203,
+      103
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0191",
+   "file": "images/kr_0191.jpg",
+   "width": 1363,
+   "height": 2048,
+   "lat": 37.578611,
+   "lon": 126.977222,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:A 8574.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:A_8574.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/A_8574.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Sungslim"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      758,
+      211,
+      605,
+      1155
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      1268,
+      487,
+      463
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      645,
+      1087,
+      223,
+      64
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0193",
+   "file": "images/kr_0193.jpg",
+   "width": 2048,
+   "height": 1364,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1510,
+     1059,
+     20,
+     24
+    ],
+    [
+     1568,
+     1055,
+     21,
+     24
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gyeongbokgung Palace, Seoul, 1395 (77) (39321056410).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gyeongbokgung_Palace,_Seoul,_1395_(77)_(39321056410).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Gyeongbokgung_Palace%2C_Seoul%2C_1395_%2877%29_%2839321056410%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "Richard Mortel from Riyadh, Saudi Arabia"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1450,
+      371,
+      596,
+      771
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      0,
+      0,
+      1090,
+      1060
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      1276,
+      735,
+      141,
+      47
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      760,
+      719,
+      1134,
+      417
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0199",
+   "file": "images/kr_0199.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.539569,
+   "lon": 127.057183,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Bored and hungry - 53945491487.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bored_and_hungry_-_53945491487.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Bored_and_hungry_-_53945491487.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0203",
+   "file": "images/kr_0203.jpg",
+   "width": 2048,
+   "height": 1152,
+   "lat": 37.570278,
+   "lon": 127.000833,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Yukhoe in Gwangjang Market, Seoul.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Yukhoe_in_Gwangjang_Market,_Seoul.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Yukhoe_in_Gwangjang_Market%2C_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "Choi2451"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0204",
+   "file": "images/kr_0204.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.518228,
+   "lon": 127.025894,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:季節限定 和栗 (45964650975).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%E5%AD%A3%E7%AF%80%E9%99%90%E5%AE%9A_%E5%92%8C%E6%A0%97_(45964650975).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/42/%E5%AD%A3%E7%AF%80%E9%99%90%E5%AE%9A_%E5%92%8C%E6%A0%97_%2845964650975%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th from Tokyo, Japan"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0208",
+   "file": "images/kr_0208.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.555919,
+   "lon": 126.971577,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Old Seoul station interior.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Old_Seoul_station_interior.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Old_Seoul_station_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Gre regiment"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      0,
+      0,
+      1536,
+      2048
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      1149,
+      1792,
+      74,
+      98
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0212",
+   "file": "images/kr_0212.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.518322,
+   "lon": 127.025847,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Peyang gigamax (46154675114).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Peyang_gigamax_(46154675114).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Peyang_gigamax_%2846154675114%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 2.0",
+    "author": "lazy fri13th from Tokyo, Japan"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0218",
+   "file": "images/kr_0218.jpg",
+   "width": 1600,
+   "height": 1067,
+   "lat": 37.580438,
+   "lon": 126.978858,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Jesuhap.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jesuhap.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Jesuhap.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Seoul Research Data Service"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1349,
+      241,
+      251,
+      385
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "skyline_view",
+     "bbox": [
+      1062,
+      456,
+      141,
+      69
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      499,
+      431,
+      618,
+      300
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0221",
+   "file": "images/kr_0221.jpg",
+   "width": 1536,
+   "height": 2048,
+   "lat": 37.566028,
+   "lon": 126.93895,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:연세대학교 언더우드관(본관).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90_%EC%96%B8%EB%8D%94%EC%9A%B0%EB%93%9C%EA%B4%80(%EB%B3%B8%EA%B4%80).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90_%EC%96%B8%EB%8D%94%EC%9A%B0%EB%93%9C%EA%B4%80%28%EB%B3%B8%EA%B4%80%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Libpark"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      507,
+      674,
+      1029,
+      817
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "other",
+     "bbox": [
+      1023,
+      567,
+      58,
+      54
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0228",
+   "file": "images/kr_0228.jpg",
+   "width": 2048,
+   "height": 1434,
+   "lat": 37.530746,
+   "lon": 126.975706,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     1210,
+     462,
+     225,
+     265
+    ],
+    [
+     1606,
+     606,
+     188,
+     217
+    ],
+    [
+     580,
+     317,
+     123,
+     127
+    ],
+    [
+     377,
+     895,
+     51,
+     62
+    ],
+    [
+     281,
+     125,
+     34,
+     39
+    ],
+    [
+     1739,
+     159,
+     57,
+     66
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Poster with the UN forces at the War Memorial of Korea in Seoul.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Poster_with_the_UN_forces_at_the_War_Memorial_of_Korea_in_Seoul.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Poster_with_the_UN_forces_at_the_War_Memorial_of_Korea_in_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Gre regiment"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0229",
+   "file": "images/kr_0229.jpg",
+   "width": 2048,
+   "height": 1819,
+   "lat": 37.552108,
+   "lon": 126.921967,
+   "category": "no_clue",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Cooking Dak-galbi in Seoul Korea.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cooking_Dak-galbi_in_Seoul_Korea.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Cooking_Dak-galbi_in_Seoul_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Sgroey"
+   },
+   "clues": []
+  },
+  {
+   "id": "kr_0232",
+   "file": "images/kr_0232.jpg",
+   "width": 2048,
+   "height": 1010,
+   "lat": 35.096667,
+   "lon": 129.036389,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Busan, October 2019 16.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Busan,_October_2019_16.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Busan%2C_October_2019_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "AhmedAlElg"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      0,
+      2048,
+      1010
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      434,
+      660,
+      340,
+      35
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0237",
+   "file": "images/kr_0237.jpg",
+   "width": 2048,
+   "height": 664,
+   "lat": 37.506605,
+   "lon": 127.100163,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Lotte World morning view 5.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lotte_World_morning_view_5.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lotte_World_morning_view_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "kallerna"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "shop_sign",
+     "bbox": [
+      815,
+      387,
+      122,
+      18
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       826,
+       392,
+       111,
+       13
+      ]
+     ],
+     "text": "LOTTE WORLD"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      1421,
+      0,
+      125,
+      432
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      1544,
+      324,
+      109,
+      86
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "skyline_view",
+     "bbox": [
+      676,
+      293,
+      102,
+      17
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "landmark",
+     "bbox": [
+      752,
+      470,
+      630,
+      192
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0240",
+   "file": "images/kr_0240.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 35.152186,
+   "lon": 129.152466,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Dongbaekseom, Busan (2).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dongbaekseom,_Busan_(2).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Dongbaekseom%2C_Busan_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Brit in Seoul"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "skyline_view",
+     "bbox": [
+      219,
+      705,
+      72,
+      114
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      967,
+      588,
+      774,
+      513
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "landmark",
+     "bbox": [
+      219,
+      736,
+      799,
+      95
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "skyline_view",
+     "bbox": [
+      1649,
+      304,
+      350,
+      284
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0242",
+   "file": "images/kr_0242.jpg",
+   "width": 2048,
+   "height": 1322,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     160,
+     917,
+     42,
+     51
+    ],
+    [
+     56,
+     952,
+     39,
+     45
+    ],
+    [
+     1427,
+     493,
+     62,
+     72
+    ],
+    [
+     1772,
+     973,
+     26,
+     33
+    ],
+    [
+     1542,
+     949,
+     39,
+     45
+    ],
+    [
+     2013,
+     977,
+     24,
+     27
+    ],
+    [
+     995,
+     1025,
+     16,
+     19
+    ],
+    [
+     1655,
+     1015,
+     16,
+     19
+    ],
+    [
+     411,
+     962,
+     43,
+     51
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gwanghwamun 20170120 01 (31605487313).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gwanghwamun_20170120_01_(31605487313).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Gwanghwamun_20170120_01_%2831605487313%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "Republic of Korea from Seoul, Republic of Korea"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1323,
+      953,
+      111,
+      54
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "text": "세종대왕"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      1133,
+      764,
+      184,
+      143
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      172,
+      2048,
+      793
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      1286,
+      467,
+      336,
+      388
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "landmark",
+     "bbox": [
+      512,
+      826,
+      334,
+      106
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "street_sign",
+     "bbox": [
+      379,
+      935,
+      55,
+      18
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0243",
+   "file": "images/kr_0243.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.520844,
+   "lon": 127.094069,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Jamsil Bridge3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jamsil_Bridge3.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Jamsil_Bridge3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "Public domain",
+    "author": "Glabb This photo was taken with Xiaomi Redmi Note 10 Pro"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1169,
+      559,
+      19,
+      32
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "landmark",
+     "bbox": [
+      514,
+      384,
+      61,
+      152
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "utility_mark",
+     "bbox": [
+      627,
+      26,
+      39,
+      37
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c4",
+     "type": "landmark",
+     "bbox": [
+      0,
+      636,
+      1849,
+      677
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0247",
+   "file": "images/kr_0247.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 35.146816,
+   "lon": 129.13504,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:크루즈에서 본 광안대교.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%ED%81%AC%EB%A3%A8%EC%A6%88%EC%97%90%EC%84%9C_%EB%B3%B8_%EA%B4%91%EC%95%88%EB%8C%80%EA%B5%90.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/%ED%81%AC%EB%A3%A8%EC%A6%88%EC%97%90%EC%84%9C_%EB%B3%B8_%EA%B4%91%EC%95%88%EB%8C%80%EA%B5%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "P.YEJI"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      268,
+      582,
+      1780,
+      412
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      788,
+      74,
+      160
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0248",
+   "file": "images/kr_0248.jpg",
+   "width": 1800,
+   "height": 1012,
+   "lat": 37.578611,
+   "lon": 126.977222,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:아름다운 경복궁.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4_%EA%B2%BD%EB%B3%B5%EA%B6%81.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4_%EA%B2%BD%EB%B3%B5%EA%B6%81.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Seungh"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      1139,
+      297,
+      162,
+      131
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0254",
+   "file": "images/kr_0254.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.567406,
+   "lon": 126.987572,
+   "category": "easy",
+   "expected_verdict": "safe",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     211,
+     1243,
+     18,
+     21
+    ],
+    [
+     1130,
+     1365,
+     95,
+     50
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Incidental view of Jongno Tower in August 2024.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Incidental_view_of_Jongno_Tower_in_August_2024.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Incidental_view_of_Jongno_Tower_in_August_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Immanuelle"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      733,
+      379,
+      256,
+      418
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "facade",
+     "bbox": [
+      1507,
+      0,
+      541,
+      1197
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c3",
+     "type": "shop_sign",
+     "bbox": [
+      1325,
+      757,
+      61,
+      36
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1331,
+       765,
+       54,
+       27
+      ]
+     ],
+     "text": "5치과"
+    },
+    {
+     "id": "c4",
+     "type": "shop_sign",
+     "bbox": [
+      1083,
+      711,
+      187,
+      43
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c5",
+     "type": "street_sign",
+     "bbox": [
+      1241,
+      1061,
+      125,
+      65
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c6",
+     "type": "transit",
+     "bbox": [
+      1735,
+      1184,
+      313,
+      80
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c7",
+     "type": "shop_sign",
+     "bbox": [
+      418,
+      656,
+      24,
+      143
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    },
+    {
+     "id": "c8",
+     "type": "shop_sign",
+     "bbox": [
+      1499,
+      733,
+      31,
+      273
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0258",
+   "file": "images/kr_0258.jpg",
+   "width": 2048,
+   "height": 1387,
+   "lat": null,
+   "lon": null,
+   "category": "cannot_hide",
+   "expected_verdict": "cannot_hide",
+   "gps_in_input": false,
+   "privacy_regions": [
+    [
+     874,
+     804,
+     84,
+     90
+    ],
+    [
+     985,
+     809,
+     62,
+     66
+    ],
+    [
+     1962,
+     849,
+     22,
+     27
+    ],
+    [
+     1411,
+     811,
+     78,
+     84
+    ],
+    [
+     1896,
+     861,
+     28,
+     31
+    ],
+    [
+     1767,
+     843,
+     39,
+     44
+    ],
+    [
+     1597,
+     831,
+     60,
+     63
+    ],
+    [
+     1657,
+     834,
+     58,
+     61
+    ],
+    [
+     1129,
+     833,
+     50,
+     55
+    ],
+    [
+     1200,
+     837,
+     27,
+     31
+    ],
+    [
+     1226,
+     857,
+     23,
+     27
+    ],
+    [
+     682,
+     809,
+     21,
+     25
+    ],
+    [
+     627,
+     830,
+     21,
+     26
+    ],
+    [
+     1842,
+     847,
+     33,
+     37
+    ],
+    [
+     437,
+     813,
+     21,
+     25
+    ],
+    [
+     368,
+     814,
+     23,
+     26
+    ],
+    [
+     107,
+     806,
+     20,
+     24
+    ],
+    [
+     1992,
+     874,
+     23,
+     26
+    ],
+    [
+     151,
+     813,
+     21,
+     25
+    ],
+    [
+     196,
+     819,
+     21,
+     25
+    ],
+    [
+     1902,
+     854,
+     26,
+     30
+    ],
+    [
+     90,
+     821,
+     18,
+     21
+    ],
+    [
+     1910,
+     851,
+     21,
+     24
+    ],
+    [
+     127,
+     827,
+     20,
+     25
+    ],
+    [
+     487,
+     834,
+     18,
+     21
+    ],
+    [
+     647,
+     822,
+     18,
+     21
+    ],
+    [
+     11,
+     830,
+     17,
+     20
+    ],
+    [
+     1253,
+     842,
+     28,
+     32
+    ],
+    [
+     515,
+     839,
+     18,
+     20
+    ],
+    [
+     642,
+     842,
+     21,
+     25
+    ],
+    [
+     595,
+     834,
+     17,
+     20
+    ],
+    [
+     1815,
+     841,
+     36,
+     39
+    ],
+    [
+     126,
+     806,
+     20,
+     24
+    ],
+    [
+     76,
+     814,
+     18,
+     20
+    ],
+    [
+     458,
+     813,
+     18,
+     21
+    ],
+    [
+     405,
+     834,
+     16,
+     19
+    ],
+    [
+     81,
+     817,
+     17,
+     19
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Gyeongbokgung Royal Guard 16 (25994292262).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gyeongbokgung_Royal_Guard_16_(25994292262).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Gyeongbokgung_Royal_Guard_16_%2825994292262%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 2.0",
+    "author": "Republic of Korea from Seoul, Republic of Korea"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "landmark",
+     "bbox": [
+      549,
+      32,
+      1481,
+      800
+     ],
+     "severity": "critical",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "shop_sign",
+     "bbox": [
+      1931,
+      495,
+      68,
+      50
+     ],
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft",
+     "lines": [
+      [
+       1938,
+       509,
+       50,
+       16
+      ],
+      [
+       1950,
+       526,
+       37,
+       9
+      ]
+     ],
+     "text": "조선일보 chosun.com"
+    },
+    {
+     "id": "c3",
+     "type": "skyline_view",
+     "bbox": [
+      0,
+      0,
+      762,
+      620
+     ],
+     "severity": "supporting",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0266",
+   "file": "images/kr_0266.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.578611,
+   "lon": 126.979444,
+   "category": "hard",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Enaj Muroj.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Enaj_Muroj.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Enaj_Muroj.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "Rommel Martinez"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "facade",
+     "bbox": [
+      0,
+      0,
+      1905,
+      1534
+     ],
+     "severity": "supporting",
+     "hideable": false,
+     "review": "draft"
+    },
+    {
+     "id": "c2",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0273",
+   "file": "images/kr_0273.jpg",
+   "width": 2048,
+   "height": 1203,
+   "lat": 37.536092,
+   "lon": 126.969567,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:프로세스 거버넌스 사이클.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4_%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4_%EC%82%AC%EC%9D%B4%ED%81%B4.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4_%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4_%EC%82%AC%EC%9D%B4%ED%81%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Dominic.jg.lee"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0275",
+   "file": "images/kr_0275.jpg",
+   "width": 2048,
+   "height": 996,
+   "lat": 37.574722,
+   "lon": 127.000556,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [
+    [
+     1413,
+     267,
+     206,
+     228
+    ],
+    [
+     142,
+     206,
+     159,
+     163
+    ],
+    [
+     1621,
+     399,
+     261,
+     291
+    ],
+    [
+     552,
+     140,
+     117,
+     134
+    ],
+    [
+     1014,
+     206,
+     113,
+     116
+    ],
+    [
+     504,
+     231,
+     99,
+     128
+    ],
+    [
+     1694,
+     263,
+     136,
+     163
+    ]
+   ],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:총회한국교회연구원모임(AMJ).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%B4%9D%ED%9A%8C%ED%95%9C%EA%B5%AD%EA%B5%90%ED%9A%8C%EC%97%B0%EA%B5%AC%EC%9B%90%EB%AA%A8%EC%9E%84(AMJ).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/%EC%B4%9D%ED%9A%8C%ED%95%9C%EA%B5%AD%EA%B5%90%ED%9A%8C%EC%97%B0%EA%B5%AC%EC%9B%90%EB%AA%A8%EC%9E%84%28AMJ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "칼빈500"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0277",
+   "file": "images/kr_0277.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.516803,
+   "lon": 126.926819,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:여의도한강공원샛강생태공원문화다리 43.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%97%AC%EC%9D%98%EB%8F%84%ED%95%9C%EA%B0%95%EA%B3%B5%EC%9B%90%EC%83%9B%EA%B0%95%EC%83%9D%ED%83%9C%EA%B3%B5%EC%9B%90%EB%AC%B8%ED%99%94%EB%8B%A4%EB%A6%AC_43.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/%EC%97%AC%EC%9D%98%EB%8F%84%ED%95%9C%EA%B0%95%EA%B3%B5%EC%9B%90%EC%83%9B%EA%B0%95%EC%83%9D%ED%83%9C%EA%B3%B5%EC%9B%90%EB%AC%B8%ED%99%94%EB%8B%A4%EB%A6%AC_43.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY 4.0",
+    "author": "Sunghyun"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0280",
+   "file": "images/kr_0280.jpg",
+   "width": 2048,
+   "height": 1155,
+   "lat": 37.560167,
+   "lon": 126.944871,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Joseon dynasty dish jeopsi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Joseon_dynasty_dish_jeopsi.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/Joseon_dynasty_dish_jeopsi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "Luckfin1"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0283",
+   "file": "images/kr_0283.jpg",
+   "width": 2048,
+   "height": 1536,
+   "lat": 37.567456,
+   "lon": 126.990753,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:시립서울청소년센터 가람.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%EC%8B%9C%EB%A6%BD%EC%84%9C%EC%9A%B8%EC%B2%AD%EC%86%8C%EB%85%84%EC%84%BC%ED%84%B0_%EA%B0%80%EB%9E%8C.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/%EC%8B%9C%EB%A6%BD%EC%84%9C%EC%9A%B8%EC%B2%AD%EC%86%8C%EB%85%84%EC%84%BC%ED%84%B0_%EA%B0%80%EB%9E%8C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 4.0",
+    "author": "임주연"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  },
+  {
+   "id": "kr_0297",
+   "file": "images/kr_0297.jpg",
+   "width": 2048,
+   "height": 1378,
+   "lat": 37.570556,
+   "lon": 126.999722,
+   "category": "exif_only",
+   "expected_verdict": "safe",
+   "gps_in_input": true,
+   "privacy_regions": [],
+   "source": {
+    "dataset": "wikimedia_commons",
+    "title": "File:Korean beef Sashimi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Korean_beef_Sashimi.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Korean_beef_Sashimi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "license": "CC BY-SA 3.0",
+    "author": "Trainholic"
+   },
+   "clues": [
+    {
+     "id": "c1",
+     "type": "exif_gps",
+     "bbox": null,
+     "severity": "critical",
+     "hideable": true,
+     "review": "draft"
+    }
+   ]
+  }
+ ]
+}

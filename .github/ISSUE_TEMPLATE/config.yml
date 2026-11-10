@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: FAQ and known issues
+    url: https://github.com/LeeJehwan/selfdox-benchmark/blob/main/docs/FAQ.md
+    about: Many questions are answered here.

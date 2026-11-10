@@ -1,0 +1,11 @@
+# Example image for a Qwen3-VL-4B agent (agent_template/run_vlm.py = agents/e_qwen.py).
+# Build:  docker build -f Dockerfile.vlm -t team7/agent:1.0 agent_template
+# The weights are not baked in: the organizers mount the allowed model read-only at
+# /models (e.g. /models/Qwen3-VL-4B-Instruct). The container has no network.
+# Pick a vLLM image whose CUDA matches the GPU driver you test on; this tag is an example.
+FROM vllm/vllm-openai:v0.11.0
+WORKDIR /agent
+COPY run_vlm.py .
+ENV HF_HUB_OFFLINE=1 VLLM_USE_FLASHINFER_SAMPLER=0
+ENTRYPOINT ["python3", "run_vlm.py", "--input", "/input", "--output", "/output", \
+            "--model", "/models/Qwen3-VL-4B-Instruct"]

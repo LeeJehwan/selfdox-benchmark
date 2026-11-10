@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LeeJehwan/selfdox/schemas/submission.schema.json",
+  "title": "SelfDox submission (outputs/predictions.json)",
+  "type": "object",
+  "required": ["agent_name", "benchmark_version", "predictions"],
+  "properties": {
+    "agent_name": {"type": "string", "minLength": 1},
+    "benchmark_version": {"type": "string"},
+    "predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "clues", "edited_image", "verdict"],
+        "properties": {
+          "id": {"type": "string"},
+          "clues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["bbox", "type"],
+              "properties": {
+                "bbox": {
+                  "oneOf": [
+                    {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+                    {"type": "null"}
+                  ]
+                },
+                "type": {"type": "string"},
+                "text": {"type": "string"},
+                "reason": {"type": "string"}
+              }
+            }
+          },
+          "edited_image": {"type": "string", "minLength": 1},
+          "verdict": {"enum": ["safe", "still_risky", "cannot_hide"]},
+          "meta": {
+            "description": "Optional, not scored: what this photo cost the agent. Reported next to the score.",
+            "type": "object",
+            "properties": {
+              "model_calls": {"type": "integer", "minimum": 0, "description": "model generate calls for this photo, retries included"},
+              "prompt_tokens": {"type": "integer", "minimum": 0},
+              "completion_tokens": {"type": "integer", "minimum": 0},
+              "seconds": {"type": "number", "minimum": 0, "description": "wall time spent on this photo (a share of batched calls is fine)"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

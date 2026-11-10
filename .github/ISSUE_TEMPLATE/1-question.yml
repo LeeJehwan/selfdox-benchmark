@@ -1,0 +1,15 @@
+name: Question
+description: Ask about the task, the rules, scoring or running your agent.
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please check docs/FAQ.md first. We answer within two working days."
+  - type: input
+    id: team
+    attributes: {label: Team, placeholder: team7}
+  - type: textarea
+    id: question
+    attributes: {label: Your question}
+    validations: {required: true}

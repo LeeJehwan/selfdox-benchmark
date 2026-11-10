@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LeeJehwan/selfdox/schemas/gt.schema.json",
+  "title": "SelfDox ground truth",
+  "type": "object",
+  "required": ["benchmark_version", "images"],
+  "additionalProperties": false,
+  "properties": {
+    "benchmark_version": {"type": "string"},
+    "images": {"type": "array", "items": {"$ref": "#/$defs/image"}}
+  },
+  "$defs": {
+    "box": {
+      "type": "array",
+      "items": {"type": "number", "minimum": 0},
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "source": {
+      "type": "object",
+      "required": ["dataset", "page", "license", "author"],
+      "properties": {
+        "dataset": {"type": "string"},
+        "title": {"type": "string"},
+        "page": {"type": "string"},
+        "url": {"type": "string"},
+        "license": {"type": "string"},
+        "author": {"type": "string"}
+      }
+    },
+    "clue": {
+      "type": "object",
+      "required": ["id", "type", "bbox", "severity", "hideable"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"enum": ["shop_sign", "address_plate", "apt_name", "apt_block", "street_sign",
+                          "transit", "phone_number", "utility_mark", "parcel_label", "school_name",
+                          "landmark", "skyline_view", "facade", "reflection", "exif_gps", "other"]},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/box"}, {"type": "null"}]},
+        "lines": {"type": "array", "items": {"$ref": "#/$defs/box"}},
+        "text": {"type": "string"},
+        "severity": {"enum": ["critical", "supporting"]},
+        "hideable": {"type": "boolean"},
+        "review": {"enum": ["draft", "checked"]},
+        "note": {"type": "string"}
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": ["id", "file", "width", "height", "category", "expected_verdict", "clues",
+                   "source"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z]{2}_[0-9]{4}$"},
+        "file": {"type": "string"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1},
+        "lat": {"type": ["number", "null"]},
+        "lon": {"type": ["number", "null"]},
+        "category": {"enum": ["easy", "medium", "hard", "no_clue", "cannot_hide", "exif_only"]},
+        "expected_verdict": {"enum": ["safe", "still_risky", "cannot_hide"]},
+        "gps_in_input": {"type": "boolean"},
+        "privacy_regions": {"type": "array", "items": {"$ref": "#/$defs/box"}},
+        "source": {"$ref": "#/$defs/source"},
+        "clues": {"type": "array", "items": {"$ref": "#/$defs/clue"}}
+      }
+    }
+  }
+}

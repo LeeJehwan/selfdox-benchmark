@@ -1,0 +1,9 @@
+outputs/
+runs/
+view/
+results*.json
+submission_*.zip
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

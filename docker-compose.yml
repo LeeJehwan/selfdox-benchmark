@@ -1,0 +1,22 @@
+# docker compose up --build
+# 1) runs the agent on the dev images (no network), 2) scores its output.
+services:
+  agent:
+    build: ./agent_template
+    network_mode: none
+    volumes:
+      - ./data/dev/images:/input:ro
+      - ./outputs/template:/output
+  evaluator:
+    build:
+      context: .
+      dockerfile: evaluator/Dockerfile
+    network_mode: none
+    volumes:
+      - ./data/dev:/data:ro
+      - ./outputs/template:/sub:ro
+      - ./outputs/results:/results
+    command: ["--gt", "/data/gt.json", "--sub", "/sub", "--out", "/results/template.json"]
+    depends_on:
+      agent:
+        condition: service_completed_successfully

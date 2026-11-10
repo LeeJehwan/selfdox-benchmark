@@ -1,0 +1,40 @@
+name: Submission
+description: Hand in your agent for the official test and hidden runs.
+title: "[Submission] team: "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: "Pack your agent with `uv run python -m selfdox.submit ... --smoke 3` and attach the zip below (or a link if it is over 25 MB). We run it on test and hidden and post the result on LEADERBOARD.md."
+  - type: input
+    id: team
+    attributes: {label: Team name (as it should appear on the leaderboard)}
+    validations: {required: true}
+  - type: input
+    id: contact
+    attributes: {label: Contact email}
+    validations: {required: true}
+  - type: input
+    id: model
+    attributes: {label: Model build, placeholder: "Qwen/Qwen3-VL-4B-Instruct@ebb281e (bf16), or none"}
+    validations: {required: true}
+  - type: textarea
+    id: tools
+    attributes: {label: Other tools and models (with versions), description: "OCR, detectors, inpainting... and anything you ship in the folder"}
+  - type: input
+    id: decoding
+    attributes: {label: Temperature and seed, placeholder: "temperature 0, seed 0"}
+    validations: {required: true}
+  - type: textarea
+    id: zip
+    attributes: {label: The zip from selfdox.submit, description: "Drag the file here, or paste a link"}
+    validations: {required: true}
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Checks
+      options:
+        - label: The agent runs offline from the folder with only requirements.txt installed (selfdox.submit --smoke passed).
+          required: true
+        - label: No outputs were edited by hand, and no model was trained on benchmark photos.
+          required: true
