@@ -86,7 +86,7 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 **What counts on the leaderboard?**
 - Only our own runs.
 - Score = the mean image score over test + hidden photos; a missing photo counts 0.
-- Hidden is run three times and averaged per photo. (The three-run mean is the current proposal and is applied today.)
+- Test and hidden are each run once, and that run counts. Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
 - Your own test predictions are a format check and a cross-check against our run.
 
 **How precise are the scores?**

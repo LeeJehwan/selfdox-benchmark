@@ -2,6 +2,10 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## Rules · 2026-11-12
+
+- **Official runs:** test and hidden are each run once, and that run counts (was: the mean of three hidden runs). No score changes: the scorer and the answer key are unchanged.
+
 ## v1.0 · scorer 0.3 · answer key 2026-11-10 (draft)
 
 - **Data:**

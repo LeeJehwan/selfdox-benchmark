@@ -189,7 +189,7 @@ verdict).
 | **SelfDox score** | Mean image score (0–100) on test + hidden; missing images count 0 |
 | **False-safe rate** | Of the images you called `safe`, the share that were not; shown with your number of `safe` verdicts |
 | **Pass rate** | Share of images with no hard fail, every hideable critical clue hidden, E ≥ 0.9 and the right verdict: `safe` when the photo is safe after your edit, `cannot_hide` when it can't be made safe. Warning on a photo you already made safe does not pass |
-| **pass^3** | We run your hidden-set container three times; the share of hidden images that pass in all three runs |
+| **One run** | We run your agent once on test and once on hidden, and that run is what counts. An agent that answers differently from run to run is scored on the run it gives |
 | **Outcomes** | Per photo, the first that applies: **leak** (false `safe`, also on a photo we marked `cannot_hide`, or GPS left), **ruined** (other hard fail or E < 0.9), **cleared** (`safe`, truly safe, E ≥ 0.9), **correct warning**, **unneeded warning** (a warning on a photo that was already safe). Shown as counts and rates, also per photo group (needs an edit / leave alone / unhideable) |
 | **95% interval** | Bootstrap over photos. On 30 hidden photos it is about ±8 points, so smaller gaps there are noise |
 
@@ -197,16 +197,14 @@ Ties are broken by the false-safe rate (lower is better).
 
 *Proposal (not agreed yet):* rank only on runs we made ourselves; show the score with its
 interval, the cleared and leak rates, the per-group results, test and hidden separately,
-seconds, calls and tokens per photo and the peak GPU memory; use the **mean of the three
-hidden runs** (with greedy decoding the three runs are nearly identical, so pass^3 adds
-little); and freeze the answer key before the final runs, after a dispute window on dev,
-with every change in the changelog.
+seconds, calls and tokens per photo and the peak GPU memory; and freeze the answer key
+before the final runs, after a dispute window on dev, with every change in the changelog.
 
 Where: [`LEADERBOARD.md`](../LEADERBOARD.md), rebuilt by `tools/leaderboard.py` after every
 batch of official runs. Reference agents A, B, E and the oracle are shown (not ranked) on
 the test photos. Next to each team: the paired difference to the team below with its
 95% interval. Until the rules are agreed, the board applies the proposal above (our runs
-only, the mean of three hidden runs per photo).
+only, one run on test and one on hidden).
 
 ## 8. Questions, bugs, answer-key disputes
 

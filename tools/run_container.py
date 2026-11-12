@@ -2,7 +2,7 @@
 
     uv run python -m tools.run_container --image team7/agent@sha256:... --split hidden \
         [--runtime docker|apptainer|venv] [--models /path/to/weights] [--gpus 1]
-        [--timeout 5400] [--repeat 3]
+        [--timeout 5400] [--repeat k]
 
     # the lab cluster has no container runtime: run the team's agent folder in a venv
     uv run python -m tools.run_container --runtime venv --image submissions/team7 \
