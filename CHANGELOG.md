@@ -2,6 +2,12 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## Rules · 2026-11-13
+
+- **Final runs and failures:** before the deadline each submission is run once on test (interim board). After the deadline each team's last submission is run once on test and once on hidden, and the final board uses those two runs. A run that fails because of our cluster (a node or GPU error) is run again; a crash or timeout in the agent counts. No score changes.
+- **Leaderboard:** the pass rate on hidden is shown as "Hidden pass", ties go to the lower false-safe rate over the board's photos (test on the interim board, test + hidden on the final board), and before the hidden runs the board is test only.
+- **Submissions:** at most one per team per day (Korean time); a second one on the same day is not run and doesn't count.
+
 ## Rules · 2026-11-12
 
 - **Official runs:** test and hidden are each run once, and that run counts (was: the mean of three hidden runs). No score changes: the scorer and the answer key are unchanged.

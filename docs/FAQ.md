@@ -81,17 +81,20 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 - A tighter budget (a mean of 120 s per photo) is proposed.
 - Report your model calls, tokens and seconds per photo in each prediction's optional `meta` field.
 
-**How do I submit?** Run `uv run python -m selfdox.submit ... --smoke 3`, open a **Submission** issue and attach the zip. If it's over 25 MB, put a link in the issue instead.
+**How do I submit?** Run `uv run python -m selfdox.submit ... --smoke 3`, open a **Submission** issue and attach the zip. If it's over 25 MB, put a link in the issue instead. At most one submission per team per day (Korean time); a second one on the same day is not run and doesn't count.
 
 **What counts on the leaderboard?**
 - Only our own runs.
-- Score = the mean image score over test + hidden photos; a missing photo counts 0.
-- Test and hidden are each run once, and that run counts. Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
+- Score = the mean image score over test + hidden photos (the interim board before the deadline: test only); a missing photo counts 0.
+- Before the deadline each submission is run once on test (the interim board).
+- After the deadline your last submission is run once more on test and once on hidden. Those two runs make the final board.
+- Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
+- If a run fails because of our cluster (a node or GPU error), we run it again. A crash or timeout in your agent counts.
 - Your own test predictions are a format check and a cross-check against our run.
 
 **How precise are the scores?**
 - On 170 test photos the standard error is about 1.7 points; on 30 hidden photos about 4.
-- The leaderboard shows 95% intervals, plus the paired difference to the next team. If that interval includes 0, the two are not separable.
+- The leaderboard shows 95% intervals, plus the paired difference to the next team. If that interval includes 0, the two are not separable. The ranking still follows the score; the intervals show how sure the order is.
 
 ## Known issues
 

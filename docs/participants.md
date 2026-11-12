@@ -126,8 +126,10 @@ uv run python -m selfdox.view --gt data/dev/gt.json --sub outputs --results resu
    check its format and compare it with our own run of your agent on test (item 2);
    the leaderboard uses our run.
 2. **Your agent folder**, in the [`agent_template/`](../agent_template/) layout:
-   `requirements.txt`, `run.py` and anything they need. We run it on **test and hidden**
-   ourselves, on the lab cluster, in a fresh Python venv (the cluster has no Docker), with
+   `requirements.txt`, `run.py` and anything they need. We run it ourselves on the lab
+   cluster: each submission once on **test** for the interim board, and after the deadline
+   your last submission once more on **test** and once on **hidden** for the final board.
+   It runs in a fresh Python venv (the cluster has no Docker), with
    `tools/run_container.py --runtime venv`:
    - command: `python run.py --input <photos> --output <folder>`, or the list you put in
      `selfdox_run.json`, e.g.
@@ -174,8 +176,10 @@ uv run python -m selfdox.submit --agent my_agent --team team7 --contact you@exam
 
 It checks the folder, runs it on 3 dev photos the way we will, and writes
 `submission_team7.zip` with a `metadata.json`. Open a **Submission** issue on the
-benchmark repository and attach the zip (or a link, over 25 MB). Deadlines are announced
-in class and in the pinned issue.
+benchmark repository and attach the zip (or a link, over 25 MB). At most one submission
+per team per day (Korean time, KST = UTC+9, by when the issue is opened); a second one on
+the same day is not run and doesn't count. Your last submission before the deadline is the
+one on the final board. Deadlines are announced in class and in the pinned issue.
 
 The template agent and our reference agents show the format:
 [`agent_template/run.py`](../agent_template/run.py) (classical tools),
@@ -186,25 +190,31 @@ verdict).
 
 | Number | Meaning |
 |---|---|
-| **SelfDox score** | Mean image score (0–100) on test + hidden; missing images count 0 |
+| **SelfDox score** | Mean image score (0–100) on test + hidden (the interim board before the deadline: test only); missing images count 0 |
 | **False-safe rate** | Of the images you called `safe`, the share that were not; shown with your number of `safe` verdicts |
 | **Pass rate** | Share of images with no hard fail, every hideable critical clue hidden, E ≥ 0.9 and the right verdict: `safe` when the photo is safe after your edit, `cannot_hide` when it can't be made safe. Warning on a photo you already made safe does not pass |
-| **One run** | We run your agent once on test and once on hidden, and that run is what counts. An agent that answers differently from run to run is scored on the run it gives |
 | **Outcomes** | Per photo, the first that applies: **leak** (false `safe`, also on a photo we marked `cannot_hide`, or GPS left), **ruined** (other hard fail or E < 0.9), **cleared** (`safe`, truly safe, E ≥ 0.9), **correct warning**, **unneeded warning** (a warning on a photo that was already safe). Shown as counts and rates, also per photo group (needs an edit / leave alone / unhideable) |
-| **95% interval** | Bootstrap over photos. On 30 hidden photos it is about ±8 points, so smaller gaps there are noise |
+| **95% interval** | Bootstrap over photos. On 30 hidden photos it is about ±8 points, so smaller gaps there are noise. The ranking still follows the score; the intervals show how sure the order is |
 
-Ties are broken by the false-safe rate (lower is better).
+Before the deadline we run each submission once on test, and the board shows that run
+(interim). After the deadline we run your last submission once more on test and once on
+hidden, and the final board uses those two runs. If a run fails because of our cluster (a
+node or GPU error), we run it again; a crash or timeout in your agent counts. If your agent
+answers differently from run to run, it is scored on the run it gives. Ties are broken by
+the false-safe rate over the board's photos (test on the interim board, test + hidden on the
+final board; lower is better).
 
 *Proposal (not agreed yet):* rank only on runs we made ourselves; show the score with its
 interval, the cleared and leak rates, the per-group results, test and hidden separately,
 seconds, calls and tokens per photo and the peak GPU memory; and freeze the answer key
 before the final runs, after a dispute window on dev, with every change in the changelog.
 
-Where: [`LEADERBOARD.md`](../LEADERBOARD.md), rebuilt by `tools/leaderboard.py` after every
-batch of official runs. Reference agents A, B, E and the oracle are shown (not ranked) on
-the test photos. Next to each team: the paired difference to the team below with its
-95% interval. Until the rules are agreed, the board applies the proposal above (our runs
-only, one run on test and one on hidden).
+Where: [`LEADERBOARD.md`](../LEADERBOARD.md), rebuilt after every batch of official runs.
+Reference agents A, B, E and the oracle are shown (not ranked) on the test photos. Next to
+each team: the paired difference to the team below with its 95% interval. Until the rules
+are agreed, the board applies the proposal above and ranks only our runs. Every official
+run is a single run (decided 2026-11-12), and the final board uses one test run and one
+hidden run of your last submission, made after the deadline (decided 2026-11-13).
 
 ## 8. Questions, bugs, answer-key disputes
 

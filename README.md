@@ -76,7 +76,7 @@ uv run python -m selfdox.submit --agent my_agent --team <team> --contact <email>
     --model "<model build or none>" --temperature 0 --seed 0 --smoke 3
 ```
 
-Open a **Submission** issue and attach the zip. We run your agent on test and hidden ourselves. Only those runs go on [`LEADERBOARD.md`](LEADERBOARD.md). Deadlines are announced in class and in the pinned issue.
+Open a **Submission** issue and attach the zip, at most once per team per day (Korean time; a second one that day is not run and doesn't count). We run each submission once on test, and after the deadline your last submission once more on test and once on hidden for the final board. Only those runs go on [`LEADERBOARD.md`](LEADERBOARD.md). Deadlines are announced in class and in the pinned issue.
 
 ## Questions, bugs, answer-key disputes
 

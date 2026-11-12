@@ -41,7 +41,8 @@ A problem with one prediction (GPS left, image missing, a box outside the photo,
 size...) is a warning: that image scores 0 and the rest are scored as usual. score.json
 also records the image digest (what exactly ran), the GPU name and the peak GPU memory.
 With --repeat k the container runs k times (run1/ ... runk/) and score.json adds the
-mean and spread over runs and pass^k (selfdox.metrics.multi_run).
+mean and spread over runs and pass^k (selfdox.metrics.multi_run). Official runs are single
+runs (docs/participants.md §7).
 
 Splits: dev (data/dev), test (data/test images, data/private/test_gt.json) and hidden
 (data/private/hidden/images, data/private/hidden_gt.json).
