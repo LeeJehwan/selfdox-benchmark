@@ -14,7 +14,7 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 - Every clue went through an AI first pass. Boxes Claude described in words were drawn by Qwen3-VL-8B. People are checking every clue now; the count is in `docs/dataset_card.md`.
 - If you see a missing clue, a wrong box or a wrong `hideable`/`severity`, open an **Answer-key dispute**.
 - We fix the key and bump the version (`CHANGELOG.md`), then rescore every stored result.
-- The test and hidden keys are frozen before the final runs.
+- The test and hidden keys are frozen before the final run.
 
 **What will the hidden photos look like?** The same format as the others:
 - JPEG, long side 2048 px, sRGB
@@ -28,7 +28,7 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 
 **Which models and tools may I use?**
 - Any open-weight model or models, each at most 4B parameters (Qwen3-VL-4B-Instruct, our agent E, is allowed). No fine-tuning. Offline: no web search, no online API.
-- Declare each model as Hugging Face `repo@revision` (`selfdox.submit --model`, once per model). We download exactly those for the final runs.
+- Declare each model as Hugging Face `repo@revision` (`selfdox.submit --model`, once per model). We download exactly those for the final run.
 - Classical tools such as OCR, detectors and blur or inpainting filters are fine.
 - The list may later narrow to specific models; that would be announced in the pinned issue.
 - If you are unsure about a model or tool, ask in a Question issue before you build on it.
@@ -68,7 +68,7 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 ## Running and submitting
 
 **How exactly will you run my agent?**
-- After the deadline we run your last submission's agent folder once on test and once on hidden with `tools/run_container.py --runtime venv`, which you have too.
+- After the deadline we run your last submission's agent folder once, offline, on all 200 photos (test 170 + hidden 30) in one folder, within 90 minutes on one 24 GB GPU, with `tools/run_container.py --runtime venv --split final`; you have the same runner. Photos without an output when time runs out score 0; your agent picks the order. Only this run ranks.
 - It creates a fresh Python 3.12 venv, installs your `requirements.txt`, copies the photos and runs `python run.py --input <photos> --output <folder>` (or your `selfdox_run.json` command).
 - Each run has one GPU, no network and a time limit. When the limit hits, the whole process group is stopped.
 - Run it yourself on dev to see what we will see.
@@ -88,7 +88,8 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 - A problem with one photo (GPS left, a missing image, a box outside the photo) scores only that photo 0.
 
 **Time and compute budget?**
-- Hidden: 90 minutes for about 30 photos on one 24 GB GPU (about 180 s per photo). Test uses the same per-photo time.
+- Final run: 90 minutes for all 200 photos together (test 170 + hidden 30) on one 24 GB GPU, about 27 s per photo.
+- Rehearse under the limit: `uv run python -m tools.run_container --runtime venv --image my_agent --split dev --timeout 2700 --name try1` (100 photos × 27 s). Your interim score does not check time; the final run does.
 - You may report your model calls, tokens and seconds per photo in each prediction's optional `meta` field.
 
 **How do I submit?**
@@ -101,7 +102,7 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 **What counts on the leaderboard?**
 - The board score runs from 0 to 100: **0 = doing nothing** (agent A), **100 = the agent that knows the answer key** (the oracle), both on the board's photos. In between it is linear in the mean image score ("Raw"), so the order is the same as by Raw. Each photo is still scored 0–100 as before.
 - Interim board (before the deadline): the site's score of your uploaded test outputs, test only, your last submission.
-- Final board (after the deadline): our own runs of your last submission's agent, once on test and once on hidden. Score = mean over test + hidden, rescaled with A and the oracle on the same photos; a missing photo counts 0.
+- Final board (after the deadline): our own run of your last submission's agent, once on all 200 photos (test and hidden together). Score = mean over test + hidden, rescaled with A and the oracle on the same photos; a missing photo counts 0.
 - Uploaded test outputs only move the interim board. The final board doesn't use them.
 - Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
 - If a run fails because of our cluster (a node or GPU error), we run it again. A crash or timeout in your agent counts.

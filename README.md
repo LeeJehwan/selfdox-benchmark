@@ -71,7 +71,7 @@ On the leaderboard the mean over photos is shown on a **0–100 scale: 0 = doing
 
 ## Get on the leaderboard
 
-Rules: any open-weight model(s), each at most 4B parameters; no fine-tuning; offline; no hand edits; pinned `requirements.txt`; 90 minutes for the 30 hidden photos on one 24 GB GPU; **at most 5 submissions per team**. Full list: [`docs/participants.md`](docs/participants.md) §3.
+Rules: any open-weight model(s), each at most 4B parameters; no fine-tuning; offline; no hand edits; pinned `requirements.txt`; 90 minutes for all 200 photos of the final run (test 170 + hidden 30) together on one 24 GB GPU; **at most 5 submissions per team**. Full list: [`docs/participants.md`](docs/participants.md) §3.
 
 ```bash
 # run your agent exactly as we will: a fresh venv, offline, on a copy of the photos
@@ -84,7 +84,9 @@ uv run python -m selfdox.submit --agent my_agent --team <team> \
 
 1. Go to the [submission site](https://huggingface.co/spaces/wpghks7/selfdox), sign in with Hugging Face (a free account), enter your team code and upload `submission_<team>.zip` (at most 30 MB) and `test_outputs_<team>.zip` (at most 300 MB). The upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`; the files are public there.
 2. A workflow checks new submissions every 5 minutes, scores your test outputs, comments with your score (totals only) on the pull request and updates the leaderboard on the site: the interim board. Expect it 5 to 10 minutes after the upload.
-3. After the deadline we run your last submission's agent ourselves, once on test and once on the 30 hidden photos: the final board.
+3. After the deadline we run your last submission's agent ourselves, once, offline, on all 200 photos (test 170 + hidden 30), within 90 minutes on one 24 GB GPU: the final board. Photos without an output when time runs out score 0; your agent picks the order. Only this run ranks.
+
+Rehearse under the limit: `uv run python -m tools.run_container --runtime venv --image my_agent --split dev --timeout 2700 --name try1` (100 photos × 27 s). Your interim score does not check time; the final run does.
 
 Only scored submissions count; at most 5 per team. Each team has a code from the organizers, and any member can submit with it from their own Hugging Face account. Deadlines are announced in class and in the pinned issue.
 
@@ -99,7 +101,7 @@ Open an issue and pick a template: **Question**, **Bug in the benchmark**, or **
 
 | | |
 |---|---|
-| Release | v1.1 (scorer 0.4; data unchanged since v1.0) |
+| Release | v1.2.1 (scorer 0.4; data unchanged since v1.0) |
 | Scorer | 0.4. `predictions.json` still says `"benchmark_version": "0.3"` (the answer-key format version). |
 | Answer key | dev draft of 2026-11-10: 377 clues; people are still checking them (see `docs/dataset_card.md`) |
 | Official runs | Python 3.12 venv on a lab GPU cluster: NVIDIA driver 580 / CUDA 13.0, one RTX A6000 or RTX 3090, no network |

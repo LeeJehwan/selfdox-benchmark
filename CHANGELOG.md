@@ -2,6 +2,14 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## v1.2.1 · time limit · 2026-11-14
+
+- **One final run, one clock:** after the deadline we run your last agent once, offline, on all 200 photos (test 170 + hidden 30) in one folder, within 90 minutes on one 24 GB GPU, about 27 s per photo (was: 90 minutes for the 30 hidden photos and the same time per photo on test, in two runs). Your agent picks the order; photos without an output when time runs out score 0. The one output is scored per split by photo id, and only this run ranks.
+- **Rehearse under the limit:** `uv run python -m tools.run_container --runtime venv --image my_agent --split dev --timeout 2700 --name try1` (100 photos × 27 s). Your interim score does not check time; the final run does.
+- `tools/run_container.py --split final` runs the test and hidden photos together under one `--timeout` (default 5400 s) and writes `test/score.json` and `hidden/score.json` for the final board.
+- Reference agents A–D (`agents/common.py`) write `predictions.json` atomically after every photo, as the template does; their outputs and scores are unchanged.
+- Scorer, answer key and format are unchanged (scorer 0.4).
+
 ## v1.2 · submission site · 2026-11-13
 
 - **Submissions go through a site now:** <https://huggingface.co/spaces/wpghks7/selfdox>. Sign in with Hugging Face (a free account), enter your team code and upload `submission_<team>.zip` (at most 30 MB) and `test_outputs_<team>.zip` (at most 300 MB). The upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`; the files are public there, as they were in issues.

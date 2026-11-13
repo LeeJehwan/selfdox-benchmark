@@ -15,10 +15,11 @@ entry, with the reference rows and the 0/100 anchors from leaderboard/refs.json 
 only, so it can be rebuilt in the public repository). No hidden numbers go on it, and it
 refuses to overwrite a final board.
 
-Final board (--final): after the deadline each team's last submission is run once on test
-and once on hidden by us (tools/run_container.py) into --runs:
+Final board (--final): after the deadline each team's last submission is run by us ONCE on
+the test and hidden photos together, in one folder under one 90-minute clock
+(tools/run_container.py --split final), which scores that one output per split into --runs:
 runs/<team>/test/score.json and runs/<team>/hidden/score.json. A split with run1..runk/
-(run_container --repeat k) is refused: official results are one run per split
+(run_container --repeat k) is refused: official results are single runs
 (docs/participants.md §7); <team> is team_slug() of the team's name. Every team in
 interim.json must have both runs there
 (run_container writes score.json even when the agent crashes, so a missing one means the
@@ -28,7 +29,8 @@ results_hidden_<agent>.json), and the 0/100 anchors are A and the oracle on test
 
 Ranked by the mean image score over the board's photos (test, or test + hidden; a missing
 photo counts 0); ties go to the lower false-safe rate over the same photos. The final board
-also shows test and hidden separately with bootstrap 95% intervals, seconds per photo, peak
+also shows test and hidden separately with bootstrap 95% intervals, seconds per photo (the run's
+seconds over its photos_in_run, or over the test photos for a run of test alone), peak
 GPU memory, how the network was cut and the run date; "Δ next" is the paired bootstrap
 difference to the team ranked just below, over the photos both were scored on (an interval
 that includes 0 means the two are not separable), on the same 0-100 scale.
@@ -81,13 +83,13 @@ def load_team(team_dir):
         doc = json.loads(path.read_text()) if path.exists() else {}
         if repeats or "multi_run" in doc:
             raise SystemExit(f"{team_dir / split}: {len(repeats) or 'several'} runs (--repeat); "
-                             "official results are one run per split (docs/participants.md §7). "
+                             "official results are single runs (docs/participants.md §7). "
                              f"Keep one run as {split}/score.json and move the rest out.")
         if not doc:
             continue
         out[split] = {r["id"]: r for r in doc.get("images", [])}
         out["meta"][split] = {k: doc.get(k) for k in ("seconds", "peak_gpu_mib", "isolation",
-                                                       "status", "image_digest")}
+                                                       "status", "image_digest", "photos_in_run")}
         out["meta"][split]["date"] = datetime.date.fromtimestamp(path.stat().st_mtime).isoformat()
     return out
 
@@ -157,6 +159,7 @@ def summarize(team, test_ids, hidden_ids):
     both = aggregate([from_dict(r) for r in t_rows + h_rows if r]) if any(t_rows + h_rows) else None
     n_test = sum(r is not None for r in t_rows)
     secs = (team["meta"].get("test") or {}).get("seconds")
+    per_run = (team["meta"].get("test") or {}).get("photos_in_run") or n_test   # the final run: test + hidden in one run
     t = stats(t_rows, len(t_rows)) if any(t_rows) else None
     h = stats(h_rows, len(h_rows)) if any(h_rows) else None
     return {
@@ -166,7 +169,7 @@ def summarize(team, test_ids, hidden_ids):
         "per_photo": dict(zip(sorted(test_ids) + sorted(hidden_ids), pooled)),
         "false_safe_all": both["false_safe_rate"] if both else None,   # the tie-break
         "test": t, "hidden": h,
-        "sec_per_photo": (secs / n_test) if secs and n_test else None,
+        "sec_per_photo": (secs / per_run) if secs and per_run else None,
         "peak_gpu_mib": (team["meta"].get("test") or {}).get("peak_gpu_mib"),
         "isolation": (team["meta"].get("test") or {}).get("isolation"),
         "date": (team["meta"].get("test") or {}).get("date"),
@@ -215,8 +218,9 @@ def interim_markdown(teams, refs_doc):
             "[submission site](https://huggingface.co/spaces/wpghks7/selfdox); this page keeps "
             "the reference rows. Each team row is its last submission, scored on the team's own "
             "test outputs. After "
-            "the deadline we run each team's last agent once on test and once on hidden for "
-            "the final board. A missing photo counts 0. How to get on it: "
+            "the deadline we run each team's last agent once, on the test and hidden photos "
+            "together (90 minutes for all 200), for the final board. A missing photo counts 0. "
+            "How to get on it: "
             "[`docs/participants.md`](docs/participants.md) §6.")
     lines = ["# SelfDox leaderboard", "", head, "", SCALE_NOTE, ""]
     if not teams:
@@ -243,9 +247,9 @@ def interim_markdown(teams, refs_doc):
 def final_markdown(rows, n_test, n_hidden, s_a, s_o):
     teams = [r for r in rows if not r["reference"]]
     head = (f"Scorer {C.VERSION}. Updated {datetime.date.today().isoformat()}. "
-            f"**Final board:** one test run ({n_test} photos) and one hidden run "
-            f"({n_hidden} photos) of each team's last submission, made by the organizers "
-            "after the deadline. Raw = mean image score over test + hidden; a missing "
+            f"{FINAL_MARK} one run of each team's last submission on all {n_test + n_hidden} "
+            f"photos ({n_test} test + {n_hidden} hidden together, one 90-minute clock), made by "
+            "the organizers after the deadline. Raw = mean image score over test + hidden; a missing "
             "photo counts 0. Rules: [`docs/participants.md`](docs/participants.md) §7.")
     lines = ["# SelfDox leaderboard", "", head, "", SCALE_NOTE, ""]
     lines += [
@@ -345,9 +349,18 @@ def refs_doc(refs_dir, test_ids):
             "test": {"do_nothing": s_a, "perfect": s_o}, "rows": rows}
 
 
+FINAL_MARK = "**Final board:**"     # final_markdown() writes it; nothing else may overwrite such a file
+
+
+def is_final_board(path):
+    """True if the file at path is a final board (final_markdown)."""
+    path = Path(path)
+    return path.is_file() and FINAL_MARK in path.read_text(encoding="utf-8", errors="replace")
+
+
 def write_interim_board(out, interim_path=INTERIM, refs_path=REFS, settings_path=SETTINGS):
     out = Path(out)
-    if out.exists() and "**Final board:**" in out.read_text():
+    if is_final_board(out):
         raise SystemExit(f"{out} is the final board; pass --final --runs runs_final, or "
                          "another --out")
     doc = json.loads(Path(refs_path).read_text())

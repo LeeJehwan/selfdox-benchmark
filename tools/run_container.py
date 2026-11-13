@@ -4,6 +4,10 @@
         [--runtime docker|apptainer|venv] [--models /path/to/weights] [--gpus 1]
         [--timeout 5400] [--repeat k]
 
+    # the final run (rule of 2026-11-14): ONE run on the test and hidden photos together
+    uv run python -m tools.run_container --runtime venv --image submissions/team7/pr3-final/agent \
+        --split final --models models/team7 --name team7 --runs runs_final
+
     # the lab cluster has no container runtime: run the team's agent folder in a venv
     uv run python -m tools.run_container --runtime venv --image submissions/team7 \
         --split test [--python /path/to/shared/venv/bin/python] [--isolation auto]
@@ -46,6 +50,16 @@ runs (docs/participants.md §7).
 
 Splits: dev (data/dev), test (data/test images, data/private/test_gt.json) and hidden
 (data/private/hidden/images, data/private/hidden_gt.json).
+
+--split final is the official final run (docs/participants.md §6): the test and hidden images
+are copied into ONE input folder (runs/<name>/final/input; the agent picks the order) and the
+agent runs ONCE under one wall clock, --timeout (default 5400 s = 90 minutes for the 200
+photos). The one output folder is then scored per split against that split's key and written
+as runs/<name>/test/score.json and runs/<name>/hidden/score.json, the layout tools.leaderboard
+--final reads; a photo with no prediction when the clock runs out scores 0. Both files carry
+the run's status, seconds and photos_in_run; runs/<name>/final/ keeps the command, the log,
+the input, the output and a summary score.json. --repeat is refused (the final run is a
+single run). Rehearse the limit on dev: --split dev --timeout 2700 (100 photos x 27 s).
 """
 import argparse
 import hashlib
@@ -64,6 +78,42 @@ from pathlib import Path
 SPLITS = {"dev": ("data/dev/images", "data/dev/gt.json"),
           "test": ("data/test/images", "data/private/test_gt.json"),
           "hidden": ("data/private/hidden/images", "data/private/hidden_gt.json")}
+FINAL = ("test", "hidden")     # --split final: these splits in one folder, one run, one clock
+
+
+def union_inputs(root, dest):
+    """Copy the images of every FINAL split into one folder (the final run's input).
+    Returns {photo id (the file name's stem): split}; an id must be in one split only
+    (kr_0001.jpg and kr_0001.png count as the same photo)."""
+    dest = Path(dest)
+    dest.mkdir(parents=True, exist_ok=True)
+    seen = {}
+    for split in FINAL:
+        for f in sorted((Path(root) / SPLITS[split][0]).iterdir()):
+            if not f.is_file() or f.name.startswith("."):
+                continue
+            if f.stem in seen:
+                raise SystemExit(f"photo {f.stem} is twice in the final run's input "
+                                 f"({seen[f.stem]} and {split} images)")
+            seen[f.stem] = split
+            shutil.copy2(f, dest / f.name)
+    return seen
+
+
+def check_union(seen, score_as):
+    """The final run's photos must be exactly the keys' ids, and the keys must not share an id."""
+    from selfdox.schema import load_gt
+    keys = {split: {im["id"] for im in load_gt(gt)["images"]} for split, gt, _ in score_as}
+    splits = list(keys)
+    for i, a in enumerate(splits):
+        for b in splits[i + 1:]:
+            if keys[a] & keys[b]:
+                raise SystemExit(f"the {a} and {b} keys share ids: {sorted(keys[a] & keys[b])[:5]}")
+    for split, ids in keys.items():
+        imgs = {k for k, v in seen.items() if v == split}
+        if imgs != ids:
+            raise SystemExit(f"{split}: the images and the key differ (no image for "
+                             f"{sorted(ids - imgs)[:5]}, no key for {sorted(imgs - ids)[:5]})")
 
 
 def docker_cmd(image, inputs, out, models=None, gpus=1, name="selfdox-run", cpus=8,
@@ -353,15 +403,18 @@ def failed_run(gt):
     return out
 
 
-def check_and_score(out, gt_path):
+def check_and_score(out, gt_path, ignore_ids=()):
     """(run errors, warnings, score summary, per-image results). Only a missing or
     malformed predictions.json is a run error (every image scores 0); a problem with one
-    prediction is a warning and only that image scores 0."""
+    prediction is a warning and only that image scores 0. ignore_ids: predictions that
+    belong to another split of the same run (the final run), not reported as unknown ids."""
     from selfdox.metrics import aggregate
     from selfdox.schema import gt_sizes, load_gt, submission_problems
     from selfdox.score import score_submission
     gt = load_gt(gt_path)
     errors, problems, warnings = submission_problems(out, gt_sizes(gt))
+    ignore = set(ignore_ids)
+    problems = {iid: msgs for iid, msgs in problems.items() if iid not in ignore}
     if errors:
         results = failed_run(gt)
         return errors, warnings, aggregate(results), results
@@ -373,8 +426,10 @@ def check_and_score(out, gt_path):
     return [], warnings, agg, results
 
 
-def run_once(args, runtime, inputs, gt, out_root, name, digest=None):
-    """One container run into out_root/output, then validation and scoring."""
+def run_once(args, runtime, inputs, gt, out_root, name, digest=None, score_as=None):
+    """One container run into out_root/output, then validation and scoring. score_as (the
+    final run): [(split, gt path, split folder)]: the one output is scored against each
+    split's key and written to that split's folder instead of out_root."""
     out = out_root / "output"
     out.mkdir(parents=True, exist_ok=True)
     if any(out.iterdir()):
@@ -391,7 +446,7 @@ def run_once(args, runtime, inputs, gt, out_root, name, digest=None):
     else:
         isolation = venv_isolation(args.isolation)
         local_in = out_root / "input"
-        if not args.dry_run:
+        if not args.dry_run and Path(inputs).resolve() != local_in.resolve():
             shutil.rmtree(local_in, ignore_errors=True)
             shutil.copytree(inputs, local_in)
         cmd = venv_cmd(args.image, local_in, out, args.models, venv_python(args),
@@ -408,6 +463,11 @@ def run_once(args, runtime, inputs, gt, out_root, name, digest=None):
                                    env=env, cwd=cwd)
     status = "timeout" if code is None else ("ok" if code == 0 else f"exit {code}")
     print(f"container: {status} after {secs:.0f}s (log: {out_root / 'container.log'})")
+    run = {"image": args.image, "image_digest": digest, "runtime": runtime, "isolation": isolation,
+           "status": status, "seconds": round(secs), "gpu": gpu_names(), "peak_gpu_mib": gpu.peak_mib}
+    if score_as:
+        run["photos_in_run"] = args.photos_in_run
+        return score_final(out, out_root, run, score_as)
     errors, warnings, agg, results = check_and_score(out, gt)
     (out_root / "validate.txt").write_text(
         "\n".join([f"WARNING {w}" for w in warnings] + [f"ERROR   {e}" for e in errors]) + "\n")
@@ -426,6 +486,33 @@ def run_once(args, runtime, inputs, gt, out_root, name, digest=None):
               f"{agg['false_safe_rate']:.3f}  ({len(warnings)} warning(s)) -> "
               f"{out_root / 'score.json'}")
     return report, results
+
+
+def score_final(out, out_root, run, score_as):
+    """The final run's one output, scored per split by id: <split folder>/score.json (with the
+    run's status, seconds and photos_in_run) and validate.txt, plus a summary in out_root."""
+    from selfdox.schema import load_gt
+    ids = {split: {im["id"] for im in load_gt(gt)["images"]} for split, gt, _ in score_as}
+    if sum(len(v) for v in ids.values()) != len(set().union(*ids.values())):
+        raise SystemExit("the final run's keys share ids; each photo must be in one split")
+    reports, summary = {}, dict(run, split="final", splits={})
+    for split, gt, folder in score_as:
+        other = set().union(*(v for s, v in ids.items() if s != split))
+        errors, warnings, agg, results = check_and_score(out, gt, ignore_ids=other)
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / "validate.txt").write_text(
+            "\n".join([f"WARNING {w}" for w in warnings] + [f"ERROR   {e}" for e in errors]) + "\n")
+        report = dict(run, split=split, final_run=str(out_root), errors=errors,
+                      warnings=warnings, summary=agg, images=[asdict(r) for r in results])
+        (folder / "score.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
+        summary["splits"][split] = {"n_images": agg["n_images"], "score": agg["score"],
+                                    "pass_rate": agg["pass_rate"], "errors": errors,
+                                    "n_warnings": len(warnings)}
+        reports[split] = (report, results)
+        print(f"{split}: score {agg['score']:.2f}  pass rate {agg['pass_rate']:.3f}  "
+              f"({len(errors)} error(s), {len(warnings)} warning(s)) -> {folder / 'score.json'}")
+    (out_root / "score.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1))
+    return reports
 
 
 def venv_isolation(choice):
@@ -453,7 +540,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Run a team's agent on a SelfDox split.")
     ap.add_argument("--image", required=True, help="Docker image (name@sha256:... preferred), "
                     "a .sif for Apptainer, or an agent folder for --runtime venv")
-    ap.add_argument("--split", choices=list(SPLITS), required=True)
+    ap.add_argument("--split", choices=list(SPLITS) + ["final"], required=True,
+                    help="final: the official final run, test + hidden in one folder, one clock")
     ap.add_argument("--runtime", choices=["docker", "apptainer", "venv"])
     ap.add_argument("--python", help="venv runtime: use this interpreter instead of a fresh "
                     "venv with the folder's requirements.txt")
@@ -462,7 +550,9 @@ def main(argv=None):
                          "allows it, else the Python-level block)")
     ap.add_argument("--models", help="folder with the allowed model weights (mounted at /models)")
     ap.add_argument("--gpus", type=int, default=1)
-    ap.add_argument("--timeout", type=int, default=5400, help="seconds per run (default 90 min)")
+    ap.add_argument("--timeout", type=int, default=5400,
+                    help="seconds per run (default 5400 = 90 min, the final run's limit for its "
+                         "200 photos; rehearse on dev with 2700)")
     ap.add_argument("--repeat", type=int, default=1, help="run the container this many times")
     ap.add_argument("--root", default=".", help="benchmark root (holds data/)")
     ap.add_argument("--runs", default="runs")
@@ -471,9 +561,28 @@ def main(argv=None):
     args = ap.parse_args(argv)
     runtime = args.runtime or ("apptainer" if args.image.endswith(".sif") else
                                "venv" if Path(args.image).is_dir() else "docker")
-    inputs, gt = (Path(args.root) / p for p in SPLITS[args.split])
     name = args.name or run_name(args.image)
     split_root = Path(args.runs) / name / args.split
+    score_as = None
+    if args.split == "final":
+        if args.repeat != 1:
+            raise SystemExit("--split final is the one official run; --repeat is for your own "
+                             "checks on one split")
+        score_as = [(s, Path(args.root) / SPLITS[s][1], Path(args.runs) / name / s) for s in FINAL]
+        for s, _, folder in score_as:
+            if (folder / "score.json").exists():
+                raise SystemExit(f"{folder / 'score.json'} exists; move it away or pass another --name")
+        inputs, gt = split_root / "input", None
+        if not args.dry_run:
+            if (split_root / "output").exists() and any((split_root / "output").iterdir()):
+                raise SystemExit(f"{split_root / 'output'} is not empty; remove it or pass another --name")
+            shutil.rmtree(inputs, ignore_errors=True)
+            seen = union_inputs(args.root, inputs)
+            check_union(seen, score_as)
+            args.photos_in_run = len(seen)
+            print(f"final run: {len(seen)} photos in {inputs}")
+    else:
+        inputs, gt = (Path(args.root) / p for p in SPLITS[args.split])
     roots = [split_root] if args.repeat == 1 else \
         [split_root / f"run{i}" for i in range(1, args.repeat + 1)]
     if runtime == "venv":
@@ -483,11 +592,13 @@ def main(argv=None):
         digest = None if args.dry_run else image_digest(args.image, runtime)
     reports = []
     for root in roots:
-        got = run_once(args, runtime, inputs, gt, root, name, digest)
+        got = run_once(args, runtime, inputs, gt, root, name, digest, score_as)
         if got is not None:
             reports.append(got)
     if args.dry_run:
         return 0
+    if score_as:
+        return 1 if any(rep["errors"] for rep, _ in reports[0].values()) else 0
     if args.repeat > 1:
         from selfdox.metrics import multi_run
         multi = multi_run([r for _, r in reports])

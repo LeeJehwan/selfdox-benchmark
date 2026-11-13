@@ -59,7 +59,7 @@ announced in the pinned issue.
 | Offline | The agent runs with no network access: no web search, no online API. |
 | No hand edits | Your outputs come from your agent. Nobody edits them by hand. |
 | Pinned versions | `requirements.txt` pins every package version (`name==x.y.z`), so our run installs what you tested. |
-| Limits | One 24 GB GPU; 90 minutes for the 30 hidden photos (test: the same time per photo); **at most 5 submissions per team** in total (§6). |
+| Limits | One 24 GB GPU; **90 minutes for all 200 photos of the final run together** (test 170 + hidden 30, about 27 s per photo); **at most 5 submissions per team** in total (§6). |
 | Disclosure | State your temperature and seed, and list the tools you used. |
 
 ## 4. Data
@@ -178,8 +178,8 @@ submissions. If the scoring fails on our side for a submission made before the d
 we score it again. The deadline is announced in class and in the pinned issue.
 
 **How we run your agent after the deadline.** Your last submission's agent folder (checked
-by its sha256) runs once on test and once on hidden in our environment, the same for every
-team: `tools/run_container.py --runtime venv` on the lab cluster (no Docker needed; the
+by its sha256) runs **once, offline, on all 200 photos** (test 170 + hidden 30, in one
+folder) in our environment, the same for every team, and only this run ranks: `tools/run_container.py --runtime venv` on the lab cluster (no Docker needed; the
 cluster can't run it):
 - the same node and Python 3.12 for every team (NVIDIA driver 580 / CUDA 13.0, one 24 GB
   GPU, RTX A6000 or RTX 3090 class); a fresh venv with your `requirements.txt` installed;
@@ -197,10 +197,12 @@ cluster can't run it):
   does not allow network namespaces), Hugging Face is set offline, and we read your code
   for anything that gets around it;
 - your agent reads a copy of the photos and writes only to its output folder;
-- 90 minutes for the 30 hidden photos (test: the same time per photo); then the whole
-  process group is stopped and whatever `predictions.json` holds is scored (write it as
-  you go, replacing the file atomically as `agents/e_qwen.py` does; no file means every
-  image scores 0);
+- 90 minutes for all 200 photos of the final run together (test 170 + hidden 30, about 27 s
+  per photo); then the whole process group is stopped and whatever `predictions.json` holds
+  is scored, per split by photo id (write it as you go, replacing the file atomically as
+  `agents/e_qwen.py` does; no file means every image scores 0). Your agent picks the order;
+  photos without an output when time runs out score 0, so a slow agent can lose the photos
+  it leaves for last;
 - a problem with one prediction (GPS left, image missing, a box outside the photo) scores
   that image 0; the others are scored as usual;
 - we record the folder's hash, the GPU and your peak GPU memory.
@@ -212,6 +214,8 @@ Run it yourself exactly like this before you submit (the runner is in the packag
 uv run python -m tools.run_container --runtime venv --image my_agent --split dev --name try1
 # -> runs/try1/dev/score.json, container.log, validate.txt
 ```
+
+Rehearse under the limit: `uv run python -m tools.run_container --runtime venv --image my_agent --split dev --timeout 2700 --name try1` (100 photos × 27 s). Your interim score does not check time; the final run does.
 
 A Docker image (`agent_template/Dockerfile`) is optional and still works where Docker is
 available, handed in by digest (`name@sha256:…`) from a public registry.
@@ -241,8 +245,8 @@ reference rows. 0 and 100 are A and the oracle on the
 170 test photos (11.7 and 97.5 raw under scorer 0.4). Reference agents A, B, E and the
 oracle are shown, not ranked.
 
-**Final board (after the deadline):** our own runs of your last submission's agent, once
-on test and once on hidden (§6). Score = mean over test + hidden, rescaled with A and the
+**Final board (after the deadline):** our own run of your last submission's agent, once on
+all 200 photos (test and hidden together, §6). Score = mean over test + hidden, rescaled with A and the
 oracle on the same 200 photos. Next to each team: the paired difference to the team below
 with its 95% interval. Test outputs you upload only move the interim board; editing them by
 hand is against the rules, and the final board doesn't use them.
