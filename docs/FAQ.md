@@ -93,20 +93,20 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 
 **How do I submit?**
 - Run your agent on `data/test/images`, then `uv run python -m selfdox.submit ... --smoke 3 --test-sub <outputs>`. It writes `submission_<team>.zip` (your agent folder) and `test_outputs_<team>.zip` (your test outputs).
-- Open a **Submission** issue: attach the submission zip, upload the test outputs zip (at most 300 MB) as a release asset of a **public** GitHub repository and paste its link. Contact is optional; the issue is public.
-- One GitHub account per team: the first account that submits for a team name owns it, and one account submits for one team. To submit from several accounts, ask in a Question issue.
-- The bot scores your test outputs in about 10 minutes and comments with the total score.
-- **At most 5 submissions per team, in total.** Only scored submissions count. One issue is one submission; open a new issue to submit again. Editing a scored issue changes nothing; editing one the bot could not score makes it try again.
+- Go to the submission site, <https://huggingface.co/spaces/wpghks7/selfdox>, sign in with Hugging Face (a free account), enter your team code and upload both files: `submission_<team>.zip` (at most 30 MB) and `test_outputs_<team>.zip` (at most 300 MB). The upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`; the files are public there.
+- Team codes: the organizers give each team a code. Any member can submit from their own Hugging Face account with it. The code is never published. Lost it? Ask in a Question issue.
+- A workflow checks new submissions every 5 minutes, scores your test outputs, comments the total score on the pull request, closes it and updates the leaderboard on the site. Expect a score 5 to 10 minutes after the upload.
+- **At most 5 submissions per team, in total.** Only scored submissions count; rejected or failed ones do not. To submit again, upload again.
 
 **What counts on the leaderboard?**
 - The board score runs from 0 to 100: **0 = doing nothing** (agent A), **100 = the agent that knows the answer key** (the oracle), both on the board's photos. In between it is linear in the mean image score ("Raw"), so the order is the same as by Raw. Each photo is still scored 0–100 as before.
-- Interim board (before the deadline): the bot's score of your uploaded test outputs, test only, your last submission.
+- Interim board (before the deadline): the site's score of your uploaded test outputs, test only, your last submission.
 - Final board (after the deadline): our own runs of your last submission's agent, once on test and once on hidden. Score = mean over test + hidden, rescaled with A and the oracle on the same photos; a missing photo counts 0.
 - Uploaded test outputs only move the interim board. The final board doesn't use them.
 - Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
 - If a run fails because of our cluster (a node or GPU error), we run it again. A crash or timeout in your agent counts.
 
-**How does the bot keep the test answer key secret?**
+**How does the scoring workflow keep the test answer key secret?**
 - The key is in the repository only encrypted (`data/test/gt.json.enc`, AES-256). The passphrase is a repository secret that only the scoring workflow can read.
 - The workflow decrypts the key into its own temporary folder, scores, and comments with totals only: no per-photo numbers.
 - With 5 submissions per team, totals say very little about single photos. And the final board is our own run of your agent, on test and on 30 hidden photos nobody outside our team has seen.

@@ -211,8 +211,10 @@ def interim_markdown(teams, refs_doc):
     t = refs_doc["test"]
     n_test = refs_doc["n_test"]
     head = (f"Scorer {C.VERSION}. Updated {datetime.date.today().isoformat()}. "
-            f"**Interim board:** test only ({n_test} photos). Each row is the team's last "
-            "submission, scored by the submission bot on the team's own test outputs. After "
+            f"**Interim board:** test only ({n_test} photos). The live board is on the "
+            "[submission site](https://huggingface.co/spaces/wpghks7/selfdox); this page keeps "
+            "the reference rows. Each team row is its last submission, scored on the team's own "
+            "test outputs. After "
             "the deadline we run each team's last agent once on test and once on hidden for "
             "the final board. A missing photo counts 0. How to get on it: "
             "[`docs/participants.md`](docs/participants.md) §6.")

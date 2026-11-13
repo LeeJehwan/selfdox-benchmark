@@ -118,13 +118,13 @@ uv run python -m selfdox.view --gt data/dev/gt.json --sub outputs --results resu
 
 ## 6. What to hand in
 
-Each submission has two parts, and both come in one **Submission** issue:
+Each submission has two parts, and both go up together on the submission site:
 
 1. **Your agent folder**, in the [`agent_template/`](../agent_template/) layout:
    `requirements.txt` (pinned versions), `run.py` and anything they need. After the
    deadline we run the folder of your **last** submission ourselves (§7).
 2. **Your agent's outputs on the 170 test photos** (`outputs/` with `predictions.json` and
-   `images/`). The submission bot scores them for the interim board.
+   `images/`). The site scores them for the interim board.
 
 **Pack both** with
 
@@ -144,37 +144,38 @@ uv run python -m selfdox.submit --agent my_agent --team team7 \
 
 It writes two files:
 - `submission_team7.zip`: the agent folder, a `metadata.json` (team, models, tools,
-  decoding, the folder's sha256; `--contact` adds a contact, but the zip is attached to a
-  public issue) and your test predictions;
+  decoding, the folder's sha256; `--contact` adds a contact, but the file is public on the
+  submissions dataset) and your test predictions;
 - `test_outputs_team7.zip`: `predictions.json` and the edited images (JPEG files as they
   are, other formats saved as JPEG quality 92), about 100 MB.
 
-**Then open a Submission issue** on the benchmark repository:
-- attach `submission_team7.zip` (at most 25 MB);
-- upload `test_outputs_team7.zip` (at most 300 MB) as a release asset of a **public**
-  GitHub repository of yours (it is too big to attach; the bot can't read a private one) and
-  paste its link;
-- fill in team (letters, digits, spaces and `. ( ) - _`, up to 40 characters), models,
-  tools, temperature and seed. Contact is optional: the issue is public.
+**Then submit on the site**, <https://huggingface.co/spaces/wpghks7/selfdox>:
+- sign in with Hugging Face (a free account is enough);
+- enter your **team code**, the one the organizers gave your team;
+- add `submission_team7.zip` (at most 30 MB) and `test_outputs_team7.zip` (at most
+  300 MB) and press submit.
 
-**One GitHub account per team.** The first account that submits for a team name owns it;
-a submission for that name from another account is refused, and one account submits for
-one team only. If several of you want to submit, ask in a Question issue and we add your
-accounts to the team.
+Your upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`. The
+submission files are public there, as they were in issues, so do not put secrets in them.
 
-**The bot replies in about 10 minutes** with a comment: your score on the 0–100 board
-scale with its 95% interval, the raw score (mean image score), which submission this is
-(n/5), the agent's sha256 and the scorer version. It shows totals only, no per-photo
-numbers. Then it updates [`LEADERBOARD.md`](../LEADERBOARD.md). The bot never runs your
-code; it only reads the two zips, and it checks that the agent files match the sha256 in
-`metadata.json`.
+**Team codes.** Any member can submit; no single account owns a team. Each team has a
+code; any member can submit from their own Hugging Face account with it. The site shows
+the team name the code belongs to. The code itself is never published, only a proof that
+your account knows it. If you lose your code, ask in a Question issue.
 
-**At most 5 submissions per team, in total.** Only a submission the bot scored counts.
-One issue is one submission: to submit again, open a new issue. Editing an issue the bot
-already scored changes nothing; editing one it could not score (a broken link, a format
-error) makes it try again. Your last scored submission before the deadline is the one on
-the final board; after the deadline the bot refuses new submissions. Deadlines are announced
-in class and in the pinned issue.
+**The score appears in about 5 to 10 minutes.** A workflow checks new submissions every 5
+minutes: it verifies your team, applies the rules, scores, comments on your pull request
+with the totals (your score on the 0–100 board scale with its 95% interval, the raw score,
+which submission this is (n/5), the agent's sha256 and the scorer version), closes it and
+updates the leaderboard on the site. It shows totals only, no per-photo numbers. It never
+runs your code; it only reads the two zips, and it checks that the agent files match the
+sha256 in `metadata.json`.
+
+**At most 5 submissions per team, in total.** Only a scored submission counts; a rejected
+or failed one does not. To submit again, upload again. Your last scored submission before
+the deadline is the one on the final board; after the deadline the site refuses new
+submissions. If the scoring fails on our side for a submission made before the deadline,
+we score it again. The deadline is announced in class and in the pinned issue.
 
 **How we run your agent after the deadline.** Your last submission's agent folder (checked
 by its sha256) runs once on test and once on hidden in our environment, the same for every
@@ -234,7 +235,9 @@ verdict).
 | **95% interval** | Bootstrap over photos, on the same 0–100 scale. On 30 hidden photos it is about ±8 raw points, so smaller gaps there are noise. The ranking still follows the score; the intervals show how sure the order is |
 
 **Interim board (before the deadline):** test only. Each team's row is its last submission
-as the bot scored it from the uploaded test outputs. 0 and 100 are A and the oracle on the
+as the site scored it from the uploaded test outputs. The live board is on the
+[submission site](https://huggingface.co/spaces/wpghks7/selfdox); `LEADERBOARD.md` keeps the
+reference rows. 0 and 100 are A and the oracle on the
 170 test photos (11.7 and 97.5 raw under scorer 0.4). Reference agents A, B, E and the
 oracle are shown, not ranked.
 
@@ -252,7 +255,7 @@ false-safe rate over the board's photos (lower is better).
 ## 8. Questions, bugs, answer-key disputes
 
 Open an issue on the benchmark repository and pick a template: **Question**, **Bug in
-the benchmark**, **Answer-key dispute** (dev photos) or **Submission**. We answer within
+the benchmark**, **Answer-key dispute** (dev photos). Submissions go through the site, not issues. We answer within
 two working days; fixes get a new version in [`CHANGELOG.md`](../CHANGELOG.md) and all
 stored results are rescored. Common questions and known issues:
 [`FAQ.md`](FAQ.md).

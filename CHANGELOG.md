@@ -2,6 +2,15 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## v1.2 · submission site · 2026-11-13
+
+- **Submissions go through a site now:** <https://huggingface.co/spaces/wpghks7/selfdox>. Sign in with Hugging Face (a free account), enter your team code and upload `submission_<team>.zip` (at most 30 MB) and `test_outputs_<team>.zip` (at most 300 MB). The upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`; the files are public there, as they were in issues.
+- **Team codes:** each team gets a code from the organizers; any member can submit from their own Hugging Face account with it. The code is never published.
+- **Scoring every 5 minutes:** a GitHub workflow checks new submissions, applies the rules, scores, comments the totals on the pull request, closes it and updates the leaderboard on the site. A score appears about 5 to 10 minutes after the upload.
+- **Retired:** the Submission issue template, the issue bot (`score-submission.yml`) and the "one GitHub account per team" rule. `LEADERBOARD.md` keeps the reference rows and points to the site.
+- Rules, scorer and answer key are unchanged (scorer 0.4): 5 scored submissions per team, any open-weight models up to 4B, offline, no hand edits; final board = our runs of each team's newest scored agent on test + hidden.
+- `selfdox.submit`: the zip limit is 30 MB and the last message points to the site.
+
 ## v1.1 · scorer 0.4 · 2026-11-13
 
 - **Clue report R is by area, not by counting boxes.** Recall = how much of each answer-key clue the reported boxes cover (critical clues count double; `exif_gps` counts when reported). Precision = how much of the reported box area lies on a clue, with the key boxes dilated like the edit economy (10%, at least 8 px), so a small margin is free. R = their F1. Several small boxes over one clue score like one tight box; a full-photo box scores close to 0. Only boxes count for precision: on a photo whose only key clue is `exif_gps`, any reported box makes R 0. The IoU, coverage and area-ratio thresholds are gone. Weights are unchanged (65 / 15 / 20).

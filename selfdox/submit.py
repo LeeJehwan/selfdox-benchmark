@@ -14,16 +14,16 @@ Checks the agent folder the way the organizers will run it (docs/participants.md
   - --test-sub: validates your own outputs on data/test/images and also writes
     test_outputs_<team>.zip next to the submission zip: predictions.json and the edited
     images (JPEG files as they are, other formats saved as JPEG quality 92). The
-    submission bot scores it for the interim board.
+    site scores it for the interim board.
   - --model: each open-weight model the agent loads, as Hugging Face repo@revision, each
     at most 4B parameters (repeat for several; "none" if it uses none).
   - --weights: a weight file that is not on Hugging Face (e.g. an OCR detector), as
     "<https url>#sha256=<hex>" (repeat for several); we download and check it into
     {models} before the final run. Files under 50 MB may ship in the folder instead.
 Writes a zip with the agent folder, metadata.json (team, contact, models, tools, decoding,
-the folder's sha256) and test_predictions.json. Open a "Submission" issue on the benchmark
-repository: attach the zip, and paste a link to test_outputs_<team>.zip (upload it as a
-GitHub release asset; it is too big to attach). After the deadline we run the agent folder
+the folder's sha256) and test_predictions.json. Upload both files on the submission site,
+https://huggingface.co/spaces/wpghks7/selfdox (sign in with Hugging Face, enter your team
+code, add submission_<team>.zip and test_outputs_<team>.zip). After the deadline we run the agent folder
 of your last submission ourselves on test and hidden (docs/participants.md §6-7).
 """
 import argparse
@@ -43,7 +43,8 @@ from .schema import input_sizes, submission_errors
 
 MAX_FILE_MB = 50
 WEIGHTS_RE = re.compile(r"^https://\S+#sha256=[0-9a-f]{64}$")
-MAX_ZIP_MB = 25          # GitHub issue attachments
+SITE_URL = "https://huggingface.co/spaces/wpghks7/selfdox"
+MAX_ZIP_MB = 30          # the submission site's limit
 SKIP = {".git", "__pycache__", ".venv", "venv", "outputs", ".mypy_cache", ".pytest_cache"}
 
 
@@ -141,7 +142,7 @@ def main(argv=None):
     ap.add_argument("--agent", required=True, help="agent folder (agent_template layout)")
     ap.add_argument("--team", required=True)
     ap.add_argument("--contact", default="", help="how to reach you (optional; it goes into "
-                    "metadata.json, which is attached to a public issue)")
+                    "metadata.json, which is public on the submissions dataset)")
     ap.add_argument("--model", required=True, action="append",
                     help='an open-weight model the agent loads, at most 4B parameters (the '
                     'size it is published as), as Hugging Face repo@revision, e.g. '
@@ -153,7 +154,7 @@ def main(argv=None):
     ap.add_argument("--temperature", required=True)
     ap.add_argument("--seed", required=True)
     ap.add_argument("--test-sub", help="your agent's outputs on data/test/images: also "
-                    "writes test_outputs_<team>.zip for the submission bot")
+                    "writes test_outputs_<team>.zip for the submission site")
     ap.add_argument("--smoke", type=int, default=0, help="run the agent on N dev photos first")
     ap.add_argument("--models", help="folder to pass as {models} for --smoke")
     ap.add_argument("--out", help="zip to write (default: submission_<team>.zip)")
@@ -193,15 +194,14 @@ def main(argv=None):
     mb = out.stat().st_size / 2 ** 20
     print(f"{out} ({mb:.1f} MB), agent sha256 {meta['agent_sha256'][:12]}")
     if mb > MAX_ZIP_MB:
-        print(f"WARNING over {MAX_ZIP_MB} MB: GitHub won't attach it; share a link in the "
-              "Submission issue instead")
+        print(f"WARNING over {MAX_ZIP_MB} MB: the site rejects it; "
+              "make the agent folder smaller")
     if args.test_sub:
         outputs = pack_outputs(args.test_sub, out.with_name(f"test_outputs_{args.team}.zip"))
-        print(f"{outputs} ({outputs.stat().st_size / 2 ** 20:.0f} MB): upload it as a GitHub "
-              "release asset (e.g. gh release create outputs-1 " + outputs.name + ") and copy "
-              "its download link")
-    print("Next: open a 'Submission' issue on the benchmark repository, attach "
-          f"{out.name} and paste the test outputs link. The bot comments the score.")
+        print(f"{outputs} ({outputs.stat().st_size / 2 ** 20:.0f} MB): upload it on the "
+              "submission site too (limit 300 MB)")
+    print(f"Next: upload {out.name} and the test outputs zip on {SITE_URL} (sign in with "
+          "Hugging Face, enter your team code). The score appears in 5 to 10 minutes.")
     return 0
 
 

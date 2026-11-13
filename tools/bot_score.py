@@ -1,4 +1,9 @@
-"""The submission bot: score a team's uploaded test outputs for the interim board.
+"""Shared check and score functions used by webapp/queue.py (the submission site's scorer).
+
+The GitHub issue bot built on this module was retired in v1.2; what follows describes its
+original design and is kept for the functions it left behind.
+
+The submission bot: score a team's uploaded test outputs for the interim board.
 
 Runs in GitHub Actions on the public repository (.github/workflows/score-submission.yml)
 when a "Submission" issue is opened or edited, or by hand as a dry run. Two steps:

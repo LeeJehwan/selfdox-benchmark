@@ -1,6 +1,6 @@
 # SelfDox leaderboard
 
-Scorer 0.4. Updated 2026-11-13. **Interim board:** test only (170 photos). Each row is the team's last submission, scored by the submission bot on the team's own test outputs. After the deadline we run each team's last agent once on test and once on hidden for the final board. A missing photo counts 0. How to get on it: [`docs/participants.md`](docs/participants.md) §6.
+Scorer 0.4. Updated 2026-11-13. **Interim board:** test only (170 photos). The live board is on the [submission site](https://huggingface.co/spaces/wpghks7/selfdox); this page keeps the reference rows. Each team row is its last submission, scored on the team's own test outputs. After the deadline we run each team's last agent once on test and once on hidden for the final board. A missing photo counts 0. How to get on it: [`docs/participants.md`](docs/participants.md) §6.
 
 Score = the mean image score (“Raw”, each photo 0–100) rescaled so that **0 = doing nothing** (reference agent A) and **100 = the agent that knows the answer key** (the oracle), both on the same photos; clipped to 0–100. The ranking is the same as by Raw.
 

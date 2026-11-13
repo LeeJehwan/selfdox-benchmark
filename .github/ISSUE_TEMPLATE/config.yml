@@ -3,3 +3,6 @@ contact_links:
   - name: FAQ and known issues
     url: https://github.com/LeeJehwan/selfdox-benchmark/blob/main/docs/FAQ.md
     about: Many questions are answered here.
+  - name: Submit on the SelfDox site
+    url: https://huggingface.co/spaces/wpghks7/selfdox
+    about: Submissions go through the site, not through issues. Sign in with Hugging Face and use your team code.

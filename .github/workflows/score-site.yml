@@ -1,0 +1,55 @@
+# Scores submissions made on the SelfDox site (pull requests on the dataset
+# wpghks7/selfdox-submissions) with webapp/queue.py. Runs every 5 minutes and on demand.
+name: Score site submissions
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: score-site
+  cancel-in-progress: false
+
+jobs:
+  score:
+    if: github.repository == 'LeeJehwan/selfdox-benchmark'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      DATASET: wpghks7/selfdox-submissions
+    steps:
+      # actions pinned by commit; huggingface_hub and the rest come from uv.lock (group "site")
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86  # v5
+      - name: Install
+        run: uv sync --frozen --no-dev --group site
+      - name: Any open submission?
+        id: any
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: uv run --frozen --no-dev --group site python -m webapp.queue --dataset "$DATASET" --check-only >> "$GITHUB_OUTPUT"
+      - name: Decrypt the test key
+        if: steps.any.outputs.open != '0'
+        env:
+          TEST_GT_KEY: ${{ secrets.TEST_GT_KEY }}
+        run: >-
+          openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 200000 -salt
+          -in data/test/gt.json.enc -out "$RUNNER_TEMP/gt.json" -pass env:TEST_GT_KEY
+      - name: Score
+        if: steps.any.outputs.open != '0'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          TEAM_CODES: ${{ secrets.TEAM_CODES }}
+        run: >-
+          uv run --frozen --no-dev --group site python -m webapp.queue
+          --dataset "$DATASET" --gt "$RUNNER_TEMP/gt.json" --images data/test/images
+          --refs leaderboard/refs.json
+      - name: Remove the key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/gt.json"

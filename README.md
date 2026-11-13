@@ -43,7 +43,7 @@ Then replace `find_clues()` in `agent_template/run.py` with your detector. Or st
 | `docs/participants.md` | **The guide:** task, format, scoring, rules, what to hand in |
 | `docs/FAQ.md` | Common questions and known issues |
 | `LEADERBOARD.md` · `CHANGELOG.md` | Rankings and every change to the scorer or answer key |
-| `leaderboard/` · `.github/workflows/` | The submission bot's entries (`interim.json`), the 0/100 anchors (`refs.json`) and the scoring workflow |
+| `leaderboard/` · `.github/workflows/` | The 0/100 anchors (`refs.json`) and the workflow that scores submissions from the site |
 
 ## How you are scored, in short
 
@@ -82,15 +82,15 @@ uv run python -m selfdox.submit --agent my_agent --team <team> \
     --model "<hf repo>@<revision>" --temperature 0 --seed 0 --smoke 3 --test-sub <test outputs>
 ```
 
-1. Open a **Submission** issue: attach `submission_<team>.zip`, upload `test_outputs_<team>.zip` (at most 300 MB) as a release asset of a **public** GitHub repository and paste its link.
-2. The bot scores your test outputs in about 10 minutes, comments with your score (totals only) and updates [`LEADERBOARD.md`](LEADERBOARD.md): the interim board.
+1. Go to the [submission site](https://huggingface.co/spaces/wpghks7/selfdox), sign in with Hugging Face (a free account), enter your team code and upload `submission_<team>.zip` (at most 30 MB) and `test_outputs_<team>.zip` (at most 300 MB). The upload becomes a pull request on the dataset `wpghks7/selfdox-submissions`; the files are public there.
+2. A workflow checks new submissions every 5 minutes, scores your test outputs, comments with your score (totals only) on the pull request and updates the leaderboard on the site: the interim board. Expect it 5 to 10 minutes after the upload.
 3. After the deadline we run your last submission's agent ourselves, once on test and once on the 30 hidden photos: the final board.
 
-Only scored submissions count; one issue is one submission; one GitHub account submits for one team. Deadlines are announced in class and in the pinned issue.
+Only scored submissions count; at most 5 per team. Each team has a code from the organizers, and any member can submit with it from their own Hugging Face account. Deadlines are announced in class and in the pinned issue.
 
 ## Questions, bugs, answer-key disputes
 
-Open an issue and pick a template: **Question**, **Bug in the benchmark**, **Answer-key dispute** or **Submission**.
+Open an issue and pick a template: **Question**, **Bug in the benchmark**, or **Answer-key dispute**. Submissions go through the site, not issues.
 - We answer within two working days.
 - Fixes go into [`CHANGELOG.md`](CHANGELOG.md) with a new version, and stored results are rescored.
 - The dev answer key is a reviewed draft. If a clue is missing, boxed wrongly or marked wrongly, a dispute helps everyone.
