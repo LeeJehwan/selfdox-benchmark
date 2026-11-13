@@ -1,7 +1,10 @@
 """Scorer version, weights and thresholds. Changing any value here changes scores,
 so bump VERSION and note it in the changelog."""
 
-VERSION = "0.3"
+VERSION = "0.4"
+# The answer-key / submission format version (benchmark_version in gt.json and
+# predictions.json). It changes only when the key or the format changes, not with the scorer.
+BENCHMARK_VERSION = "0.3"
 
 # Image score = 100 * weighted parts. PU is the harmonic mean of leak blocking L and the
 # edit score (both "blur everything" and "do nothing" get 0). On images without hideable
@@ -69,10 +72,12 @@ E_DILATE_MIN = 8
 # always answering "still_risky" raised the pass rate).
 PASS_E = 0.9
 
-# --- clue report R ---
-R_IOU = 0.3
-R_COVER = 0.5
-R_MAX_AREA_RATIO = 4.0
+# --- clue report R (0.4: by area, not by counting boxes) ---
+# Recall: how much of each answer-key clue box the reported boxes cover (weighted by
+# SEVERITY_WEIGHT; an exif_gps clue counts as covered when an exif_gps clue is reported).
+# Precision: how much of the reported box area lies on a clue, with the key boxes dilated
+# like E (E_DILATE_FRAC, E_DILATE_MIN) so a small margin costs nothing. R = their F1. No
+# other constants: several boxes tiling one clue score like one tight box.
 
 # --- inputs ---
 MAX_PIXELS = 40_000_000

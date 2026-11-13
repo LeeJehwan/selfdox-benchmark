@@ -24,13 +24,14 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 
 ## Building your agent
 
-**May I tune prompts, thresholds or code on dev?** Yes. That is what dev is for. What we propose to forbid is training or fine-tuning model weights on benchmark photos, and editing outputs by hand (`docs/participants.md` §3).
+**May I tune prompts, thresholds or code on dev?** Yes. That is what dev is for. Not allowed: training or fine-tuning model weights, and editing outputs by hand (`docs/participants.md` §3).
 
 **Which models and tools may I use?**
-- The rule set is still marked "proposal" in `docs/participants.md` §3.
-- Today's version: the only LLM/VLM is Qwen3-VL-4B-Instruct (pinned revision, official GGUF/FP8 builds), plus classical tools and small non-generative models such as OCR, detectors and OpenCV inpainting.
-- The proposal adds an allow-list with a 1B-parameter cap.
-- If you are unsure about a tool, ask in a Question issue before you build on it.
+- Any open-weight model or models, each at most 4B parameters (Qwen3-VL-4B-Instruct, our agent E, is allowed). No fine-tuning. Offline: no web search, no online API.
+- Declare each model as Hugging Face `repo@revision` (`selfdox.submit --model`, once per model). We download exactly those for the final runs.
+- Classical tools such as OCR, detectors and blur or inpainting filters are fine.
+- The list may later narrow to specific models; that would be announced in the pinned issue.
+- If you are unsure about a model or tool, ask in a Question issue before you build on it.
 
 **My agent says `still_risky` on a photo it already cleaned. Why did that cost points?**
 - `still_risky` on a photo that is safe after your edit is an *unneeded warning*. It gets half the verdict points and no pass.
@@ -50,6 +51,14 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 - Blur with a margin of about a quarter of the box's short side.
 - The margin costs a little edit economy; leaving the landmark recognizable costs more.
 
+**How are my clue boxes scored (R)?**
+- By area, not by counting boxes (scorer 0.4).
+- Recall: how much of each answer-key clue your boxes cover (critical clues count double).
+- Precision: how much of your box area lies on a clue. A margin of about 10% around a clue (at least 8 px) is free.
+- R is the F1 of the two. Several small boxes over one sign score like one tight box; a box over the whole photo scores close to 0.
+- On a photo with no clue in the key, R is 1 only if you report nothing.
+- Only boxes count for precision. On a photo whose only key clue is `exif_gps` (no box), any box you report lies off the clues, so R is 0 there; report a box only for something you see. A clue without a box other than `exif_gps` counts neither way.
+
 **Do I have to report `exif_gps`?** Yes, when the input had GPS: report `{"bbox": null, "type": "exif_gps"}`. Saving the photo without metadata removes it. GPS left in the file scores the photo 0.
 
 **Can my agent import `selfdox`?**
@@ -59,17 +68,19 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 ## Running and submitting
 
 **How exactly will you run my agent?**
-- We use `tools/run_container.py --runtime venv`, which you have too.
+- After the deadline we run your last submission's agent folder once on test and once on hidden with `tools/run_container.py --runtime venv`, which you have too.
 - It creates a fresh Python 3.12 venv, installs your `requirements.txt`, copies the photos and runs `python run.py --input <photos> --output <folder>` (or your `selfdox_run.json` command).
 - Each run has one GPU, no network and a time limit. When the limit hits, the whole process group is stopped.
 - Run it yourself on dev to see what we will see.
+
+**Do I need to send a Docker image?** No. You send your agent folder; we run it in our environment, the same for every team: a fresh Python 3.12 venv with your pinned `requirements.txt`, the models you declared downloaded at their revision, one 24 GB GPU, offline, the same time limit. The lab cluster can't run Docker anyway. A Docker image by digest stays optional.
 
 **How do you cut the network?** The lab cluster doesn't allow containers or network namespaces, so:
 - a `sitecustomize.py` refuses every connection that isn't to localhost, in your agent and in every Python process it starts;
 - Hugging Face is set offline;
 - we read your code.
 
-Load weights from `{models}` or ship small ones in your folder (no file over 50 MB).
+Load weights from `{models}` or ship small ones in your folder (no file over 50 MB). Bigger weights that are not on Hugging Face (EasyOCR's detector, for instance): declare them with `selfdox.submit --weights "<https url>#sha256=<hex>"`, and we download and check them into `{models}`, under the URL's file name (`…/craft_mlt_25k.pth` → `{models}/craft_mlt_25k.pth`). Hugging Face models land in `{models}/<repo name>`. Turn the library's own downloads off (EasyOCR: `model_storage_directory=<models>`, `download_enabled=False`).
 
 **What if my agent is slow or crashes halfway?**
 - Write `predictions.json` as you go, replacing the file atomically (`agent_template/run.py` does this after every photo).
@@ -78,23 +89,31 @@ Load weights from `{models}` or ship small ones in your folder (no file over 50 
 
 **Time and compute budget?**
 - Hidden: 90 minutes for about 30 photos on one 24 GB GPU (about 180 s per photo). Test uses the same per-photo time.
-- A tighter budget (a mean of 120 s per photo) is proposed.
-- Report your model calls, tokens and seconds per photo in each prediction's optional `meta` field.
+- You may report your model calls, tokens and seconds per photo in each prediction's optional `meta` field.
 
-**How do I submit?** Run `uv run python -m selfdox.submit ... --smoke 3`, open a **Submission** issue and attach the zip. If it's over 25 MB, put a link in the issue instead. At most one submission per team per day (Korean time); a second one on the same day is not run and doesn't count.
+**How do I submit?**
+- Run your agent on `data/test/images`, then `uv run python -m selfdox.submit ... --smoke 3 --test-sub <outputs>`. It writes `submission_<team>.zip` (your agent folder) and `test_outputs_<team>.zip` (your test outputs).
+- Open a **Submission** issue: attach the submission zip, upload the test outputs zip (at most 300 MB) as a release asset of a **public** GitHub repository and paste its link. Contact is optional; the issue is public.
+- One GitHub account per team: the first account that submits for a team name owns it, and one account submits for one team. To submit from several accounts, ask in a Question issue.
+- The bot scores your test outputs in about 10 minutes and comments with the total score.
+- **At most 5 submissions per team, in total.** Only scored submissions count. One issue is one submission; open a new issue to submit again. Editing a scored issue changes nothing; editing one the bot could not score makes it try again.
 
 **What counts on the leaderboard?**
-- Only our own runs.
-- Score = the mean image score over test + hidden photos (the interim board before the deadline: test only); a missing photo counts 0.
-- Before the deadline each submission is run once on test (the interim board).
-- After the deadline your last submission is run once more on test and once on hidden. Those two runs make the final board.
+- The board score runs from 0 to 100: **0 = doing nothing** (agent A), **100 = the agent that knows the answer key** (the oracle), both on the board's photos. In between it is linear in the mean image score ("Raw"), so the order is the same as by Raw. Each photo is still scored 0–100 as before.
+- Interim board (before the deadline): the bot's score of your uploaded test outputs, test only, your last submission.
+- Final board (after the deadline): our own runs of your last submission's agent, once on test and once on hidden. Score = mean over test + hidden, rescaled with A and the oracle on the same photos; a missing photo counts 0.
+- Uploaded test outputs only move the interim board. The final board doesn't use them.
 - Even at temperature 0 a model can answer differently from run to run (vLLM batching); that is part of your agent's result.
 - If a run fails because of our cluster (a node or GPU error), we run it again. A crash or timeout in your agent counts.
-- Your own test predictions are a format check and a cross-check against our run.
+
+**How does the bot keep the test answer key secret?**
+- The key is in the repository only encrypted (`data/test/gt.json.enc`, AES-256). The passphrase is a repository secret that only the scoring workflow can read.
+- The workflow decrypts the key into its own temporary folder, scores, and comments with totals only: no per-photo numbers.
+- With 5 submissions per team, totals say very little about single photos. And the final board is our own run of your agent, on test and on 30 hidden photos nobody outside our team has seen.
 
 **How precise are the scores?**
-- On 170 test photos the standard error is about 1.7 points; on 30 hidden photos about 4.
-- The leaderboard shows 95% intervals, plus the paired difference to the next team. If that interval includes 0, the two are not separable. The ranking still follows the score; the intervals show how sure the order is.
+- On 170 test photos the standard error is about 1.7 raw points (about 2 on the 0–100 board scale); on 30 hidden photos about 4.
+- The leaderboard shows 95% intervals on the 0–100 scale. The final board also shows the paired difference to the next team; if that interval includes 0, the two are not separable. The ranking still follows the score; the intervals show how sure the order is.
 
 ## Known issues
 

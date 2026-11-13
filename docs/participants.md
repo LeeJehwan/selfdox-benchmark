@@ -48,28 +48,19 @@ uv run python -m selfdox.validate --sub outputs --inputs data/test/images
 
 ## 3. Rules
 
-> Status: **proposal, pending agreement in our team**. The model list below
-> is an example of what we propose; the final list will be announced with v1.0.
+Decided 2026-11-13. The model list may later narrow to specific models; that would be
+announced in the pinned issue.
 
 | Rule | Detail |
 |---|---|
-| Models | Only the allowed open models may be called, for example [`Qwen/Qwen3-VL-4B-Instruct`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct) at revision `ebb281ec70b05090aa6165b016eac8ec08e71b17` (or its official GGUF/FP8 builds). Full precision needs about 9 GB of GPU memory. |
-| No training | Weights stay as published: no fine-tuning, LoRA or distillation. Prompts, tools and the agent loop are yours. |
-| Other tools | Classical image tools and small non-generative models (OCR, face or text detectors, blur and inpainting filters) are fine. No other LLM or VLM, no web search, no online API. |
-| Offline | The agent must run with no network access. |
-| Disclosure | List the tools and the model build you used in your write-up. |
-
-**Proposed additions (2026-11-10, not agreed yet).** Today the rules leave open how much
-compute an agent may use, which extra models count as "small" and how test predictions
-are checked. We propose:
-
-| Rule | Proposal |
-|---|---|
-| Other models | Every model besides Qwen3-VL-4B at most **1B parameters**, from an allow-list published by a fixed date. Allowed: OCR and text detectors, LaMa-class (non-diffusion) inpainting, prompted detectors (Grounding DINO, OWL-ViT), CLIP-type embeddings. Not allowed: diffusion inpainting, VLM-based OCR (Florence-2, GOT-OCR), geolocation models. Public offline place-name data (gazetteers, road-name address lists) is allowed if you disclose it. |
-| Budget | The same per-photo time budget on test and hidden (for example a mean of 120 s per photo). Report the model calls, tokens and seconds per photo in the optional `meta` field of each prediction. |
-| Weights | We mount the official weights at `/models`. Any file over 50 MB in your image must match a hash on the allow-list. |
-| Decoding | State your temperature and seed. |
-| People and training | No hand edits of the outputs. No training or fine-tuning of model weights on benchmark photos, dev included. Tuning prompts, thresholds and code on dev is what dev is for. |
+| Models | Any open-weight model or models, **each at most 4B parameters** (the size the model is published as; [`Qwen/Qwen3-VL-4B-Instruct`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct), our agent E, is allowed). Declare each one as Hugging Face `repo@revision` when you submit; we download exactly those into `{models}` for the official runs. |
+| No training | Weights stay as published: no fine-tuning, LoRA or distillation. Prompts, tools, thresholds and the agent loop are yours, and tuning them on dev is what dev is for. |
+| Other tools | Classical image tools and libraries (OCR, detectors, blur and inpainting filters) are fine. Their weights come like the models': files under 50 MB may ship in your folder; bigger ones are declared as a public https URL with their sha256 (`--weights "<url>#sha256=<hex>"`), and we download and check them into `{models}`. Point the library at `{models}` and switch its own downloads off (EasyOCR: `model_storage_directory`, `download_enabled=False`). |
+| Offline | The agent runs with no network access: no web search, no online API. |
+| No hand edits | Your outputs come from your agent. Nobody edits them by hand. |
+| Pinned versions | `requirements.txt` pins every package version (`name==x.y.z`), so our run installs what you tested. |
+| Limits | One 24 GB GPU; 90 minutes for the 30 hidden photos (test: the same time per photo); **at most 5 submissions per team** in total (§6). |
+| Disclosure | State your temperature and seed, and list the tools you used. |
 
 ## 4. Data
 
@@ -94,10 +85,10 @@ and [`calibration.md`](calibration.md).
 | Part | Question | Weight |
 |---|---|---|
 | **PU** | Harmonic mean of **L** (share of answer-key clues you hid, critical ones count double) and the **edit score** `max(0, 1 − 3·(1 − E))`, where **E** is the share of the rest of the photo you left untouched: editing 10% too much costs 30% | 65% |
-| **R** | Did you report the right clue boxes? (F1) | 15% |
+| **R** | Did you box the clues? By area: how much of each answer-key clue your boxes cover (critical clues count double), and how much of your box area lies on a clue (with a small free margin). F1 of the two; `exif_gps` counts when you report it | 15% |
 | **V** | Is your verdict honest? A false `safe` also costs 10 points. When we marked a photo `cannot_hide` (the place itself is the subject), `cannot_hide` is the right answer even if you could blur parts of it | 20% |
 
-Three rules that decide most points:
+Four rules that decide most points:
 
 - **"Safe" is about critical clues and GPS.** A photo is safe after your edit when every
   hideable *critical* clue is hidden and no GPS is left. Supporting clues raise L but
@@ -108,6 +99,11 @@ Three rules that decide most points:
 - **Margins for scenes.** Landmarks, skylines and facades are judged on coarse
   structure that reaches past a tight box: blur them with a margin of about a quarter
   of the box's short side.
+- **Boxes are measured by area (scorer 0.4).** Several small boxes over one sign score
+  like one tight box around it; one box over the whole photo covers every clue but is
+  mostly not clue, so it scores close to 0. A margin of about 10% (at least 8 px) costs
+  nothing. Only boxes count for precision: on a photo whose only key clue is `exif_gps`,
+  any box you report is off the clues and R is 0 there.
 
 An image scores 0 if GPS is still in the file, the file hides another image (EXIF
 thumbnail, MPF, data after the end), has an orientation tag, has the wrong size, or its
@@ -122,64 +118,104 @@ uv run python -m selfdox.view --gt data/dev/gt.json --sub outputs --results resu
 
 ## 6. What to hand in
 
-1. **Test predictions:** your `outputs/` folder for the 170 test images, zipped. We
-   check its format and compare it with our own run of your agent on test (item 2);
-   the leaderboard uses our run.
-2. **Your agent folder**, in the [`agent_template/`](../agent_template/) layout:
-   `requirements.txt`, `run.py` and anything they need. We run it ourselves on the lab
-   cluster: each submission once on **test** for the interim board, and after the deadline
-   your last submission once more on **test** and once on **hidden** for the final board.
-   It runs in a fresh Python venv (the cluster has no Docker), with
-   `tools/run_container.py --runtime venv`:
-   - command: `python run.py --input <photos> --output <folder>`, or the list you put in
-     `selfdox_run.json`, e.g.
-     `{"command": ["python", "run_vlm.py", "--inputs", "{input}", "--out", "{output}",
-     "--model", "{models}/Qwen3-VL-4B-Instruct"]}`
-   - the venv gets your `requirements.txt` installed before the run; the run itself has
-     **no network**: Python cannot open any connection except to localhost (a
-     `sitecustomize.py` we put on `PYTHONPATH`, inherited by Python subprocesses; the
-     cluster does not allow network namespaces), Hugging Face is set offline, and we
-     read your code for anything that gets around it. The allowed weights are at
-     `{models}`
-   - your agent reads a copy of the photos and writes only to its output folder
-   - one GPU with 24 GB (RTX 3090 class)
-   - 90 minutes for the 30 hidden photos (test: the same per-photo time); then the whole
-     process group is stopped and whatever `predictions.json` holds is scored (write it
-     as you go, replacing the file atomically as `agents/e_qwen.py` does; no file means
-     every image scores 0)
-   - a problem with one prediction (GPS left, image missing, a box outside the photo)
-     scores that image 0; the others are scored as usual
-   - we record a hash of your folder, the GPU and your peak GPU memory
+Each submission has two parts, and both come in one **Submission** issue:
 
-   A Docker image (`agent_template/Dockerfile`) still works where Docker is available,
-   handed in by digest (`name@sha256:…`).
+1. **Your agent folder**, in the [`agent_template/`](../agent_template/) layout:
+   `requirements.txt` (pinned versions), `run.py` and anything they need. After the
+   deadline we run the folder of your **last** submission ourselves (§7).
+2. **Your agent's outputs on the 170 test photos** (`outputs/` with `predictions.json` and
+   `images/`). The submission bot scores them for the interim board.
 
-   Run it yourself exactly like this before you hand it in (the runner is in the
-   package; without `--python` it builds a fresh venv from your `requirements.txt`):
-
-   ```bash
-   uv run python -m tools.run_container --runtime venv --image my_agent --split dev --name try1
-   # -> runs/try1/dev/score.json, container.log, validate.txt
-   ```
-
-   The official runs use Python 3.12 on the lab cluster (NVIDIA driver 580 / CUDA 13.0,
-   one RTX A6000 or RTX 3090).
-3. A short write-up: the tools and model build, and how your agent decides the verdict.
-
-**How:** pack the folder (and, if you like, your own test predictions) with
+**Pack both** with
 
 ```bash
-uv run python -m selfdox.submit --agent my_agent --team team7 --contact you@example.com \
-    --model "Qwen/Qwen3-VL-4B-Instruct@ebb281e (bf16)" --tools "EasyOCR 1.7.2" \
-    --temperature 0 --seed 0 --smoke 3 [--test-sub outputs_test]
+uv run python -m selfdox.submit --agent my_agent --team team7 \
+    --model "Qwen/Qwen3-VL-4B-Instruct@ebb281ec70b05090aa6165b016eac8ec08e71b17" \
+    --tools "EasyOCR 1.7.2" --temperature 0 --seed 0 --smoke 3 --test-sub outputs_test
 ```
 
-It checks the folder, runs it on 3 dev photos the way we will, and writes
-`submission_team7.zip` with a `metadata.json`. Open a **Submission** issue on the
-benchmark repository and attach the zip (or a link, over 25 MB). At most one submission
-per team per day (Korean time, KST = UTC+9, by when the issue is opened); a second one on
-the same day is not run and doesn't count. Your last submission before the deadline is the
-one on the final board. Deadlines are announced in class and in the pinned issue.
+- `--model`: each open-weight model your agent loads, as Hugging Face `repo@revision`, each
+  at most 4B parameters. Repeat it for several models; `none` if you use none.
+- `--weights`: each weight file over 50 MB that is not on Hugging Face (an OCR detector, for
+  instance), as `"<https url>#sha256=<hex>"`. Repeat for several. It lands in `{models}`
+  under the URL's file name (the last part of the path).
+- `--smoke 3` runs the folder on 3 dev photos the way we will.
+- `--test-sub` validates your test outputs.
+
+It writes two files:
+- `submission_team7.zip`: the agent folder, a `metadata.json` (team, models, tools,
+  decoding, the folder's sha256; `--contact` adds a contact, but the zip is attached to a
+  public issue) and your test predictions;
+- `test_outputs_team7.zip`: `predictions.json` and the edited images (JPEG files as they
+  are, other formats saved as JPEG quality 92), about 100 MB.
+
+**Then open a Submission issue** on the benchmark repository:
+- attach `submission_team7.zip` (at most 25 MB);
+- upload `test_outputs_team7.zip` (at most 300 MB) as a release asset of a **public**
+  GitHub repository of yours (it is too big to attach; the bot can't read a private one) and
+  paste its link;
+- fill in team (letters, digits, spaces and `. ( ) - _`, up to 40 characters), models,
+  tools, temperature and seed. Contact is optional: the issue is public.
+
+**One GitHub account per team.** The first account that submits for a team name owns it;
+a submission for that name from another account is refused, and one account submits for
+one team only. If several of you want to submit, ask in a Question issue and we add your
+accounts to the team.
+
+**The bot replies in about 10 minutes** with a comment: your score on the 0–100 board
+scale with its 95% interval, the raw score (mean image score), which submission this is
+(n/5), the agent's sha256 and the scorer version. It shows totals only, no per-photo
+numbers. Then it updates [`LEADERBOARD.md`](../LEADERBOARD.md). The bot never runs your
+code; it only reads the two zips, and it checks that the agent files match the sha256 in
+`metadata.json`.
+
+**At most 5 submissions per team, in total.** Only a submission the bot scored counts.
+One issue is one submission: to submit again, open a new issue. Editing an issue the bot
+already scored changes nothing; editing one it could not score (a broken link, a format
+error) makes it try again. Your last scored submission before the deadline is the one on
+the final board; after the deadline the bot refuses new submissions. Deadlines are announced
+in class and in the pinned issue.
+
+**How we run your agent after the deadline.** Your last submission's agent folder (checked
+by its sha256) runs once on test and once on hidden in our environment, the same for every
+team: `tools/run_container.py --runtime venv` on the lab cluster (no Docker needed; the
+cluster can't run it):
+- the same node and Python 3.12 for every team (NVIDIA driver 580 / CUDA 13.0, one 24 GB
+  GPU, RTX A6000 or RTX 3090 class); a fresh venv with your `requirements.txt` installed;
+- command: `python run.py --input <photos> --output <folder>`, or the list you put in
+  `selfdox_run.json`, e.g.
+  `{"command": ["python", "run_vlm.py", "--inputs", "{input}", "--out", "{output}",
+  "--model", "{models}/Qwen3-VL-4B-Instruct"]}`;
+- the models you declared, downloaded at their revision into `{models}/<repo name>` (the
+  part after the slash, e.g. `{models}/Qwen3-VL-4B-Instruct`), and the weight files you
+  declared with `--weights`, checked against their sha256 and saved as
+  `{models}/<the URL's file name>` (e.g. `{models}/craft_mlt_25k.pth`); no file in your
+  folder may be over 50 MB, so bigger weights come from `{models}`;
+- **no network**: Python cannot open any connection except to localhost (a
+  `sitecustomize.py` we put on `PYTHONPATH`, inherited by Python subprocesses; the cluster
+  does not allow network namespaces), Hugging Face is set offline, and we read your code
+  for anything that gets around it;
+- your agent reads a copy of the photos and writes only to its output folder;
+- 90 minutes for the 30 hidden photos (test: the same time per photo); then the whole
+  process group is stopped and whatever `predictions.json` holds is scored (write it as
+  you go, replacing the file atomically as `agents/e_qwen.py` does; no file means every
+  image scores 0);
+- a problem with one prediction (GPS left, image missing, a box outside the photo) scores
+  that image 0; the others are scored as usual;
+- we record the folder's hash, the GPU and your peak GPU memory.
+
+Run it yourself exactly like this before you submit (the runner is in the package; without
+`--python` it builds a fresh venv from your `requirements.txt`):
+
+```bash
+uv run python -m tools.run_container --runtime venv --image my_agent --split dev --name try1
+# -> runs/try1/dev/score.json, container.log, validate.txt
+```
+
+A Docker image (`agent_template/Dockerfile`) is optional and still works where Docker is
+available, handed in by digest (`name@sha256:…`) from a public registry.
+
+Also send a short write-up: the tools and models, and how your agent decides the verdict.
 
 The template agent and our reference agents show the format:
 [`agent_template/run.py`](../agent_template/run.py) (classical tools),
@@ -190,31 +226,28 @@ verdict).
 
 | Number | Meaning |
 |---|---|
-| **SelfDox score** | Mean image score (0–100) on test + hidden (the interim board before the deadline: test only); missing images count 0 |
+| **SelfDox score (0–100)** | The mean image score ("Raw") rescaled between two reference agents scored on the same photos: **0 = doing nothing** (agent A) and **100 = the agent that knows the answer key** (the oracle). `100 · (Raw − A) / (oracle − A)`, clipped to 0–100. The ranking is the same as by Raw. Each photo is still scored 0–100 as in §5 |
+| **Raw** | Mean image score over the board's photos; a missing photo counts 0 |
 | **False-safe rate** | Of the images you called `safe`, the share that were not; shown with your number of `safe` verdicts |
-| **Pass rate** | Share of images with no hard fail, every hideable critical clue hidden, E ≥ 0.9 and the right verdict: `safe` when the photo is safe after your edit, `cannot_hide` when it can't be made safe. Warning on a photo you already made safe does not pass |
-| **Outcomes** | Per photo, the first that applies: **leak** (false `safe`, also on a photo we marked `cannot_hide`, or GPS left), **ruined** (other hard fail or E < 0.9), **cleared** (`safe`, truly safe, E ≥ 0.9), **correct warning**, **unneeded warning** (a warning on a photo that was already safe). Shown as counts and rates, also per photo group (needs an edit / leave alone / unhideable) |
-| **95% interval** | Bootstrap over photos. On 30 hidden photos it is about ±8 points, so smaller gaps there are noise. The ranking still follows the score; the intervals show how sure the order is |
+| **Pass rate** | Share of images with no hard fail, every hideable critical clue hidden, E ≥ 0.9 and the right verdict: `safe` when the photo is safe after your edit, `cannot_hide` when it can't be made safe. A warning on a photo you already made safe does not pass |
+| **Outcomes** | Per photo, the first that applies: **leak** (false `safe`, also on a photo we marked `cannot_hide`, or GPS left), **ruined** (other hard fail or E < 0.9), **cleared** (`safe`, truly safe, E ≥ 0.9), **correct warning**, **unneeded warning** (a warning on a photo that was already safe) |
+| **95% interval** | Bootstrap over photos, on the same 0–100 scale. On 30 hidden photos it is about ±8 raw points, so smaller gaps there are noise. The ranking still follows the score; the intervals show how sure the order is |
 
-Before the deadline we run each submission once on test, and the board shows that run
-(interim). After the deadline we run your last submission once more on test and once on
-hidden, and the final board uses those two runs. If a run fails because of our cluster (a
-node or GPU error), we run it again; a crash or timeout in your agent counts. If your agent
-answers differently from run to run, it is scored on the run it gives. Ties are broken by
-the false-safe rate over the board's photos (test on the interim board, test + hidden on the
-final board; lower is better).
+**Interim board (before the deadline):** test only. Each team's row is its last submission
+as the bot scored it from the uploaded test outputs. 0 and 100 are A and the oracle on the
+170 test photos (11.7 and 97.5 raw under scorer 0.4). Reference agents A, B, E and the
+oracle are shown, not ranked.
 
-*Proposal (not agreed yet):* rank only on runs we made ourselves; show the score with its
-interval, the cleared and leak rates, the per-group results, test and hidden separately,
-seconds, calls and tokens per photo and the peak GPU memory; and freeze the answer key
-before the final runs, after a dispute window on dev, with every change in the changelog.
+**Final board (after the deadline):** our own runs of your last submission's agent, once
+on test and once on hidden (§6). Score = mean over test + hidden, rescaled with A and the
+oracle on the same 200 photos. Next to each team: the paired difference to the team below
+with its 95% interval. Test outputs you upload only move the interim board; editing them by
+hand is against the rules, and the final board doesn't use them.
 
-Where: [`LEADERBOARD.md`](../LEADERBOARD.md), rebuilt after every batch of official runs.
-Reference agents A, B, E and the oracle are shown (not ranked) on the test photos. Next to
-each team: the paired difference to the team below with its 95% interval. Until the rules
-are agreed, the board applies the proposal above and ranks only our runs. Every official
-run is a single run (decided 2026-11-12), and the final board uses one test run and one
-hidden run of your last submission, made after the deadline (decided 2026-11-13).
+Every official run is a single run. If a run fails because of our cluster (a node or GPU
+error), we run it again; a crash or timeout in your agent counts. If your agent answers
+differently from run to run, it is scored on the run it gives. Ties are broken by the
+false-safe rate over the board's photos (lower is better).
 
 ## 8. Questions, bugs, answer-key disputes
 

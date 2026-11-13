@@ -2,6 +2,22 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## v1.1 · scorer 0.4 · 2026-11-13
+
+- **Clue report R is by area, not by counting boxes.** Recall = how much of each answer-key clue the reported boxes cover (critical clues count double; `exif_gps` counts when reported). Precision = how much of the reported box area lies on a clue, with the key boxes dilated like the edit economy (10%, at least 8 px), so a small margin is free. R = their F1. Several small boxes over one clue score like one tight box; a full-photo box scores close to 0. Only boxes count for precision: on a photo whose only key clue is `exif_gps`, any reported box makes R 0. The IoU, coverage and area-ratio thresholds are gone. Weights are unchanged (65 / 15 / 20).
+- **Every stored result was rescored.** Test: E 63.6 → 65.0, B 22.2 → 22.3, A 11.7 and the oracle 97.5 unchanged. Dev: E 60.5 → 62.8. Scores from scorer 0.3 are not comparable.
+- **Leaderboard on a 0–100 scale:** 0 = agent A (does nothing), 100 = the oracle (knows the key), both on the board's own photos; `100 · (Raw − A) / (oracle − A)`, clipped. The raw mean is shown next to it, and the ranking is the same. Per-photo scores are unchanged. Interim board (test): A = 11.7, oracle = 97.5 raw; E = 62.2.
+- **Submission bot:** a Submission issue now carries the agent zip and a link to your test outputs. A GitHub workflow scores the outputs in about 10 minutes, comments with totals only (0–100 score and interval, raw score, n/5, agent sha256, scorer version) and updates `LEADERBOARD.md`. The test key is in the repository only encrypted.
+- **`selfdox.submit`:** `--model` can be given several times (one per model, `repo@revision`); `--weights "<url>#sha256=<hex>"` declares a weight file that is not on Hugging Face (we download it into `{models}`); `--contact` is optional; `--test-sub` also writes `test_outputs_<team>.zip` for the bot.
+- `predictions.json` keeps `"benchmark_version": "0.3"`: the answer key and the format did not change.
+
+## Rules · 2026-11-13 (v1.1)
+
+- **Submissions:** at most 5 per team in total; only scored submissions count, and one issue is one submission. Your last submission before the deadline is the one on the final board; after the deadline the bot refuses new ones. This replaces "one per team per day".
+- **One GitHub account per team:** the first account that submits for a team name owns it, and one account submits for one team; to submit from several accounts, ask in a Question issue. Contact in the Submission issue is optional (the issue is public).
+- **Models:** any open-weight model or models, each at most 4B parameters, declared as Hugging Face `repo@revision`; no fine-tuning; offline. The list may later narrow to specific models (pinned issue). `requirements.txt` pins its versions.
+- **Interim board:** the bot's score of your uploaded test outputs (was: our run of each submission on test). The final board is unchanged: our own runs of your last submission's agent, once on test and once on hidden, after the deadline.
+
 ## Rules · 2026-11-13
 
 - **Final runs and failures:** before the deadline each submission is run once on test (interim board). After the deadline each team's last submission is run once on test and once on hidden, and the final board uses those two runs. A run that fails because of our cluster (a node or GPU error) is run again; a crash or timeout in the agent counts. No score changes.

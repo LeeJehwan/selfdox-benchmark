@@ -43,13 +43,14 @@ Then replace `find_clues()` in `agent_template/run.py` with your detector. Or st
 | `docs/participants.md` | **The guide:** task, format, scoring, rules, what to hand in |
 | `docs/FAQ.md` | Common questions and known issues |
 | `LEADERBOARD.md` · `CHANGELOG.md` | Rankings and every change to the scorer or answer key |
+| `leaderboard/` · `.github/workflows/` | The submission bot's entries (`interim.json`), the 0/100 anchors (`refs.json`) and the scoring workflow |
 
 ## How you are scored, in short
 
 | Part | Question | Weight |
 |---|---|---|
 | **PU** | Did you hide the clues (L), and leave the rest of the photo alone (edit score from E)? Over-editing costs three times its share. | 65% |
-| **R** | Did you report the right boxes? | 15% |
+| **R** | Did you box the clues? By area: how much of each clue your boxes cover, and how much of your boxes is clue. | 15% |
 | **V** | Is your verdict right? A false `safe` costs another 10 points. | 20% |
 
 These score 0 for a photo:
@@ -66,17 +67,26 @@ Next to the score you get the **pass rate** and what each photo means to a user:
 
 Details: [`docs/participants.md`](docs/participants.md) §5.
 
+On the leaderboard the mean over photos is shown on a **0–100 scale: 0 = doing nothing, 100 = the agent that knows the answer key** (reference agents A and the oracle on the same photos). The order is the same as by the raw mean.
+
 ## Get on the leaderboard
+
+Rules: any open-weight model(s), each at most 4B parameters; no fine-tuning; offline; no hand edits; pinned `requirements.txt`; 90 minutes for the 30 hidden photos on one 24 GB GPU; **at most 5 submissions per team**. Full list: [`docs/participants.md`](docs/participants.md) §3.
 
 ```bash
 # run your agent exactly as we will: a fresh venv, offline, on a copy of the photos
 uv run python -m tools.run_container --runtime venv --image my_agent --split dev --name try1
-# pack it: checks the folder, runs it on 3 dev photos, adds your metadata
-uv run python -m selfdox.submit --agent my_agent --team <team> --contact <email> \
-    --model "<model build or none>" --temperature 0 --seed 0 --smoke 3
+# run it on the test photos, then pack: checks the folder, runs it on 3 dev photos,
+# writes submission_<team>.zip (agent + metadata) and test_outputs_<team>.zip
+uv run python -m selfdox.submit --agent my_agent --team <team> \
+    --model "<hf repo>@<revision>" --temperature 0 --seed 0 --smoke 3 --test-sub <test outputs>
 ```
 
-Open a **Submission** issue and attach the zip, at most once per team per day (Korean time; a second one that day is not run and doesn't count). We run each submission once on test, and after the deadline your last submission once more on test and once on hidden for the final board. Only those runs go on [`LEADERBOARD.md`](LEADERBOARD.md). Deadlines are announced in class and in the pinned issue.
+1. Open a **Submission** issue: attach `submission_<team>.zip`, upload `test_outputs_<team>.zip` (at most 300 MB) as a release asset of a **public** GitHub repository and paste its link.
+2. The bot scores your test outputs in about 10 minutes, comments with your score (totals only) and updates [`LEADERBOARD.md`](LEADERBOARD.md): the interim board.
+3. After the deadline we run your last submission's agent ourselves, once on test and once on the 30 hidden photos: the final board.
+
+Only scored submissions count; one issue is one submission; one GitHub account submits for one team. Deadlines are announced in class and in the pinned issue.
 
 ## Questions, bugs, answer-key disputes
 
@@ -89,8 +99,8 @@ Open an issue and pick a template: **Question**, **Bug in the benchmark**, **Ans
 
 | | |
 |---|---|
-| Release | v1.0 (data and code) |
-| Scorer | 0.3. Write `"benchmark_version": "0.3"` in `predictions.json`. |
+| Release | v1.1 (scorer 0.4; data unchanged since v1.0) |
+| Scorer | 0.4. `predictions.json` still says `"benchmark_version": "0.3"` (the answer-key format version). |
 | Answer key | dev draft of 2026-11-10: 377 clues; people are still checking them (see `docs/dataset_card.md`) |
 | Official runs | Python 3.12 venv on a lab GPU cluster: NVIDIA driver 580 / CUDA 13.0, one RTX A6000 or RTX 3090, no network |
 

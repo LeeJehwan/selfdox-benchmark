@@ -3,6 +3,7 @@ runs/
 view/
 results*.json
 submission_*.zip
+test_outputs_*.zip
 .venv/
 __pycache__/
 *.pyc

@@ -1,8 +1,21 @@
-# SelfDox Benchmark Design (v1.0 draft)
+# SelfDox Benchmark Design (v1.1 draft)
 
-Status: **v1.0 draft**. The scorer (`selfdox/`), the full data pipeline and the split tools are in place; the 300-photo answer key is in human review (Claude's first pass is filled in). Text thresholds come from an offline OCR calibration and the non-text threshold from a VLM judge ([`calibration.md`](calibration.md)). For participants: [`participants.md`](participants.md). For the data: [`dataset_card.md`](dataset_card.md).
+Status: **v1.1 draft** (scorer 0.4). The scorer (`selfdox/`), the full data pipeline and the split tools are in place; the 300-photo answer key is in human review (Claude's first pass is filled in). Text thresholds come from an offline OCR calibration and the non-text threshold from a VLM judge ([`calibration.md`](calibration.md)). For participants: [`participants.md`](participants.md). For the data: [`dataset_card.md`](dataset_card.md).
 
 ## 1. Changes
+
+### Scorer 0.4, the 0–100 board and the submission bot (v1.1)
+
+Every stored result was rescored (`tools/rescore.py --recompute-r`: R recomputed from each submission's `predictions.json`, the clue rows and E kept; spot-checked against scoring the images again: identical on every photo checked). Why: the team's review of the talk deck (2026-11-13): count-based R was hard to explain and its thresholds had no clear basis.
+
+| Rule | v1.0 (scorer 0.3) | v1.1 (scorer 0.4) | Effect (test, 170 photos) |
+|---|---|---|---|
+| Clue report R | F1 of **counted** matches: IoU ≥ 0.3, or GT coverage ≥ 0.5 with predicted area ≤ 4× GT, greedy one-to-one | F1 **by area** (§7.2): recall = how much of each key clue the reported boxes cover, precision = how much of the reported area lies on a clue (key boxes dilated like E). No thresholds | E's mean R 0.52 → 0.62, score 63.6 → **65.0**; A 11.7, oracle 97.5 unchanged; B 22.2 → 22.3. A false box on an exif-only photo now costs all its precision (E on `exif_only` 96.3 → 94.1) |
+| Leaderboard score | mean image score | the same mean **rescaled to 0–100**: 0 = agent A, 100 = the oracle, on the board's own photos (§7.5); per-photo scores unchanged | E on the interim board: **62.2** (56.8–67.4); B 12.4 |
+| Submissions | one per team per day (Korean time) | **at most 5 per team in total**; only scored ones count | |
+| Interim board | our run of each submission on test | the **submission bot** scores the team's uploaded test outputs (§10); totals only | results in minutes, no cluster time per submission |
+| Final board | our runs of the last submission on test + hidden | unchanged | |
+| Models | only Qwen3-VL-4B (proposal: other models ≤ 1B from an allow-list) | **any open-weight model(s), each ≤ 4B parameters**, declared as `repo@revision` (§2.1) | |
 
 ### Scorer 0.3 (2026-11-10)
 
@@ -53,43 +66,27 @@ Any hiding method is allowed (blur, pixelate, fill, inpaint, fake text). The sco
 
 ### 2.1 Rules for agents
 
-> Status: proposal, pending team agreement. The model choice and size are open for discussion.
+Decided 2026-11-13. The model list may later narrow to specific models (announced in the pinned issue).
 
 | Rule | Detail |
 |---|---|
-| One model | The only LLM/VLM an agent may call is [`Qwen/Qwen3-VL-4B-Instruct`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct) (4.4B, Apache-2.0), revision `ebb281ec70b05090aa6165b016eac8ec08e71b17` |
-| Quantized builds | The official builds of the same model are allowed: [`-GGUF`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct-GGUF) (`1cd86afb9a95c410a6038ab3b40d8b578c892266`) and [`-FP8`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct-FP8) (`fefbb44cbcce8d1bb7e20b920b94f77432b3446d`). Full precision needs about 9 GB of GPU memory (fits a free Colab T4); 4-bit GGUF about 3 GB |
-| No training | Weights stay as published: no fine-tuning, LoRA or distillation. Prompts, tool use and the agent loop are the team's to design |
-| Other tools | Classical image tools and small non-generative models (OCR, face or text detectors, blur/inpainting filters) are allowed. No other LLM or VLM, no web search or online APIs |
-| Offline | The agent must run without network access (the Docker re-run in the verify step has `network_mode: none`) |
-| Disclosure | Each submission lists the tools and the model build it used |
+| Models | Any open-weight model or models, **each at most 4B parameters** (the size the model is published as; [`Qwen/Qwen3-VL-4B-Instruct`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct), agent E, is allowed). Each one is declared as Hugging Face `repo@revision` (`selfdox.submit --model`, repeatable); the organizers download exactly those into `/models` for the final runs |
+| No training | Weights stay as published: no fine-tuning, LoRA or distillation. Prompts, tool use, thresholds and the agent loop are the team's to design and may be tuned on dev |
+| Other tools | Classical image tools and libraries (OCR, detectors, blur and inpainting filters) are allowed; weight files over 50 MB that are not on Hugging Face are declared as `<https url>#sha256=<hex>` (`selfdox.submit --weights`) and downloaded by the organizers into `{models}` |
+| Offline | The agent runs without network access: no web search, no online API (§10) |
+| No hand edits | Outputs come from the agent |
+| Pinned versions | `requirements.txt` pins every package version; the official runs install it into a fresh venv |
+| Limits | One 24 GB GPU; 90 minutes for the 30 hidden photos, the same time per photo on test; at most 5 submissions per team in total |
+| Disclosure | Each submission states its temperature and seed and lists its tools |
 
-Why one small model: it keeps the field fair and cheap to run, and memorized web photos give little advantage because the task is to hide given clues, not to guess the location.
+Why a size cap rather than one model: teams can pick the model that suits their pipeline, while the field stays fair and cheap to run on one GPU. Memorized web photos give little advantage because the task is to hide given clues, not to guess the location. This rule replaces the 2026-11-10 proposal (Qwen3-VL-4B as the only VLM, every other model ≤ 1B from an allow-list).
 
-#### Proposed additions (2026-11-10 review; not agreed yet)
-
-The rules above leave gaps a team could use (details and numbers in the maintainers' practicality review of 2026-11-10). They also contradict each other: §2 allows any hiding method, inpainting included, while "small non-generative models" rules out learned inpainting. Proposal:
-
-| Gap | Proposal |
+| Gap found in the 2026-11-10 review | How it is handled |
 |---|---|
-| Test predictions are made by the teams and never checked | **Decided (2026-11-10):** organizers re-run every team's agent folder on test too, in a venv on the lab cluster (`run_container.py --runtime venv`, §10); the handed-in test predictions are a format check |
-| No call, token or time budget on test; hidden allows 180 s per photo (about 40× agent E) | One budget for test and hidden, e.g. a mean of 120 s per photo; calls and tokens per photo reported (`meta` in `predictions.json`) |
-| "Small non-generative model" is undefined | Every model besides Qwen3-VL-4B at most 1B parameters, and an allow-list published by a fixed date (below) |
-| Weights can't be checked | Images handed in by digest (`name@sha256:…`), not tag; the official weights mounted by the organizers at `/models`; every file over 50 MB in the image must match a hash on the allow-list |
-| Which run counts | **Decided (2026-11-12, 2026-11-13):** every official run is a single run. Before the deadline each submission is run once on test (interim board); after the deadline each team's last submission is run once on test and once on hidden, and those two runs make the final board. A run that fails on our side (node or GPU error) is run again; a crash or timeout in the agent counts. Teams state temperature and seed. Greedy decoding is not fully repeatable under vLLM batching, and that variation is part of the agent's result |
-| People in the loop | No hand edits of outputs; no training or tuning of any model on benchmark photos (dev included) |
-
-| Tool | Proposed | Note |
-|---|---|---|
-| Classical image tools (blur, pixelate, fill, OpenCV inpainting) | allowed | no model |
-| Learned inpainting, LaMa class (non-diffusion, ≤ 1B) | allowed | only fills regions the agent chose |
-| Diffusion or other generative inpainting | not allowed | a second generative model |
-| OCR and text detectors (Apple Vision, EasyOCR, PaddleOCR, Tesseract) | allowed | |
-| VLM-based OCR (Florence-2, GOT-OCR, PaddleOCR-VL …) | not allowed | another VLM |
-| Prompted detectors (Grounding DINO, OWL-ViT, YOLO-World) | allowed, ≤ 1B | boxes only |
-| CLIP-type embeddings | allowed, ≤ 1B | open: also for "is this a landmark?" |
-| Geolocation models (GeoCLIP, StreetCLIP …) | not allowed | they do the attacker's task |
-| Offline place-name data (public gazetteers, road-name address lists) | allowed if public and disclosed | open: size limit |
+| Test predictions are made by the teams | The interim board scores the teams' own test outputs (the bot, §10); the final board uses only the organizers' runs of each team's last agent on test **and** hidden. Hand-edited outputs move only the interim board |
+| Which run counts | Every official run is a single run (2026-11-12, 2026-11-13). A run that fails on our side (node or GPU error) is run again; a crash or timeout in the agent counts. Greedy decoding is not fully repeatable under vLLM batching, and that variation is part of the agent's result |
+| Weights can't be checked | No file over 50 MB in the team's folder; bigger weights come from `{models}`: the organizers download the declared `repo@revision` models and the declared weight files, checked against their sha256 |
+| No budget on test | The same time per photo on test and hidden; calls, tokens and seconds per photo may be reported in `meta` |
 
 ## 3. Submission format
 
@@ -209,12 +206,22 @@ For each line of a hideable GT clue (`selfdox/neutralize.py`):
 | **E** Edit economy | Share of pixels **outside** the dilated hideable GT boxes that are unchanged. Changed = luma or 2×2 chroma moved > 24, or local SSIM < 0.7, or SSIM at ¼ scale < 0.9 | in PU |
 | **E_score** Edit score | `max(0, 1 − 3·(1 − E))` (`E_PENALTY` = 3): each share of the photo edited outside the boxes costs three times its size, so E = 0.9 is worth 0.7 and editing a third of the photo is worth 0 | in PU |
 | **PU** Protection–utility | `2·L·E_score / (L + E_score)`. On images with no hideable clues, PU is replaced by E_score alone | **65%** |
-| **R** Clue report | F1 of reported boxes vs all GT clues. Match: IoU ≥ 0.3, or GT coverage ≥ 0.5 with predicted area ≤ 4× GT area. `exif_gps` matches by type. Greedy one-to-one. No GT clues: 1 if nothing is reported, else 0 | **15%** |
+| **R** Clue report | F1 **by area** (scorer 0.4) of the reported boxes against all GT clues, hideable or not; formula below. No GT clues: 1 if nothing is reported, else 0 | **15%** |
 | **V** Verdict honesty | Points from the table below, multiplied by L on images with hideable clues (honesty counts only as far as the agent protected the photo) | **20%** |
 
 ```
 S = 100 · (0.65·PU + 0.15·R + 0.20·V) − 10·[false-safe],   clipped to [0, 100]
 ```
+
+The clue report, with U = the union of the reported boxes (pixels), w_g = the severity weight of GT clue g (critical 2, supporting 1) and D = the union of the GT boxes dilated like E (10% of each side, at least 8 px):
+
+```
+recall    = Σ_g w_g · |g ∩ U| / |g|  /  Σ_g w_g        (exif_gps: 1 if a clue of that type is reported, else 0)
+precision = |U ∩ D| / |U|                              (1 when no box is reported)
+R         = 2 · precision · recall / (precision + recall)
+```
+
+So several small boxes over one sign score like one tight box, duplicates cost nothing, a margin inside the dilation is free, and a full-photo box gets a precision equal to the clue's share of the photo. No other constants (`selfdox/metrics.py` `report_area`).
 
 On photos whose true state is `unhideable` and that have no hideable clue (e.g. the landmark or skyline is the whole picture), the verdict is the task, so the weights become `S = 100 · (0.20·E_score + 0.15·R + 0.65·V) − 10·[false-safe]`. Doing nothing and answering `safe` there scores at most 10; answering `cannot_hide` scores at least 85.
 
@@ -243,7 +250,7 @@ On images with hideable clues the points are multiplied by L, so a true `still_r
 
 | Number | Definition |
 |---|---|
-| **SelfDox score** | Mean image score |
+| **SelfDox score** | Mean image score ("Raw"). The leaderboard shows it on a 0–100 scale between two reference agents on the board's own photos: `100 · (Raw − S_A) / (S_O − S_A)`, clipped to [0, 100], where S_A is agent A (do nothing) and S_O the oracle (knows the key). Interim board: test, S_A = 11.7, S_O = 97.5 (scorer 0.4); final board: test + hidden. Linear, so the ranking is the raw ranking; intervals and the paired difference are rescaled the same way (`tools/leaderboard.py`) |
 | **False-Safe Rate** (headline) | Of the images where the agent said `safe`, the share whose true state is not `safe`, shown with the number of `safe` verdicts |
 | **Pass rate** | Share of images that *pass*: no hard fail, every hideable critical clue neutralized, E ≥ 0.9 (`PASS_E`) and the right verdict for the true state (`safe` on a safe photo, `cannot_hide` on an unhideable one; scorer 0.3). Reported next to the score; it does not change it |
 | **pass^k** | With k runs of the same agent (`selfdox.score --sub run1 --sub run2 ...`): the share of images that pass in all k runs, plus the score mean ± standard deviation over runs. Teams can use it on their own repeated runs; the leaderboard uses one run per split |
@@ -261,13 +268,15 @@ On images with hideable clues the points are multiplied by L, so a true `still_r
 | Invert, mirror or shift the text | Alignment search in §7.1 |
 | Lower the contrast | Correlation is contrast-invariant |
 | Hide the photo in a thumbnail, MPF or trailer | Hard fail |
-| Report full-frame boxes | Area cap in R matching |
+| Report full-frame boxes | R precision is by area: a full-frame box is mostly not clue |
+| Report many tiny or duplicate boxes | R works on the union of the boxes, so counts don't matter |
 | Tune on the test set | Test GT stays hidden |
-| Tune on the test set through the interim board | **Decided (2026-11-13):** at most one submission per team per day (Korean time; a second one that day is not run and doesn't count), so the interim board gives at most one test score a day; the hidden photos, which no board shows before the deadline, show whether a gain carries over |
+| Tune on the test set through the interim board | At most 5 scored submissions per team in total, and the bot reports totals only (no per-photo numbers). The hidden photos, which no board shows before the deadline, show whether a gain carries over |
+| Read the test key from the bot | The key is stored encrypted (`data/test/gt.json.enc`); the passphrase is a repository secret only the scoring workflow reads; the workflow never runs submitted code and comments totals only |
 | Always answer `still_risky` (under 0.2 the pass rate went *up*: 0.613 → 0.633 for E) | Since 0.3 a pass needs the right verdict, and the cleared rate is reported next to it |
 | Blur widely to be sure (E blurred 14% of the photo on average) | Since 0.3 the edit score charges three times the over-edited share |
 | Answer `safe` on a landmark photo the key boxes as hideable | Since 0.3 a person's `cannot_hide` sets the true state |
-| Hand-edit the test predictions | **Decided (2026-11-10):** organizers re-run every agent folder on test (§2.1) |
+| Hand-edit the test outputs | Against the rules, and it moves only the interim board: the final board is the organizers' runs of each team's last agent on test and hidden (§2.1) |
 | Resubmit the same agent to re-roll a run | **Decided (2026-11-13):** the final board uses one test run and one hidden run of each team's last submission, both made after the deadline |
 
 ## 8. Reference agents
@@ -280,7 +289,7 @@ On images with hideable clues the points are multiplied by L, so a true `still_r
 | **D** `agents/d_ocr_blur.py` | Blurs every EasyOCR text box | Text-only agent |
 | **E** `agents/e_qwen.py` | Qwen3-VL-4B (pinned revision, vLLM, offline) under the team rules (§2.1): find clues (0–1000 boxes), blur each hideable one (σ = 0.35 × short side), re-check the edited photo up to twice, then `cannot_hide` if an unhideable critical clue was seen, `still_risky` if the last check still found something, else `safe`. Free decoding with a lenient JSON parse: with a `{"clues": [...]}` schema constraint the 4B model answered an empty list on every probe photo | Sets the bar Phase 3 teams should beat; doubles as the model example `agent_template/run_vlm.py` |
 
-v1.0 reference results on dev and test: [`results_v1.md`](results_v1.md). The 20-photo pilot results stay in the maintainers' repository.
+Reference results on dev and test (scorer 0.4): [`results_v1.md`](results_v1.md). The 20-photo pilot results stay in the maintainers' repository.
 
 ## 9. Open questions
 
@@ -290,7 +299,7 @@ v1.0 reference results on dev and test: [`results_v1.md`](results_v1.md). The 20
 4. Severity weights (2/1) and the false-safe penalty (10)
 5. `R` on `no_clue` images: is 0 for reporting any clue too strict?
 6. GT completeness: a real clue we missed costs the agent precision in R. Proposal: dispute window on the dev set, then GT fixes in the changelog
-7. ~~Test images or containers~~ (resolved): both. Test images are handed out without their key; for the ~30 hidden phone photos, and for test too, we run each team's agent ourselves (§10).
+7. ~~Test images or containers~~ (resolved): both. Test images are handed out without their key, and the bot scores the teams' test outputs for the interim board; for the final board we run each team's last agent ourselves on test and the ~30 hidden phone photos (§10).
 8. Optional geo-attack report (Qwen on the lab server): format and when to run it
 
 ## 10. Splits and Phase 3 operation
@@ -304,4 +313,8 @@ v1.0 reference results on dev and test: [`results_v1.md`](results_v1.md). The 20
 
 `tools/split.py` keeps each Commons author in one split and stratifies dev and test by category and GPS-in-file. Hidden photos come in through `tools/intake_phone.py` (GPS from EXIF, the same baking, ids `kr_09xx`).
 
-Teams hand in test predictions and their agent folder (`participants.md`). The lab cluster has neither Apptainer nor docker access, so `tools/run_container.py --runtime venv` runs the folder in a fresh venv (its `requirements.txt` installed) on **test and hidden**: a copy of the photos as input, the network cut with `unshare -rn` where the node allows it; the lab cluster does not (Ubuntu 24.04 AppArmor blocks unprivileged user namespaces; checked 2026-11-10), so there a `sitecustomize.py` on `PYTHONPATH` refuses every non-loopback connection and DNS lookup in the agent and its Python subprocesses (recorded in `score.json` as the isolation used; the code is read for anything that gets around it), one GPU, and a wall-clock limit that kills the whole process group. The ranked numbers come from these runs; a team's own test predictions are a format check and a cross-check. Docker (`--network none`, read-only mounts, CPU/memory limits) and Apptainer images still work where those runtimes exist. Only a missing or malformed `predictions.json` fails a run (every image 0); a problem with one prediction (GPS left, missing image, a box outside the photo) zeroes that image only. `score.json` records the image digest, GPU and peak GPU memory; `--repeat k` runs the container k times and adds the multi-run summary (a repeatability check for your own runs; official runs are single runs, and the leaderboard refuses repeated runs).
+Teams hand in their agent folder and their own test outputs in one Submission issue (`participants.md` §6), at most 5 times per team.
+
+**Interim board: the submission bot.** `.github/workflows/score-submission.yml` in the public repository runs `tools/bot_score.py` when a Submission issue is opened or edited (or by hand, `workflow_dispatch`, for dry runs). It checks the rules first (`leaderboard/settings.json`: the deadline, and which GitHub accounts may submit for a team name; otherwise the first account that submits for a name owns it, and one account submits for one team; at most 5 scored submissions per team). It downloads the agent zip and the test-outputs zip (https from GitHub only; storage hosts only as redirect targets; size and time caps), recomputes the agent folder's sha256 from the zip's members and refuses a mismatch with `metadata.json`, unzips the outputs safely (no absolute paths or `..`, only `predictions.json` and `images/`, a total size cap), validates the outputs against the 170 test photos, decrypts the test key (`data/test/gt.json.enc`, AES-256-CBC with PBKDF2 via `openssl`; the passphrase is the repository secret `TEST_GT_KEY`) into the runner's temporary folder, scores, and comments with totals only: the 0–100 score with its 95% interval, the raw score, the submission count n/5, the agent's sha256 (from its `metadata.json`) and the scorer version. Scoring writes nothing; a separate publish step fetches the latest board, checks the rules again on it, appends the entry to `leaderboard/interim.json`, rebuilds `LEADERBOARD.md` (`tools/leaderboard.py`; the 0/100 anchors and reference rows come from `leaderboard/refs.json`, aggregates only), pushes (retrying from a fresh fetch if the push is refused), and only then posts the comment, so a shown score is always a counted one. Runs for different issues go in parallel. Text from the submission is quoted in code spans in the comment. It never runs submitted code and never prints the key.
+
+**Final board: our runs.** After the deadline each team's last submission's agent folder (checked by its sha256) runs once on test and once on hidden, with the declared models downloaded at their revision into `/models`. The lab cluster has neither Apptainer nor docker access, so `tools/run_container.py --runtime venv` runs the folder in a fresh venv (its pinned `requirements.txt` installed): a copy of the photos as input, the network cut with `unshare -rn` where the node allows it; the lab cluster does not (Ubuntu 24.04 AppArmor blocks unprivileged user namespaces; checked 2026-11-10), so there a `sitecustomize.py` on `PYTHONPATH` refuses every non-loopback connection and DNS lookup in the agent and its Python subprocesses (recorded in `score.json` as the isolation used; the code is read for anything that gets around it), one GPU, and a wall-clock limit that kills the whole process group. The final board comes from these runs only; a team's uploaded test outputs count only on the interim board. Docker (`--network none`, read-only mounts, CPU/memory limits) and Apptainer images still work where those runtimes exist. Only a missing or malformed `predictions.json` fails a run (every image 0); a problem with one prediction (GPS left, missing image, a box outside the photo) zeroes that image only. `score.json` records the image digest, GPU and peak GPU memory; `--repeat k` runs the container k times and adds the multi-run summary (a repeatability check for your own runs; official runs are single runs, and the leaderboard refuses repeated runs).

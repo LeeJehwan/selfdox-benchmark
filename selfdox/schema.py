@@ -74,6 +74,9 @@ GT_WARNINGS = {
         "an agent that reports the landmark gets no R credit for it)",
     "clue_category_no_box":
         "a clue category, but no clue has a box, so the photo scores like a no-clue photo",
+    "safe_with_stuck_clue":
+        "expected verdict safe, but a boxed clue is critical and not hideable: either the "
+        "place is the subject (expected cannot_hide) or the clue can be hidden",
 }
 
 
@@ -86,6 +89,9 @@ def image_warnings(im):
         out.append("cannot_hide_no_stuck_clue")
     if im.get("category") in CLUE_CATEGORIES and not px:
         out.append("clue_category_no_box")
+    if im.get("expected_verdict") == "safe" and \
+            any(c["severity"] == "critical" and not c["hideable"] for c in px):
+        out.append("safe_with_stuck_clue")
     return out
 
 
@@ -160,8 +166,9 @@ def submission_problems(sub_dir, sizes):
     def bad(k, iid, msg):
         problems.setdefault(iid, []).append(f"predictions[{k}] ({iid}): {msg}")
 
-    if doc["benchmark_version"] != C.VERSION:
-        warnings.append(f"benchmark_version {doc['benchmark_version']!r} != scorer {C.VERSION!r}")
+    if doc["benchmark_version"] != C.BENCHMARK_VERSION:
+        warnings.append(f"benchmark_version {doc['benchmark_version']!r} != "
+                        f"{C.BENCHMARK_VERSION!r}")
     for k, pr in enumerate(doc["predictions"]):
         iid = pr["id"]
         if iid in seen:

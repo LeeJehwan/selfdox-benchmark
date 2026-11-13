@@ -155,44 +155,66 @@ def edit_economy(orig, edited, gt_boxes):
     return 1.0 - float((changed_mask(orig, edited) & outside).sum()) / n
 
 
-def _iou_cover(p, g):
-    px, py, pw, ph = p
-    gx, gy, gw, gh = g
-    iw = max(0.0, min(px + pw, gx + gw) - max(px, gx))
-    ih = max(0.0, min(py + ph, gy + gh) - max(py, gy))
-    inter = iw * ih
-    union = pw * ph + gw * gh - inter
-    return (inter / union if union else 0.0), (inter / (gw * gh) if gw * gh else 0.0)
+def _px(box, W, H):
+    """The pixels a box [x, y, w, h] covers, as (x0, y0, x1, y1) clipped to the photo."""
+    x, y, w, h = box
+    x0, y0 = max(0, int(np.floor(x))), max(0, int(np.floor(y)))
+    x1, y1 = min(W, int(np.ceil(x + w))), min(H, int(np.ceil(y + h)))
+    return x0, y0, max(x0, x1), max(y0, y1)
 
 
-def report_f1(pred_clues, gt_clues):
-    """F1 of reported clue boxes vs all GT clues, greedy one-to-one matching."""
+def _reported_mask(pred_clues, W, H):
+    mask = np.zeros((H, W), bool)
+    for p in pred_clues:
+        if p.get("bbox") is not None:
+            x0, y0, x1, y1 = _px(p["bbox"], W, H)
+            mask[y0:y1, x0:x1] = True
+    return mask
+
+
+def _cover(mask, box, W, H):
+    """Share of a box's pixels inside mask (None for a box with no pixels in the photo)."""
+    x0, y0, x1, y1 = _px(box, W, H)
+    area = (x1 - x0) * (y1 - y0)
+    return float(mask[y0:y1, x0:x1].sum()) / area if area else None
+
+
+def clue_coverage(pred_clues, gt_clue, W, H):
+    """Share of one answer-key clue box covered by the union of the reported boxes."""
+    return _cover(_reported_mask(pred_clues or [], W, H), gt_clue["bbox"], W, H) or 0.0
+
+
+def report_area(pred_clues, gt_clues, W, H):
+    """Clue report R (scorer 0.4), by area: F1 of
+    recall    = severity-weighted mean over key clues of the share of the clue's box covered
+                by the union of the reported boxes (a key clue without a box, exif_gps,
+                counts 1 when a clue of its type is reported, else 0), and
+    precision = share of the union of reported boxes that lies on the key clue boxes,
+                dilated like the edit economy (E_DILATE_FRAC, E_DILATE_MIN).
+    A photo with no key clues scores 1 if nothing is reported, else 0. With no reported box
+    precision is 1 (nothing wrong was boxed), so only exif_gps matches can earn points."""
+    pred_clues = pred_clues or []
     if not gt_clues:
         return 1.0 if not pred_clues else 0.0
-    pairs = []
-    for i, p in enumerate(pred_clues):
-        for j, g in enumerate(gt_clues):
-            if g.get("bbox") is None:
-                if p.get("type") == g.get("type"):
-                    pairs.append((1.0, i, j))
-                continue
-            if p.get("bbox") is None:
-                continue
-            iou, cover = _iou_cover(p["bbox"], g["bbox"])
-            small_enough = p["bbox"][2] * p["bbox"][3] <= \
-                C.R_MAX_AREA_RATIO * g["bbox"][2] * g["bbox"][3]
-            if iou >= C.R_IOU or (cover >= C.R_COVER and small_enough):
-                pairs.append((iou, i, j))
-    used_p, used_g = set(), set()
-    for _, i, j in sorted(pairs, key=lambda t: -t[0]):
-        if i not in used_p and j not in used_g:
-            used_p.add(i)
-            used_g.add(j)
-    tp = len(used_p)
-    if tp == 0:
-        return 0.0
-    precision, recall = tp / len(pred_clues), tp / len(gt_clues)
-    return 2 * precision * recall / (precision + recall)
+    reported = _reported_mask(pred_clues, W, H)
+    got = total = 0.0
+    for g in gt_clues:
+        w = C.SEVERITY_WEIGHT.get(g.get("severity"), 1.0)
+        if g.get("bbox") is None:
+            got += w * any(p.get("type") == g.get("type") for p in pred_clues)
+            total += w
+            continue
+        share = _cover(reported, g["bbox"], W, H)
+        if share is not None:
+            got, total = got + w * share, total + w
+    recall = got / total if total else 0.0
+    n_reported = int(reported.sum())
+    if n_reported:
+        on_clue = _box_mask((H, W), [g["bbox"] for g in gt_clues if g.get("bbox") is not None])
+        precision = float((reported & on_clue).sum()) / n_reported
+    else:
+        precision = 1.0
+    return 2 * precision * recall / (precision + recall) if precision + recall else 0.0
 
 
 _VERDICT = {
@@ -253,13 +275,13 @@ def _score_image(gt, orig, pred, sub_dir):
                           "lines": c.get("lines")})
     # only regions the agent is expected to edit are excluded from E
     E = edit_economy(orig, edited, [c["bbox"] for c in pixel_clues if c["hideable"]])
-    R = report_f1(pred.get("clues") or [], gt["clues"])
+    R = report_area(pred.get("clues") or [], gt["clues"], orig.shape[1], orig.shape[0])
     return combine(gt, clue_rows, E, R, verdict, gps_left, fails)
 
 
 def combine(gt, clue_rows, E, R, verdict, gps_left=False, fails=()):
     """The image score from what was measured on the edited photo: one row per pixel clue
-    (with `neutralized`), edit economy E and clue report F1 R. Pure, so stored results can
+    (with `neutralized`), edit economy E and clue report R. Pure, so stored results can
     be rescored when only the scoring rules change (rescore())."""
     base = dict(id=gt["id"], category=gt.get("category", ""))
     hideable = [r for r in clue_rows if r["hideable"]]

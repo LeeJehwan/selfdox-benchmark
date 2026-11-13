@@ -52,7 +52,7 @@ def main(argv=None):
         img.save(out / rel, "PNG")
         preds.append({"id": im["id"], "clues": clues, "edited_image": rel, "verdict": verdict})
     (out / "predictions.json").write_text(json.dumps(
-        {"agent_name": "oracle", "benchmark_version": C.VERSION, "predictions": preds},
+        {"agent_name": "oracle", "benchmark_version": C.BENCHMARK_VERSION, "predictions": preds},
         ensure_ascii=False, indent=1))
     print(f"{len(preds)} photos -> {out}")
 

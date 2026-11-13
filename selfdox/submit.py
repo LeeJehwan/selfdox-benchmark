@@ -1,8 +1,8 @@
 """Check and pack a Phase 3 submission.
 
     python -m selfdox.submit --agent my_agent --team team7 --contact you@example.com \
-        --model "Qwen/Qwen3-VL-4B-Instruct@ebb281e (bf16)" --tools "EasyOCR 1.7.2" \
-        --temperature 0 --seed 0 [--test-sub outputs_test] [--smoke 3] [--out submission.zip]
+        --model "Qwen/Qwen3-VL-4B-Instruct@ebb281e" [--model ...] --tools "EasyOCR 1.7.2" \
+        --temperature 0 --seed 0 --test-sub outputs_test [--smoke 3] [--out submission.zip]
 
 Checks the agent folder the way the organizers will run it (docs/participants.md §6):
   - it has run.py or a selfdox_run.json command, and a requirements.txt
@@ -11,15 +11,26 @@ Checks the agent folder the way the organizers will run it (docs/participants.md
     environment, Python-level network block, a copy of N dev photos) using this Python,
     then validates the output. It does not install requirements.txt; run it from a venv
     where they are installed.
-  - --test-sub: validates your own test predictions against data/test/images; only
-    predictions.json goes into the zip (we run your agent on test ourselves).
-Writes a zip with the agent folder, metadata.json (team, contact, model build, tools,
-decoding, the folder's sha256) and test_predictions.json. Attach it to a "Submission"
-issue on the benchmark repository.
+  - --test-sub: validates your own outputs on data/test/images and also writes
+    test_outputs_<team>.zip next to the submission zip: predictions.json and the edited
+    images (JPEG files as they are, other formats saved as JPEG quality 92). The
+    submission bot scores it for the interim board.
+  - --model: each open-weight model the agent loads, as Hugging Face repo@revision, each
+    at most 4B parameters (repeat for several; "none" if it uses none).
+  - --weights: a weight file that is not on Hugging Face (e.g. an OCR detector), as
+    "<https url>#sha256=<hex>" (repeat for several); we download and check it into
+    {models} before the final run. Files under 50 MB may ship in the folder instead.
+Writes a zip with the agent folder, metadata.json (team, contact, models, tools, decoding,
+the folder's sha256) and test_predictions.json. Open a "Submission" issue on the benchmark
+repository: attach the zip, and paste a link to test_outputs_<team>.zip (upload it as a
+GitHub release asset; it is too big to attach). After the deadline we run the agent folder
+of your last submission ourselves on test and hidden (docs/participants.md §6-7).
 """
 import argparse
 import datetime
+import io
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -31,6 +42,7 @@ from . import config as C
 from .schema import input_sizes, submission_errors
 
 MAX_FILE_MB = 50
+WEIGHTS_RE = re.compile(r"^https://\S+#sha256=[0-9a-f]{64}$")
 MAX_ZIP_MB = 25          # GitHub issue attachments
 SKIP = {".git", "__pycache__", ".venv", "venv", "outputs", ".mypy_cache", ".pytest_cache"}
 
@@ -83,22 +95,65 @@ def smoke(folder, n, dev_images="data/dev/images", models=None):
         return submission_errors(out, input_sizes(tmp / "input"))
 
 
+def pack_outputs(sub_dir, out):
+    """test_outputs zip for the bot: predictions.json with every edited_image pointing to
+    images/<id>.jpg, and those images (JPEG kept as is, anything else saved as JPEG q92)."""
+    from PIL import Image
+
+    from .io import safe_join
+    sub_dir = Path(sub_dir)
+    doc = json.loads((sub_dir / "predictions.json").read_text())
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_STORED) as z:
+        for p in doc["predictions"]:
+            src = safe_join(sub_dir, p["edited_image"])
+            if src is None or not src.is_file():
+                raise SystemExit(f"{p['id']}: edited_image {p['edited_image']!r} is not a file "
+                                 "inside the outputs folder")
+            name = f"images/{p['id']}.jpg"
+            if src.suffix.lower() in (".jpg", ".jpeg"):
+                z.write(src, name)
+            else:
+                buf = io.BytesIO()
+                Image.open(src).convert("RGB").save(buf, "JPEG", quality=92)
+                z.writestr(name, buf.getvalue())
+            p["edited_image"] = name
+        z.writestr("predictions.json", json.dumps(doc, ensure_ascii=False, indent=1))
+    return out
+
+
 def tree_sha256(folder):
-    from tools.run_container import tree_digest
-    return tree_digest(folder)["sha256_tree"]
+    """sha256 of exactly the files that go into the zip, computed the way
+    tools.run_container.tree_digest does it, so the digest of the unpacked agent/ folder
+    is the same (an outputs/ folder, left out of the zip, does not change it)."""
+    import hashlib
+    h, root = hashlib.sha256(), Path(folder)
+    for p in agent_files(root):
+        h.update(str(p.relative_to(root)).encode() + b"\0")
+        with p.open("rb") as f:
+            for block in iter(lambda: f.read(1 << 20), b""):
+                h.update(block)
+        h.update(b"\0")
+    return h.hexdigest()
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Check and pack a SelfDox submission.")
     ap.add_argument("--agent", required=True, help="agent folder (agent_template layout)")
     ap.add_argument("--team", required=True)
-    ap.add_argument("--contact", required=True, help="an email we can reach you at")
-    ap.add_argument("--model", required=True, help='model build, e.g. "Qwen/Qwen3-VL-4B-'
-                    'Instruct@ebb281e (bf16)", or "none"')
+    ap.add_argument("--contact", default="", help="how to reach you (optional; it goes into "
+                    "metadata.json, which is attached to a public issue)")
+    ap.add_argument("--model", required=True, action="append",
+                    help='an open-weight model the agent loads, at most 4B parameters (the '
+                    'size it is published as), as Hugging Face repo@revision, e.g. '
+                    '"Qwen/Qwen3-VL-4B-Instruct@ebb281e"; repeat for several, or "none"')
+    ap.add_argument("--weights", action="append", default=[],
+                    help='a weight file not on Hugging Face, "<https url>#sha256=<hex>" '
+                    "(repeat for several); we download it into {models} for the final run")
     ap.add_argument("--tools", default="", help="other tools and models, with versions")
     ap.add_argument("--temperature", required=True)
     ap.add_argument("--seed", required=True)
-    ap.add_argument("--test-sub", help="your own outputs on data/test/images (optional)")
+    ap.add_argument("--test-sub", help="your agent's outputs on data/test/images: also "
+                    "writes test_outputs_<team>.zip for the submission bot")
     ap.add_argument("--smoke", type=int, default=0, help="run the agent on N dev photos first")
     ap.add_argument("--models", help="folder to pass as {models} for --smoke")
     ap.add_argument("--out", help="zip to write (default: submission_<team>.zip)")
@@ -112,6 +167,9 @@ def main(argv=None):
         e, w = submission_errors(args.test_sub, input_sizes("data/test/images"))
         errors += [f"test predictions: {x}" for x in e]
         warnings += [f"test predictions: {x}" for x in w]
+    for w in args.weights:
+        if not WEIGHTS_RE.match(w):
+            errors.append(f"--weights {w!r}: write it as <https url>#sha256=<64 hex digits>")
     for w in warnings:
         print(f"WARNING {w}")
     for e in errors:
@@ -119,7 +177,9 @@ def main(argv=None):
     if errors:
         print(f"\n{len(errors)} error(s); nothing written.")
         return 1
-    meta = {"team": args.team, "contact": args.contact, "model": args.model,
+    models = [m for m in args.model if m.strip().lower() != "none"]
+    meta = {"team": args.team, "contact": args.contact, "models": models,
+            "weights": args.weights,
             "tools": args.tools, "temperature": args.temperature, "seed": args.seed,
             "agent_sha256": tree_sha256(args.agent), "scorer_version": C.VERSION,
             "packed_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
@@ -135,7 +195,13 @@ def main(argv=None):
     if mb > MAX_ZIP_MB:
         print(f"WARNING over {MAX_ZIP_MB} MB: GitHub won't attach it; share a link in the "
               "Submission issue instead")
-    print("Next: open a 'Submission' issue on the benchmark repository and attach this zip.")
+    if args.test_sub:
+        outputs = pack_outputs(args.test_sub, out.with_name(f"test_outputs_{args.team}.zip"))
+        print(f"{outputs} ({outputs.stat().st_size / 2 ** 20:.0f} MB): upload it as a GitHub "
+              "release asset (e.g. gh release create outputs-1 " + outputs.name + ") and copy "
+              "its download link")
+    print("Next: open a 'Submission' issue on the benchmark repository, attach "
+          f"{out.name} and paste the test outputs link. The bot comments the score.")
     return 0
 
 

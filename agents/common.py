@@ -38,7 +38,7 @@ def run(name, agent, argv=None, fmt="png"):
         preds.append({"id": p.stem, "clues": clues, "edited_image": rel, "verdict": verdict})
         print(f"{p.stem}: {len(clues)} clue(s), {verdict}")
     (out / "predictions.json").write_text(json.dumps(
-        {"agent_name": name, "benchmark_version": C.VERSION, "predictions": preds},
+        {"agent_name": name, "benchmark_version": C.BENCHMARK_VERSION, "predictions": preds},
         ensure_ascii=False, indent=1))
 
 

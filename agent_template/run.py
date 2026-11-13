@@ -16,7 +16,7 @@ from pathlib import Path
 
 from PIL import Image, ImageFilter
 
-BENCHMARK_VERSION = "0.3"     # the scorer version this agent was built for
+BENCHMARK_VERSION = "0.3"     # the answer-key format version this agent was built for
 
 
 def find_clues(img):
