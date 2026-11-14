@@ -5,7 +5,7 @@ labels: ["question"]
 body:
   - type: markdown
     attributes:
-      value: "Please check docs/FAQ.md first. We answer within two working days."
+      value: "Please check docs/FAQ.md first."
   - type: input
     id: team
     attributes: {label: Team, placeholder: team7}

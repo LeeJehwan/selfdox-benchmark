@@ -103,11 +103,12 @@ Checks from `selfdox.schema.gt_warnings` (also printed by `tools.build_gt`). The
 |---|---|---|
 | expected verdict cannot_hide, but no boxed clue is critical and not hideable: the key should box what can't be hidden (scorer 0.3 follows the expected verdict, but an agent that reports the landmark gets no R credit for it) | 0 |  |
 | a clue category, but no clue has a box, so the photo scores like a no-clue photo | 0 |  |
+| expected verdict safe, but a boxed clue is critical and not hideable: either the place is the subject (expected cannot_hide) or the clue can be hidden | 0 |  |
 | clues not checked by a person yet | 1059 / 1059 |  |
 
 ## Claude suggestion vs. human review
 
-Not available yet: the human review has not finished. The page keeps Claude's first-pass suggestion next to each final answer, so this section will report how often reviewers changed it.
+Not available yet: the human review has not finished. The page keeps Claude's first-pass suggestion next to each final answer.
 
 ## Known limits
 

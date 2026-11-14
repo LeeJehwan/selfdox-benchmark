@@ -2,6 +2,12 @@
 
 Every change that can move a score bumps the scorer version or the answer-key date, and every stored result is rescored (`tools/rescore.py`). Scores from different versions are not comparable.
 
+## v1.2.2 · docs · 2026-11-14
+
+- **Announcements:** further announcements will be posted in the pinned issue. Removed the forward-looking notes on deadlines, a later narrowing of the model list and answer times.
+- The Qwen reference agent's docstrings (`agents/e_qwen.py`, `agent_template/run_vlm.py`) follow the published rules (`docs/participants.md` §3), not "proposed" ones; no behaviour change.
+- Scorer, answer key, data and format are unchanged (scorer 0.4).
+
 ## v1.2.1 · time limit · 2026-11-14
 
 - **One final run, one clock:** after the deadline we run your last agent once, offline, on all 200 photos (test 170 + hidden 30) in one folder, within 90 minutes on one 24 GB GPU, about 27 s per photo (was: 90 minutes for the 30 hidden photos and the same time per photo on test, in two runs). Your agent picks the order; photos without an output when time runs out score 0. The one output is scored per split by photo id, and only this run ranks.

@@ -48,9 +48,6 @@ uv run python -m selfdox.validate --sub outputs --inputs data/test/images
 
 ## 3. Rules
 
-Decided 2026-11-13. The model list may later narrow to specific models; that would be
-announced in the pinned issue.
-
 | Rule | Detail |
 |---|---|
 | Models | Any open-weight model or models, **each at most 4B parameters** (the size the model is published as; [`Qwen/Qwen3-VL-4B-Instruct`](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct), our agent E, is allowed). Declare each one as Hugging Face `repo@revision` when you submit; we download exactly those into `{models}` for the official runs. |
@@ -175,7 +172,7 @@ sha256 in `metadata.json`.
 or failed one does not. To submit again, upload again. Your last scored submission before
 the deadline is the one on the final board; after the deadline the site refuses new
 submissions. If the scoring fails on our side for a submission made before the deadline,
-we score it again. The deadline is announced in class and in the pinned issue.
+we score it again. Further announcements will be posted in the pinned issue.
 
 **How we run your agent after the deadline.** Your last submission's agent folder (checked
 by its sha256) runs **once, offline, on all 200 photos** (test 170 + hidden 30, in one
@@ -259,8 +256,8 @@ false-safe rate over the board's photos (lower is better).
 ## 8. Questions, bugs, answer-key disputes
 
 Open an issue on the benchmark repository and pick a template: **Question**, **Bug in
-the benchmark**, **Answer-key dispute** (dev photos). Submissions go through the site, not issues. We answer within
-two working days; fixes get a new version in [`CHANGELOG.md`](../CHANGELOG.md) and all
+the benchmark**, **Answer-key dispute** (dev photos). Submissions go through the site, not issues. We answer in the
+issue; fixes get a new version in [`CHANGELOG.md`](../CHANGELOG.md) and all
 stored results are rescored. Common questions and known issues:
 [`FAQ.md`](FAQ.md).
 

@@ -1,7 +1,7 @@
 """Reference agent E: Qwen3-VL-4B finds location clues, blurs them, re-checks, gives a verdict.
 
-Runs under the proposed Phase 3 rules (docs/design.md §2.1): the only model is
-Qwen/Qwen3-VL-4B-Instruct at a pinned revision, run offline with vLLM, no fine-tuning.
+Follows the rules in docs/participants.md §3: Qwen/Qwen3-VL-4B-Instruct (≤ 4B) at a pinned
+revision, run offline with vLLM, no fine-tuning.
 bf16 needs about 9 GB of GPU memory (one RTX 3090 is enough).
 
     HF_HUB_OFFLINE=1 python agents/e_qwen.py --input <images> --output outputs/E_qwen

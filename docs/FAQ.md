@@ -1,6 +1,6 @@
 # SelfDox FAQ
 
-Can't find your answer here? Open a **Question** issue. We answer within two working days and add common questions to this page.
+Can't find your answer here? Open a **Question** issue; common questions are added to this page.
 
 ## Data
 
@@ -30,7 +30,6 @@ Can't find your answer here? Open a **Question** issue. We answer within two wor
 - Any open-weight model or models, each at most 4B parameters (Qwen3-VL-4B-Instruct, our agent E, is allowed). No fine-tuning. Offline: no web search, no online API.
 - Declare each model as Hugging Face `repo@revision` (`selfdox.submit --model`, once per model). We download exactly those for the final run.
 - Classical tools such as OCR, detectors and blur or inpainting filters are fine.
-- The list may later narrow to specific models; that would be announced in the pinned issue.
 - If you are unsure about a model or tool, ask in a Question issue before you build on it.
 
 **My agent says `still_risky` on a photo it already cleaned. Why did that cost points?**

@@ -21,7 +21,7 @@ Verified on 2026-10-29 (scripts in `tools/`):
 
 | Source | Finding | Use |
 |---|---|---|
-| Flickr API | Non-commercial key is free (no Pro needed), but needs an account; ~30% of Commons candidates are already Flickr imports | Optional later, for more SNS-style shots |
+| Flickr API | Non-commercial key is free (no Pro needed), but needs an account; ~30% of Commons candidates are already Flickr imports | Not used |
 | Openverse | Anonymous API throttles after 2 requests, max 240 results, no GPS | Not used |
 | OSV-5M | CC BY-SA 4.0, open; only 616 Korean images in test, mostly rural dash-cam views | Not used |
 | KoreaGEO Bench | On HF as `wangxiaonan-hf/KoreaGEO`, gated (manual approval), license "other" | Ask the authors; taxonomy reference |

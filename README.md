@@ -88,12 +88,12 @@ uv run python -m selfdox.submit --agent my_agent --team <team> \
 
 Rehearse under the limit: `uv run python -m tools.run_container --runtime venv --image my_agent --split dev --timeout 2700 --name try1` (100 photos × 27 s). Your interim score does not check time; the final run does.
 
-Only scored submissions count; at most 5 per team. Each team has a code from the organizers, and any member can submit with it from their own Hugging Face account. Deadlines are announced in class and in the pinned issue.
+Only scored submissions count; at most 5 per team. Each team has a code from the organizers, and any member can submit with it from their own Hugging Face account. Further announcements will be posted in the pinned issue.
 
 ## Questions, bugs, answer-key disputes
 
 Open an issue and pick a template: **Question**, **Bug in the benchmark**, or **Answer-key dispute**. Submissions go through the site, not issues.
-- We answer within two working days.
+- We answer in the issue.
 - Fixes go into [`CHANGELOG.md`](CHANGELOG.md) with a new version, and stored results are rescored.
 - The dev answer key is a reviewed draft. If a clue is missing, boxed wrongly or marked wrongly, a dispute helps everyone.
 
@@ -101,7 +101,7 @@ Open an issue and pick a template: **Question**, **Bug in the benchmark**, or **
 
 | | |
 |---|---|
-| Release | v1.2.1 (scorer 0.4; data unchanged since v1.0) |
+| Release | v1.2.2 (scorer 0.4; data unchanged since v1.0) |
 | Scorer | 0.4. `predictions.json` still says `"benchmark_version": "0.3"` (the answer-key format version). |
 | Answer key | dev draft of 2026-11-10: 377 clues; people are still checking them (see `docs/dataset_card.md`) |
 | Official runs | Python 3.12 venv on a lab GPU cluster: NVIDIA driver 580 / CUDA 13.0, one RTX A6000 or RTX 3090, no network |

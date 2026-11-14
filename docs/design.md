@@ -48,7 +48,7 @@ Changes scores; every stored result was rescored (`tools/rescore.py`, checked ag
 |---|---|---|---|
 | Reader in the scorer | Qwen3-VL reads the edited crop | **No model at scoring time.** A pixel-structure test decides whether each GT line is still recoverable (§7.1) | Deterministic, CPU-only, free. Phase 3 teams run the exact official scorer. No hidden prompt to overfit to. |
 | Calibration | — | OCR (Apple Vision, as is / CLAHE / inverted) labels "still legible" on synthetic edits **offline**; thresholds are fit to it | Keeps an attacker-like reader in the loop without needing it at scoring time |
-| Geo attack G | 10% of the score | Removed from the score; optional report on a lab server later | Small VLMs are weak at GPS; GT clues already capture what leaks |
+| Geo attack G | 10% of the score | Removed from the score | Small VLMs are weak at GPS; GT clues already capture what leaks |
 | L and E | L 40% + E·L 20% | **PU = harmonic mean of L and E**, 65% | With E·L gating, "blur everything" still scored 65 (L = 1 for free). The harmonic mean gives 0 to both "blur all" and "do nothing" |
 | E | per-pixel diff > 24 | diff on luma + 2×2 chroma, **or** local SSIM drop at two scales | A pixel diff misses blur over low-contrast areas (sky, walls): blur-all got E = 0.69 |
 | E mask | all GT boxes | only **hideable** GT boxes | Editing an unhideable landmark should cost E |
@@ -66,7 +66,7 @@ Any hiding method is allowed (blur, pixelate, fill, inpaint, fake text). The sco
 
 ### 2.1 Rules for agents
 
-Decided 2026-11-13. The model list may later narrow to specific models (announced in the pinned issue).
+Rules of 2026-11-13; time limit of 2026-11-14 (CHANGELOG v1.2.1).
 
 | Rule | Detail |
 |---|---|
@@ -298,9 +298,8 @@ Reference results on dev and test (scorer 0.4): [`results_v1.md`](results_v1.md)
 3. ~~Non-text thresholds~~ (resolved): `TAU_NONTEXT` is fit like the text thresholds, with Qwen3-VL-8B as the judge of whether the edited landmark/skyline/facade is still recognizable (A|B pairs, with unedited and unrelated-region controls; `tools/calibrate_nontext.py`). On 2,147 judged pairs the value in use, 0.5, keeps *false hidden* at 3.1% (cap 5%); the fit's best value 0.55 (4.4%) was not adopted, to keep margin. Judge controls: unedited pairs 100% "recognizable", unrelated regions 82% "not". Details: [`calibration.md`](calibration.md#non-text-clues-landmarks-skylines-facades).
 4. Severity weights (2/1) and the false-safe penalty (10)
 5. `R` on `no_clue` images: is 0 for reporting any clue too strict?
-6. GT completeness: a real clue we missed costs the agent precision in R. Proposal: dispute window on the dev set, then GT fixes in the changelog
+6. GT completeness: a real clue we missed costs the agent precision in R. Disputes: the Answer-key dispute template; fixes go into the changelog
 7. ~~Test images or containers~~ (resolved): both. Test images are handed out without their key, and the site scores the teams' test outputs for the interim board; for the final board we run each team's last agent ourselves on test and the ~30 hidden phone photos (§10).
-8. Optional geo-attack report (Qwen on the lab server): format and when to run it
 
 ## 10. Splits and Phase 3 operation
 

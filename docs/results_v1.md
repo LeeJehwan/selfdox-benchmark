@@ -1,6 +1,6 @@
 # Results (v1.0)
 
-> **Draft.** Scored against the draft answer key (before the human review); the numbers will move. Rerun on the final key.
+> **Draft.** Scored against the draft answer key (before the human review); numbers change when the key is fixed (see the changelog).
 
 Scorer 0.4. Reproduce: run the agents in `agents/`, score each split with `python -m selfdox.score --out results_<split>_<agent>.json`, then `python -m tools.report --v1 <dir>`.
 
